@@ -1,7 +1,3 @@
--- The xmonad configuration of Derek Taylor (DistroTube)
--- http://www.youtube.com/c/DistroTube
--- http://www.gitlab.com/dwt1/
-
 ------------------------------------------------------------------------
 ---IMPORTS
 ------------------------------------------------------------------------
@@ -67,6 +63,7 @@ import XMonad.Layout.Spiral
 
     -- Prompts
 import XMonad.Prompt (defaultXPConfig, XPConfig(..), XPPosition(Top), Direction1D(..))
+import XMonad.Prompt.Unicode
 
 ------------------------------------------------------------------------
 ---CONFIG
@@ -111,12 +108,13 @@ main = do
 ---AUTOSTART
 ------------------------------------------------------------------------
 myStartupHook = do 
-          spawnOnce "nitrogen --restore &" 
-          spawnOnce "compton" 
-          spawnOnce "bash ~/.hiddenscrips/displaysetup.sh"
-	  spawnOnce "bash ~/.hiddenscrips/mountnetworkdrive.sh"	
-          setWMName "LG3D"
-          spawnOnce "bash ~/.hiddenscrips/mountnetworkdrive.sh"
+           spawnOnce "nitrogen --restore &" 
+           spawnOnce "compton" 
+           spawnOnce "zsh ~/.hiddenscrips/displaysetup.sh"
+           spawnOnce "discord"
+           spawnOnce "tmux new -s main"
+           setWMName "LG3D"
+--           spawnOnce (MyTerminal "zsh ~/.hiddenscrips/mountnetworkdrive.sh")
           --spawnOnce "exec /usr/bin/trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 15 --transparent true --alpha 0 --tint 0x292d3e --height 19 &"
           --spawnOnce "/home/mip/.xmonad/xmonad.start" -- Sets our wallpaper
 
@@ -131,6 +129,7 @@ myKeys =
     
     -- Windows
         , ("M-<End>", kill1)                           -- Kill the currently focused client
+        , ("M-g", kill1)                           -- Kill the currently focused client
         , ("M-C-<End>", killAll)                         -- Kill all the windows on current workspace
 
     -- Floating windows
@@ -202,11 +201,13 @@ myKeys =
 
     -- Scratchpads
         , ("M-S-<Return>", namedScratchpadAction myScratchPads "terminal")
-        , ("M-b", namedScratchpadAction myScratchPads "discord") 
-        , ("M-h", namedScratchpadAction myScratchPads "htop")
+        , ("M-b",          namedScratchpadAction myScratchPads "discord") 
+        , ("M-h",          namedScratchpadAction myScratchPads "htop")
         , ("C-S-<Escape>", namedScratchpadAction myScratchPads "htop")
+        , ("M-G",          namedScratchpadAction myScratchPads "spotify")
+        , ("M-S-c",        namedScratchpadAction myScratchPads "mipshot")
     -- Open Terminal
-        , ("M-<Return>", spawn myTerminal)
+        , ("M-<Return>", spawn (myTerminal ++ " -e tmux attach-session -t main"))
 
     -- Dmenu Scripts (Alt+Ctr+Key)
         , ("M1-C-<Return>", spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=10' -nb '#292d3e' -nf '#bbc5ff' -sb '#82AAFF' -sf '#292d3e' -p 'dmenu:'")
@@ -220,7 +221,6 @@ myKeys =
         , ("M-f",    spawn "firefox")
         , ("M-c",    spawn (myTerminal ++ " -e ~/python_programs/ranger/ranger.py"))
         , ("M-l",    spawn (myTerminal ++ " -e lutris &"))
-        , ("M-M1-j", spawn (myTerminal ++ " -e joplin"))
         , ("M-M1-l", spawn (myTerminal ++ " -e lynx -cfg=~/.lynx/lynx.cfg -lss=~/.lynx/lynx.lss gopher://distro.tube"))
         , ("M-M1-m", spawn (myTerminal ++ " -e toot curses"))
         , ("M-M1-n", spawn (myTerminal ++ " -e newsboat"))
@@ -257,6 +257,7 @@ xmobarEscape = concatMap doubleLts
 myWorkspaces :: [String]   
 myWorkspaces = clickable . (map xmobarEscape) 
                $ ["web", "term","stuff", "virt", "coms", "media"]
+--             $ ["", "","", "", "", ""]
   where                                                                      
         clickable l = [ "<action=xdotool key super+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
                       (i,ws) <- zip [1..8] l,                                        
@@ -268,6 +269,7 @@ myManageHook = composeAll
       , title =? "Vivaldi"         --> doShift "<action=xdotool key super+2>www</action>"
       , title =? "irssi"           --> doShift "<action=xdotool key super+6>chat</action>"
       , className =? "discord"     --> doShift ""
+      , className =? "hoi    "     --> doFloat
       , className =? "vlc"         --> doShift "<action=xdotool key super+7>media</action>"
       , className =? "Virtualbox"  --> doFloat
       , className =? "Gimp"        --> doFloat
@@ -302,6 +304,8 @@ fibonacci  = spiral (6/7)
 myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                 , NS "discord" spawnDiscord findDiscord manageDiscord
                 , NS "htop" spawnHtop findHtop manageHtop  
+                , NS "mipshot" spawnMipshot findMipshot manageMipshot  
+                , NS "spotify" spawnSpotify findSpotify manageSpotify 
                 ]
 
     where
@@ -313,8 +317,7 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                  w = 0.9
                  t = 0.95 -h
                  l = 0.95 -w
- -- spawnDiscord  = (myTerminal ++  " -e bash .hiddenscrips/lunchdiscord.sh") 
-    spawnDiscord  = "Discord"
+    spawnDiscord  = "surf discordapp.com/app"
     findDiscord   = resource =? "discord"
     manageDiscord = customFloating $ W.RationalRect l t w h
                  where
@@ -330,6 +333,26 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                  w = 0.9
                  t = 0.95 -h
                  l = 0.95 -w
+
+    spawnMipshot  = myTerminal ++ " -n mipshot zsh ~/.hiddenscrips/MipShot.sh"
+    findMipshot   = resource =? "mipshot"
+    manageMipshot = customFloating $ W.RationalRect l t w h
+                 where
+                 h = 0
+                 w = 0
+                 t = 0 -h
+                 l = 0 -w
+
+    spawnSpotify  = myTerminal ++ "spotify"
+    findSpotify   = resource =? "spotift"
+    manageSpotify = customFloating $ W.RationalRect l t w h
+
+                 where
+                 h = 0.9
+                 w = 0.9
+                 t = 0.95 -h
+                 l = 0.95 -w
+
 
 --Geting games to work
 
