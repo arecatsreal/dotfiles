@@ -270,10 +270,9 @@ myManageHook = composeAll
       , title =? "irssi"           --> doShift "<action=xdotool key super+6>chat</action>"
       , className =? "discord"     --> doShift ""
       , className =? "hoi    "     --> doFloat
+      , className =? "American Truck Simulator" --> doFloat
       , className =? "vlc"         --> doShift "<action=xdotool key super+7>media</action>"
       , className =? "Virtualbox"  --> doFloat
-      , className =? "Gimp"        --> doFloat
-      , className =? "Gimp"        --> doShift "<action=xdotool key super+8>gfx</action>"
       , (className =? "Firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
      ] <+> namedScratchpadManageHook myScratchPads
 
