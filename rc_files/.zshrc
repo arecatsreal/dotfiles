@@ -53,10 +53,10 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
 
 # Load zsh-syntax-highlighting MUST BE LAST!!
-source /home/mip/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/mip/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Load zsh-syntax-highlighting MUST BE LAST!!
-source /home/mip/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/mip/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/mip/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/mip/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/mip/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/mip/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
