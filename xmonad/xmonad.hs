@@ -114,6 +114,7 @@ myStartupHook = do
            spawnOnce "discord"
            spawnOnce "tmux new -s main"
            setWMName "LG3D"
+
 --           spawnOnce (MyTerminal "zsh ~/.hiddenscrips/mountnetworkdrive.sh")
           --spawnOnce "exec /usr/bin/trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 15 --transparent true --alpha 0 --tint 0x292d3e --height 19 &"
           --spawnOnce "/home/mip/.xmonad/xmonad.start" -- Sets our wallpaper
@@ -207,7 +208,8 @@ myKeys =
         , ("M-G",          namedScratchpadAction myScratchPads "spotify")
         , ("M-S-c",        namedScratchpadAction myScratchPads "mipshot")
     -- Open Terminal
-        , ("M-<Return>", spawn (myTerminal ++ " -e tmux attach-session -t main"))
+        , ("M-<Return>"  , spawn  myTerminal)
+        , ("M-C-<Return>", spawn (myTerminal ++ " -e tmux attach-session -t main"))
 
     -- Dmenu Scripts (Alt+Ctr+Key)
         , ("M1-C-<Return>", spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=10' -nb '#292d3e' -nf '#bbc5ff' -sb '#82AAFF' -sf '#292d3e' -p 'dmenu:'")
