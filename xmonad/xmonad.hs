@@ -211,13 +211,6 @@ myKeys =
         , ("M-<Return>"  , spawn  myTerminal)
         , ("M-C-<Return>", spawn (myTerminal ++ " -e tmux attach-session -t main"))
 
-    -- Dmenu Scripts (Alt+Ctr+Key)
-        , ("M1-C-<Return>", spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=10' -nb '#292d3e' -nf '#bbc5ff' -sb '#82AAFF' -sf '#292d3e' -p 'dmenu:'")
-        , ("M1-C-e", spawn "./.dmenu/dmenu-edit-configs.sh")
-        , ("M1-C-m", spawn "./.dmenu/dmenu-sysmon.sh")
-        , ("M1-C-p", spawn "passmenu")
-        , ("M1-C-s", spawn "./.dmenu/dmenu-surfraw.sh")
-
     -- My Applications 
         , ("M-M1-a", spawn (myTerminal ++ " -e ncpamixer"))
         , ("M-f",    spawn "firefox")
@@ -230,6 +223,9 @@ myKeys =
         , ("M-M1-r", spawn (myTerminal ++ " -e rtv"))
         , ("M-M1-w", spawn (myTerminal ++ " -e wopr report.xml"))
         , ("M-M1-y", spawn (myTerminal ++ " -e youtube-viewer"))
+	
+    -- Rofi	
+        , ("M-p",    spawn "rofi -show run" )
 
     -- Multimedia Keys
         , ("<XF86AudioPlay>", spawn "cmus toggle")
