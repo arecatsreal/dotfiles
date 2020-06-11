@@ -1,4 +1,4 @@
-#  __  __ ___ ____  ____    _________  _   _ ____   ____ 
+#  __  __ ___ ____  ____    _________  _   _ ____   ____
 # |  \/  |_ _|  _ \/ ___|  |__  / ___|| | | |  _ \ / ___|
 # | |\/| || || |_) \___ \    / /\___ \| |_| | |_) | |    
 # | |  | || ||  __/ ___) |  / /_ ___) |  _  |  _ <| |___ 
@@ -6,6 +6,8 @@
 
 #Loads Tmux
 #exec tmux
+
+neofetch
 
 # Enable colors and change prompt:
 autoload -U colors && colors
@@ -36,6 +38,11 @@ alias tconf="vim ~/.tmux.conf"
 alias lock="i3lock -c 000000 -f -e"
 alias unity=" ~/./.Unity/UnityHub.AppImage &"
 alias gateway="ip route | grep default"
+#alias pacman="yay"
+alias ll="ls -lh"
+alias vpn="sudo protonvpn"
+alias vpnc="sudo protonvpn c -f"
+alias youtube-dl="bash youtube-dl"
 
 #Open Nots and Todo
 alias notes=""
@@ -52,11 +59,7 @@ compinit
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
 
-# Load zsh-syntax-highlighting MUST BE LAST!!
-source /home/mip/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+#Startx
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 
-# Load zsh-syntax-highlighting MUST BE LAST!!
-source /home/mip/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/mip/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/mip/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/mip/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
