@@ -1,0 +1,38 @@
+#+TITLE: Simple X Hotkey Daemon RC
+#+PROPERTY: header-args :tangle sxhkdrc
+* Keybindings 
+** Application Launching 
+| Application | Keybind        |
+|-------------+----------------|
+| Terminal    | Super + Return |
+| Firefox     | Super + f      |
+| Emacs       | Super + t      |
+| App Lauch   | Super + p      |
+** Window manipulation
+| Action                | Keybind               |
+|-----------------------+-----------------------|
+| Window Tiled          | Super + t             |
+| Window Floating       | Super + space         |
+| Window Full screen    | Super + f             |
+| Switch Desktop        | Super + 1-9,0         |
+| Send focus to Desktop | Super + shift + 1-9.0 |
+
+* Application Launch
+#+BEGIN_SRC shell
+super + {Return,f,t,p}
+	{alacritty,firefox,emacsclient -a "" -c,rofi -show run}	#Launches Application.		
+#+END_SRC
+* Window manipulation
+#+BEGIN_SRC shell
+super + {v,space,f}
+	bspc node -t {tiled,floating,fullscreen}	#Sets the state of the window.
+super + g
+	bspc node -c					#Kills current window
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} focused:'^{1-9,10}' #&& echo 1 > ~/.config/lemonbar/updateDesktop.temp	#Switch and send application to desktops.
+#+END_SRC
+* Boot state actions 
+#+BEGIN_SRC shell
+super + shift + r
+	chmod +x ~/.config/bspwm/bspwmrc && exec ~/.config/bspwm/bspwmrc	# Reload bspwm config. 
+#+END_SRC
