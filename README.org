@@ -1,12 +1,12 @@
 * My Config Files For:
 
 ** Window Managers
-*** Xmonad
+*** Xmonad / Xmobar
 Just a slightly modified version of DistroTube from early 2019
 *** BSPWM
 My Own Custom config of BSPWM with not special in it.
 *** DWMM
-Themed DWM with few patches.
+Themed DWM with few patches. As well as a script for the bar. 
 
 ** Text Editors
 *** Vim
