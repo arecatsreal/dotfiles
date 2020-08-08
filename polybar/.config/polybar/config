@@ -266,7 +266,7 @@ label-disconnected-foreground = ${colors.gray}
 
 [module/date]
 type = internal/date
-interval = 60
+interval = 1
 
 date = "| %a | [%H:%M:%S] | [%D] |"
 ;;time = "%I:%M%p"
