@@ -64,7 +64,7 @@ font-3 = Symbola:pixelsize=9;1
 ; Other modules: xkeyboard filesystem xbacklight backlight-acpi cpu memory temperature powermenu weather
 modules-left = bspwm xwindow
 modules-center = date
-modules-right = memory cpu	
+modules-right = vpn memory cpu	
 
 tray-position = right
 tray-padding = 0
@@ -75,6 +75,12 @@ wm-restack = bspwm
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
+
+[module/vpn]
+type = custom/script
+exec = ~/.scrips/vpnStatus.sh
+interval = 60
+
 
 [module/weather]
 

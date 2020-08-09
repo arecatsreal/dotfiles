@@ -28,7 +28,6 @@ cups
 dash
 dhcpcd
 dialog
-discord
 dmenu
 dmidecode
 dosbox
@@ -97,7 +96,6 @@ linux-lts
 linux-lts-headers
 lolcat
 lsof
-lutris
 lxc
 lxd
 lynx
@@ -160,7 +158,6 @@ sudo
 surf
 sxhkd
 sxiv
-sysbench
 testdisk
 texinfo
 timer
