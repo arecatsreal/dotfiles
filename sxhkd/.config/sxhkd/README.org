@@ -5,7 +5,7 @@
 | Application | Keybind        |
 |-------------+----------------|
 | Terminal    | Super + Return |
-| Waterfox    | Super + f      |
+| Firefox     | Super + f      |
 | Emacs       | Super + t      |
 | App Lauch   | Super + p      |
 ** Window manipulation
@@ -19,8 +19,8 @@
 
 * Application Launch
 #+BEGIN_SRC shell
-super + {Return,f,t,p}
-	{alacritty,waterfox-current,emacsclient -a "" -c,rofi -show run}	#Launches Application.		
+super + {Return,f,t,p,n}
+	{alacritty,firefox,emacsclient -a "" -c,rofi -show run, mpv --fs $(xclip -o)}	#Launches Application.		
 #+END_SRC
 * Window manipulation
 #+BEGIN_SRC shell

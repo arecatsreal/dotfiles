@@ -17,22 +17,22 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 alias ranger="~/python_programs/ranger/ranger.py"
 alias rnager="~/python_programs/ranger/ranger.py"
 alias vm="sudo virt-manager"
-alias mofig="vim ~/.xmonad/xmonad.hs"
-alias ifig="vim ~/.config/i3/config"
+alias mofig="emacs ~/.xmonad/xmonad.hs"
+alias ifig="emacs ~/.config/i3/config"
 alias backup="deja-dup &"
-alias nas="zsh ~/.hiddenscrips/mountnetworkdrive.sh"
+alias nas="sh ~/.config/mountnetworkdrive.sh"
 alias tarball="tar -czvf"
 alias untarball="tar -xzvf"
 alias cls="clear"
-alias vrc="vim ~/.vimrc"
-alias zrc="vim ~/.zshrc"
-alias pvim="bash ~/.hiddenscrips/mvpi.sh"
+alias vrc="emacs ~/.emacsrc"
+alias zrc="emacs ~/.zshrc"
+alias pemacs="bash ~/.hiddenscrips/mvpi.sh"
 alias scr="cd ~/.hiddenscrips"
 alias pcoff="reboot --powerdown"
 alias rc="bash ~/.hiddenscrips/nrc.sh"
 alias speed="speedtest-cli"
 alias mon2cam="~/./.hiddenscrips/Mon2Cam/Mon2Cam.sh"
-alias tconf="vim ~/.tmux.conf"
+alias tconf="emacs ~/.tmux.conf"
 alias lock="i3lock -c 000000 -f -e"
 alias unity=" ~/./.Unity/UnityHub.AppImage &"
 alias gateway="ip route | grep default"
@@ -42,12 +42,12 @@ alias vpn="sudo protonvpn"
 alias vpnc="sudo protonvpn c -f"
 alias youtube-dl="bash youtube-dl"
 alias nb="newsboat"
-alias nba="vim ~/.newsboat/urls"
+alias nba="emacs ~/.newsboat/urls"
 alias emacs="emacsclient -a '' -c"
 
 #Open Nots and Todo
 alias notes=""
-alias todo="vim ~/Documents/todo.md"
+alias todo="emacs ~/Documents/todo.md"
 
 # Basic auto/tab complete
 autoload -U compinit
@@ -61,6 +61,6 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
 
 #Startx
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+#[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 
-source /home/mip/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/mip/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
