@@ -13,7 +13,7 @@ config.set('content.webrtc_ip_handling_policy', 'default-public-interface-only')
 config.set('content.geolocation', False)
 config.set('content.private_browsing', True)
 config.set('content.headers.referer', 'same-domain')
-config.set('content.proxy' 'socks://localhost:9050/') # Use Tor
+#config.set('content.proxy', 'socks://localhost:9050/') # Use Tor
 
 #Settings I like
 config.bind('z', 'hint links spawn mpv --fs {hint-url}') # Opens mpv with the hinted url.
