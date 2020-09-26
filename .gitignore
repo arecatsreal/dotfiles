@@ -1,0 +1,5 @@
+emacs/.emacs.d/*/
+emacs/.emacs.d/recentf
+*.o
+*~
+#*

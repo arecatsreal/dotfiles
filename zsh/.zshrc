@@ -13,6 +13,32 @@ neofetch
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
+# Archive Extraction
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *.deb)       ar x $1      ;;
+      *.tar.xz)    tar xf $1    ;;
+      *.tar.zst)   unzstd $1    ;;      
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
 #Alias
 alias ranger="~/python_programs/ranger/ranger.py"
 alias rnager="~/python_programs/ranger/ranger.py"
@@ -44,6 +70,9 @@ alias youtube-dl="bash youtube-dl"
 alias nb="newsboat"
 alias nba="emacs ~/.newsboat/urls"
 alias emacs="emacsclient -a '' -c"
+
+#Files
+alias lul="/home/mip/Documents"
 
 #Open Nots and Todo
 alias notes=""
