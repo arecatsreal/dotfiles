@@ -71,8 +71,13 @@ alias nb="newsboat"
 alias nba="emacs ~/.newsboat/urls"
 alias emacs="emacsclient -a '' -c"
 
-#Files
-alias lul="/home/mip/Documents"
+#Git
+gc ()
+{
+    git commit -m'$1'
+}
+alias ga="git add . && git status"
+alias gp="git push"
 
 #Open Nots and Todo
 alias notes=""
