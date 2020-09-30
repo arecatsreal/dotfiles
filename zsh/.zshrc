@@ -72,10 +72,7 @@ alias nba="emacs ~/.newsboat/urls"
 alias emacs="emacsclient -a '' -c"
 
 #Git
-gc ()
-{
-    git commit -m'$1'
-}
+alias gc="git commit -m'"
 alias ga="git add . && git status"
 alias gp="git push"
 
@@ -98,3 +95,4 @@ bindkey '^ ' autosuggest-accept
 #[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 
 source /home/mip/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
