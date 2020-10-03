@@ -20,7 +20,7 @@ import XMonad.Util.SpawnOnce
     -- Hooks
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, defaultPP, wrap, pad, xmobarPP, xmobarColor, shorten, PP(..))
 import XMonad.Hooks.ManageDocks (avoidStruts, docksStartupHook, manageDocks, ToggleStruts(..))
-import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog,  doFullFloat, doCenterFloat) 
+import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog,  doFullFloat, doCenterFloat)
 import XMonad.Hooks.Place (placeHook, withGaps, smart)
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.EwmhDesktops   -- required for xcomposite in obs to work
@@ -32,17 +32,17 @@ import XMonad.Actions.RotSlaves (rotSlavesDown, rotAllDown)
 import XMonad.Actions.CopyWindow (kill1, copyToAll, killAllOtherCopies, runOrCopy)
 import XMonad.Actions.WindowGo (runOrRaise, raiseMaybe)
 import XMonad.Actions.WithAll (sinkAll, killAll)
-import XMonad.Actions.CycleWS (moveTo, shiftTo, WSType(..), shiftNextScreen, shiftPrevScreen) 
+import XMonad.Actions.CycleWS (moveTo, shiftTo, WSType(..), shiftNextScreen, shiftPrevScreen)
 import XMonad.Actions.GridSelect (GSConfig(..), goToSelected, bringSelected, colorRangeFromClassName, buildDefaultGSConfig)
 import XMonad.Actions.DynamicWorkspaces (addWorkspacePrompt, removeEmptyWorkspace)
 import XMonad.Actions.MouseResize
 import qualified XMonad.Actions.ConstrainedResize as Sqr
 
     -- Layouts modifiers
-import XMonad.Layout.PerWorkspace (onWorkspace) 
+import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.Layout.Renamed (renamed, Rename(CutWordsLeft, Replace))
 import XMonad.Layout.WorkspaceDir
-import XMonad.Layout.Spacing (spacing) 
+import XMonad.Layout.Spacing (spacing)
 import XMonad.Layout.NoBorders
 import XMonad.Layout.LimitWindows (limitWindows, increaseLimit, decreaseLimit)
 import XMonad.Layout.WindowArranger (windowArrange, WindowArrangerMsg(..))
@@ -74,7 +74,7 @@ myTextEditor    = "vim"     -- Sets default text editor
 myBorderWidth   =  0        -- Sets border width for windows
 windowCount     = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
-main = do 
+main = do
     -- Launching three instances of xmobar on their monitors.
     xmproc0 <- spawnPipe "xmobar -x 0 /home/mip/.config/xmobar/xmobarrc2"
     xmproc1 <- spawnPipe "xmobar -x 1 /home/mip/.config/xmobar/xmobarrc1"
@@ -97,19 +97,19 @@ main = do
         , modMask            = myModMask
         , terminal           = myTerminal
         , startupHook        = myStartupHook
-        , layoutHook         = myLayoutHook 
+        , layoutHook         = myLayoutHook
         , workspaces         = myWorkspaces
         , borderWidth        = myBorderWidth
         , normalBorderColor  = "#292d3e"
         , focusedBorderColor = "#bbc5ff"
-        } `additionalKeysP`         myKeys 
+        } `additionalKeysP`         myKeys
 
 ------------------------------------------------------------------------
 ---AUTOSTART
 ------------------------------------------------------------------------
-myStartupHook = do 
-           spawnOnce "nitrogen --restore &" 
-           spawnOnce "compton" 
+myStartupHook = do
+           spawnOnce "nitrogen --restore &"
+           spawnOnce "compton"
            spawnOnce "zsh ~/.hiddenscrips/displaysetup.sh"
            spawnOnce "discord"
            spawnOnce "tmux new -s main"
@@ -127,7 +127,7 @@ myKeys =
         [ ("M-C-r", spawn "xmonad --recompile")      -- Recompiles xmonad
         , ("M-S-r", spawn "xmonad --restart")        -- Restarts xmonad
         , ("M-S-q", io exitSuccess)                  -- Quits xmonad
-    
+
     -- Windows
         , ("M-<End>", kill1)                           -- Kill the currently focused client
         , ("M-g", kill1)                           -- Kill the currently focused client
@@ -155,9 +155,9 @@ myKeys =
         , ("M-<Backspace>", promote)                 -- Moves focused window to master, all others maintain order
         , ("M1-S-<Tab>", rotSlavesDown)              -- Rotate all windows except master and keep focus in place
         , ("M1-C-<Tab>", rotAllDown)                 -- Rotate all the windows in the current stack
-        , ("M-S-s", windows copyToAll)  
-        , ("M-C-s", killAllOtherCopies) 
-        
+        , ("M-S-s", windows copyToAll)
+        , ("M-C-s", killAllOtherCopies)
+
         , ("M-C-M1-<Up>", sendMessage Arrange)
         , ("M-C-M1-<Down>", sendMessage DeArrange)
 --        , ("M-<Up>", sendMessage (MoveUp 10))             --  Move focused window to up
@@ -202,7 +202,7 @@ myKeys =
 
     -- Scratchpads
         , ("M-S-<Return>", namedScratchpadAction myScratchPads "terminal")
-        , ("M-b",          namedScratchpadAction myScratchPads "discord") 
+        , ("M-b",          namedScratchpadAction myScratchPads "discord")
         , ("M-h",          namedScratchpadAction myScratchPads "htop")
         , ("C-S-<Escape>", namedScratchpadAction myScratchPads "htop")
         , ("M-G",          namedScratchpadAction myScratchPads "spotify")
@@ -211,7 +211,7 @@ myKeys =
         , ("M-<Return>"  , spawn  myTerminal)
         , ("M-C-<Return>", spawn (myTerminal ++ " -e tmux attach-session -t main"))
 
-    -- My Applications 
+    -- My Applications
         , ("M-M1-a", spawn (myTerminal ++ " -e ncpamixer"))
         , ("M-f",    spawn "firefox")
         , ("M-c",    spawn (myTerminal ++ " -e ~/python_programs/ranger/ranger.py"))
@@ -223,8 +223,8 @@ myKeys =
         , ("M-M1-r", spawn (myTerminal ++ " -e rtv"))
         , ("M-M1-w", spawn (myTerminal ++ " -e wopr report.xml"))
         , ("M-M1-y", spawn (myTerminal ++ " -e youtube-viewer"))
-	
-    -- Rofi	
+
+    -- Rofi
         , ("M-p",    spawn "rofi -show run" )
 
     -- Multimedia Keys
@@ -242,7 +242,7 @@ myKeys =
         , ("<Print>", spawn "scrotd 0")
         ] where nonNSP          = WSIs (return (\ws -> W.tag ws /= "nsp"))
                 nonEmptyNonNSP  = WSIs (return (\ws -> isJust (W.stack ws) && W.tag ws /= "nsp"))
-                
+
 ------------------------------------------------------------------------
 ---WORKSPACES
 ------------------------------------------------------------------------
@@ -251,15 +251,15 @@ xmobarEscape = concatMap doubleLts
   where
         doubleLts '<' = "<<"
         doubleLts x   = [x]
-        
-myWorkspaces :: [String]   
-myWorkspaces = clickable . (map xmobarEscape) 
+
+myWorkspaces :: [String]
+myWorkspaces = clickable . map xmobarEscape
                $ ["web", "term","stuff", "virt", "coms", "media"]
 --             $ ["", "","", "", "", ""]
-  where                                                                      
-        clickable l = [ "<action=xdotool key super+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
-                      (i,ws) <- zip [1..8] l,                                        
-                      let n = i ] 
+  where
+        clickable l = [ "<action=xdotool key super+" ++ show n ++ ">" ++ ws ++ "</action>" |
+                      (i,ws) <- zip [1..8] l,
+                      let n = i ]
 myManageHook :: Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
      [
@@ -278,18 +278,18 @@ myManageHook = composeAll
 ---LAYOUTS
 ------------------------------------------------------------------------
 
-myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ 
-               mkToggle (NBFULL ?? NOBORDERS ?? EOT) $ myDefaultLayout
-             where 
+myLayoutHook = avoidStruts $ mouseResize $ windowArrange $
+               mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
+             where
                  myDefaultLayout = oneBig ||| noBorders monocle ||| space ||| fibonacci
 
 
 --tall       = renamed [Replace "tall"]     $ limitWindows 12 $ spacing 6 $ ResizableTall 1 (3/100) (1/2) []
 --grid       = renamed [Replace "grid"]     $ limitWindows 12 $ spacing 6 $ mkToggle (single MIRROR) $ Grid (16/10)
---threeCol   = renamed [Replace "threeCol"] $ limitWindows 3  $ ThreeCol 1 (3/100) (1/2) 
+--threeCol   = renamed [Replace "threeCol"] $ limitWindows 3  $ ThreeCol 1 (3/100) (1/2)
 --threeRow   = renamed [Replace "threeRow"] $ limitWindows 3  $ Mirror $ mkToggle (single MIRROR) zoomRow
 oneBig     = renamed [Replace "oneBig"]   $ limitWindows 6  $ Mirror $ mkToggle (single MIRROR) $ mkToggle (single REFLECTX) $ mkToggle (single REFLECTY) $ OneBig (5/9) (8/12)
-monocle    = renamed [Replace "monocle"]  $ limitWindows 20 $ Full
+monocle    = renamed [Replace "monocle"]  $ limitWindows 20 Full
 space      = renamed [Replace "space"]    $ limitWindows 4  $ spacing 12 $ Mirror $ mkToggle (single MIRROR) $ mkToggle (single REFLECTX) $ mkToggle (single REFLECTY) $ OneBig (2/3) (2/3)
 fibonacci  = spiral (6/7)
 ---floats     = renamed [Replace "floats"]   $ limitWindows 20 $ simplestFloat
@@ -300,9 +300,9 @@ fibonacci  = spiral (6/7)
 
 myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                 , NS "discord" spawnDiscord findDiscord manageDiscord
-                , NS "htop" spawnHtop findHtop manageHtop  
-                , NS "mipshot" spawnMipshot findMipshot manageMipshot  
-                , NS "spotify" spawnSpotify findSpotify manageSpotify 
+                , NS "htop" spawnHtop findHtop manageHtop
+                , NS "mipshot" spawnMipshot findMipshot manageMipshot
+                , NS "spotify" spawnSpotify findSpotify manageSpotify
                 ]
 
     where
@@ -337,8 +337,8 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                  where
                  h = 0
                  w = 0
-                 t = 0 -h
-                 l = 0 -w
+                 t = negate -h
+                 l = negate -w
 
     spawnSpotify  = myTerminal ++ "spotify"
     findSpotify   = resource =? "spotift"
@@ -352,12 +352,3 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
 
 
 --Geting games to work
-
-
-
-
-
-
-
-
-
