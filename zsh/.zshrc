@@ -59,6 +59,9 @@ alias nb="newsboat"
 alias nba="emacs ~/.newsboat/urls"
 alias emacs="emacsclient -a '' -c"
 
+#Lynx
+alias lynx="lynx -cfg=~/.config/lynx/lynx.cfg -lss=~/.config/lynx/lynx.lss"
+
 #Git
 alias gc="git commit -m'"
 alias ga="git add . && git status"
