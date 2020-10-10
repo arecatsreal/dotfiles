@@ -40,29 +40,17 @@ ex ()
 }
 
 #Alias
-alias ranger="~/python_programs/ranger/ranger.py"
-alias rnager="~/python_programs/ranger/ranger.py"
 alias vm="sudo virt-manager"
-alias mofig="emacs ~/.xmonad/xmonad.hs"
-alias ifig="emacs ~/.config/i3/config"
-alias backup="deja-dup &"
 alias nas="sh ~/.config/mountnetworkdrive.sh"
 alias tarball="tar -czvf"
-alias untarball="tar -xzvf"
 alias cls="clear"
 alias vrc="emacs ~/.emacsrc"
 alias zrc="emacs ~/.zshrc"
-alias pemacs="bash ~/.hiddenscrips/mvpi.sh"
-alias scr="cd ~/.hiddenscrips"
-alias pcoff="reboot --powerdown"
 alias rc="bash ~/.hiddenscrips/nrc.sh"
 alias speed="speedtest-cli"
-alias mon2cam="~/./.hiddenscrips/Mon2Cam/Mon2Cam.sh"
 alias tconf="emacs ~/.tmux.conf"
 alias lock="i3lock -c 000000 -f -e"
-alias unity=" ~/./.Unity/UnityHub.AppImage &"
 alias gateway="ip route | grep default"
-#alias pacman="yay"
 alias ll="ls -lh"
 alias vpn="sudo protonvpn"
 alias vpnc="sudo protonvpn c -f"
@@ -75,10 +63,6 @@ alias emacs="emacsclient -a '' -c"
 alias gc="git commit -m'"
 alias ga="git add . && git status"
 alias gp="git push"
-
-#Open Nots and Todo
-alias notes=""
-alias todo="emacs ~/Documents/todo.md"
 
 # Basic auto/tab complete
 autoload -U compinit
