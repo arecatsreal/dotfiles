@@ -61,7 +61,11 @@ alias emacs="emacsclient -a '' -c"
 
 #Lynx
 alias lynx="lynx -cfg=~/.config/lynx/lynx.cfg -lss=~/.config/lynx/lynx.lss"
-
+duck ()
+{
+    lynx -cfg=~/.config/lynx/lynx.cfg -lss=~/.config/lynx/lynx.lss "duckduckgo.com/lite?kd=-1&kp=-1&q=$*"
+}
+alias '?'="duck"
 #Git
 alias gc="git commit -m'"
 alias ga="git add . && git status"
@@ -72,6 +76,10 @@ autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
+
+#Vi mode
+set -o vi mode
+
 #bindkey '^h' _comp_options+=(globdots)	# Include hidden files.
 
 #zsh-autosuggestions
