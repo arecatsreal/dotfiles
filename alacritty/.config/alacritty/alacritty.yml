@@ -1,6 +1,6 @@
 # ...
 
-# Colors (Dracula)
+# Colors (Darkula)
 colors:
   # Default colors
   primary:
@@ -80,3 +80,22 @@ colors:
 
 # Visual Bell
 # ...
+font:
+  normal:
+    family: monospace
+    style: Regular
+
+  bold:
+    family: monospace
+    style: Bold
+
+  italic:
+    family: monospace
+    style: Italic
+
+  bold_italic:
+    family: monospace
+    style: Bold Italic
+
+  size: 11
+ 
