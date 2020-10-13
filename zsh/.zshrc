@@ -73,6 +73,13 @@ alias gc="git commit -m'"
 alias ga="git add . && git status"
 alias gp="git push"
 
+#Void Linux Xbps
+alias xin="sudo xbps-install"
+alias xup="sudo xbps-install -S"
+alias xrm="sudo xbps-remove"
+alias xro="sudo xbps-remove -o"
+alias xqu="xbps-query"
+
 # Basic auto/tab complete
 autoload -U compinit
 zstyle ':completion:*' menu select
