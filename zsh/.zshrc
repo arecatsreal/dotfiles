@@ -70,6 +70,9 @@ alias '?'="duck"
 alias gc="git commit -m'"
 alias ga="git add . && git status"
 alias gp="git push"
+alias gcls="git restore --staged *" # Clears the git staging
+# Sets the repo remote to github.com/MrMip/<Dir Name>.git via ssh
+alias gfix="git remote set-url origin git@github.com:MrMip/${PWD##*/}.git" 
 
 #Void Linux Xbps
 alias xin="sudo xbps-install"
