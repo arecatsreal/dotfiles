@@ -51,8 +51,6 @@ alias speed="speedtest-cli"
 alias tconf="emacs ~/.tmux.conf"
 alias lock="i3lock -c 000000 -f -e"
 alias gateway="ip route | grep default"
-alias ll="ls -lh --color"
-alias ls="ls --color"
 alias vpn="sudo protonvpn"
 alias vpnc="sudo protonvpn c -f"
 alias youtube-dl="bash youtube-dl"
@@ -79,6 +77,20 @@ alias xup="sudo xbps-install -S"
 alias xrm="sudo xbps-remove"
 alias xro="sudo xbps-remove -o"
 alias xqu="xbps-query"
+
+# ls/exa
+# Makes shur exa is installed before aliasing it to ls.
+# So this scrip can be used with out exa installed on the system.
+if [ $(exa --version | wc -m) != 0 ]; then
+    alias ll="exa -lh --git"
+    alias ls="exa"
+    alias la="exa -a"
+else
+    alias ll="ls -lh --color"
+    alias ls="ls --color"
+    alias la="ls --color -A"
+fi
+
 
 # Basic auto/tab complete
 autoload -U compinit
