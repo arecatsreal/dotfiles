@@ -13,8 +13,6 @@ Themed DWM with few patches. As well as a script for the bar.
 A simple vim config that gets the job done.
 **** Plugins
 + auto-pairs  
-+ nerdtree  
-+ vim-airline  
 + vim-polyglot
 *** Emacs
 Still in early stages of customizing.

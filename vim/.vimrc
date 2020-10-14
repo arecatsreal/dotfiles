@@ -1,8 +1,9 @@
 
 "Pluging manger
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
+call plug#begin('~/.vimplugins')
+Plug 'jiangmiao/auto-pairs'
+Plug 'sheerun/vim-polyglot'
+call plug#end()
 
 "Turns on line numbers
 set number
