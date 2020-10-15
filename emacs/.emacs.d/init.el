@@ -71,10 +71,10 @@
 ;;Popup
 ;;(use-package popup
 ;;  :ensure t)
-
-;;Magit
-(use-package magit
+;;Git Gutter
+(use-package git-gutter
   :ensure t)
+(global-git-gutter-mode)
 ;;Spell Check flyspell
 (use-package flyspell-correct-helm
   :ensure t)
@@ -184,7 +184,7 @@
  '(nrepl-message-colors
    '("#ffb4ac" "#ddaa6f" "#e5c06d" "#3d454c" "#e2e9ea" "#40424a" "#7ec98f" "#e5786d" "#834c98"))
  '(package-selected-packages
-   '(solarized-theme modus-operandi-theme nord-theme flyspell-correct-helm afternoon-theme gruvbox-theme gruvbox-them modus-vivendi-theme flyspell-correct-popup flyspell-correct magit exwm-firefox-core exwm evil-org org-bullets helm use-package evil dracula-theme))
+   '(git-gutter solarized-theme modus-operandi-theme nord-theme flyspell-correct-helm afternoon-theme gruvbox-theme gruvbox-them modus-vivendi-theme flyspell-correct-popup flyspell-correct magit exwm-firefox-core exwm evil-org org-bullets helm use-package evil dracula-theme))
  '(pdf-view-midnight-colors '("#fdf4c1" . "#282828"))
  '(pos-tip-background-color "#2f2f2d")
  '(pos-tip-foreground-color "#999791")
