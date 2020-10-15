@@ -14,8 +14,7 @@ autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 # Archive Extraction
-ex ()
-{
+ex () {
   if [ -f $1 ] ; then
     case $1 in
       *.tar.bz2)   tar xjf $1   ;;
@@ -44,28 +43,45 @@ alias vm="sudo virt-manager"
 alias nas="sh ~/.config/mountnetworkdrive.sh"
 alias tarball="tar -czvf"
 alias cls="clear"
-alias vrc="emacs ~/.emacsrc"
-alias zrc="emacs ~/.zshrc"
 alias rc="bash ~/.hiddenscrips/nrc.sh"
 alias speed="speedtest-cli"
-alias tconf="emacs ~/.tmux.conf"
 alias lock="i3lock -c 000000 -f -e"
 alias gateway="ip route | grep default"
 alias vpn="sudo protonvpn"
 alias vpnc="sudo protonvpn c -f"
 alias youtube-dl="bash youtube-dl"
 alias nb="newsboat"
-alias nba="emacs ~/.newsboat/urls"
-alias emacs="emacsclient -a '' -c"
 alias ta="tmux a"
+
+#Editor
+if [ $(emacs --version | wc -m) != 0 ]; then
+    export EDITOR=emacs
+else
+    export EDIROR=vim
+fi
+emacs () {
+    emacsclient -a '' -c -nw $*
+}
+alias setvi="export EDITOR=vim   && echo 'The text editor is now set to vim.' && fileopenalias"
+alias setem="export EDITOR=emacs && echo 'The text editor is now set to emacs.'&& fileopenalias"
+alias setna="export EDITOR=nano  && echo 'What is whrong with you?' && fileopenalias"
+
+#File Opening
+fileopenalias () {
+    alias vrc="$EDITOR ~/.vimrc"
+    alias zrc="$EDITOR ~/.zshrc"
+    alias nba="$EDITOR ~/.newsboat/urls"
+    alias tconf="emacs ~/.tmux.conf"
+}
+fileopenalias
 
 #Lynx
 alias lynx="torify lynx -cfg=~/.config/lynx/lynx.cfg -lss=~/.config/lynx/lynx.lss"
-duck ()
-{
+duck () {
     torify lynx -cfg=~/.config/lynx/lynx.cfg -lss=~/.config/lynx/lynx.lss "duckduckgo.com/lite?kd=-1&kp=-1&q=$*"
 }
 alias '?'="duck"
+
 #Git
 alias gc="git commit -m'"
 alias ga="git add . && git status"
