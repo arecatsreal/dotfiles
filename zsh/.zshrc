@@ -83,12 +83,11 @@ duck () {
 alias '?'="duck"
 
 #Git
-alias gc="git commit -m'"
-#alias ga="git add . && git status"
+gc () {; COMMITSTR="$*"; git commit -m $COMMITSTR; }
 alias gp="git push"
 alias gcls="git restore --staged *" # Clears the git staging
 # Sets the repo remote to github.com/MrMip/<Dir Name>.git via ssh
-alias gfix="git remote set-url origin git@github.com:MrMip/${PWD##*/}.git" 
+alias gfix="git remote set-url origin git@github.com:MrMip/${PWD##*/}.git"  
 ga () {
     if [ $( echo $1 | wc -w ) = 0 ]; then
 	git add .
