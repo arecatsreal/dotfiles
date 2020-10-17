@@ -5,8 +5,8 @@
 Just a slightly modified version of DistroTube from early 2019
 *** BSPWM
 My Own Custom config of BSPWM with not special in it.
-*** DWMM
-Themed DWM with few patches. As well as a script for the bar. 
+*** DWM
+Themed DWM with few patches. As well as a script for the bar. [[https://github.com/mrmip/dwm][link]] 
 
 ** Text Editors
 *** Vim
@@ -31,9 +31,10 @@ A wip qute like Firefox config. [[https://github.com/mrmip/qutefox][link]]
 + zsh-autosuggestions
 + zsh-syntax-highlighting
 *** Alacritty
-I use the dracula thmem, but with the backgroud fully black.
-*** Polybar 
+I use the dracula theme, but with the background fully black.
+*** Polybar
 I made it about a simply as it gets.
 
 There is also some random scripts.
-
+*** Dmenu
+I just make it look like rofi. [[https://github.com/mrmip/dmenu][link]]
