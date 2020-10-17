@@ -18,3 +18,14 @@ config.set('content.proxy', 'socks://localhost:9050/') # Use Tor
 #Settings I like
 config.bind('z', 'hint links spawn mpv --fs {hint-url}') # Opens mpv with the hinted url.
 config.set("colors.webpage.darkmode.enabled", True) # Dark mode.
+
+#Themeing
+import dracula.draw
+
+# Load existing settings made via :set
+dracula.draw.blood(c, {
+     'spacing': {
+          'vertical': 6,
+          'horizontal': 8
+     }
+})

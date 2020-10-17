@@ -5,3 +5,4 @@ emacs/.emacs.d/recentf
 '\#*'
 qutebrowser/.config/qutebrowser/bookmarks/*
 qutebrowser/.config/qutebrowser/quickmarks
+nnn/.config/nnn/plugins

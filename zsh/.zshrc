@@ -4,8 +4,9 @@
 # | |  | || ||  __/ ___) |  / /_ ___) |  _  |  _ <| |___ 
 # |_|  |_|___|_|   |____/  /____|____/|_| |_|_| \_\\____|
 
-#Loads Tmux
-#exec tmux
+export TERMINAL=tmux
+export PAGER=less
+export SHELL=zsh
 
 neofetch
 
@@ -39,19 +40,7 @@ ex () {
 }
 
 #Alias
-alias vm="sudo virt-manager"
-alias nas="sh ~/.config/mountnetworkdrive.sh"
-alias tarball="tar -czvf"
-alias cls="clear"
-alias rc="bash ~/.hiddenscrips/nrc.sh"
-alias speed="speedtest-cli"
-alias lock="i3lock -c 000000 -f -e"
 alias gateway="ip route | grep default"
-alias vpn="sudo protonvpn"
-alias vpnc="sudo protonvpn c -f"
-alias youtube-dl="bash youtube-dl"
-alias nb="newsboat"
-alias ta="tmux a"
 
 #Editor
 if [ $(emacs --version | wc -m) != 0 ]; then
@@ -59,21 +48,28 @@ if [ $(emacs --version | wc -m) != 0 ]; then
 else
     export EDIROR=vim
 fi
-emacs () {
-    emacsclient -a '' -c -nw $*
-}
+emacs () {; emacsclient -a '' -c -nw $* ;}
 alias setvi="export EDITOR=vim   && echo 'The text editor is now set to vim.' && fileopenalias"
 alias setem="export EDITOR=emacs && echo 'The text editor is now set to emacs.'&& fileopenalias"
 alias setna="export EDITOR=nano  && echo 'What is whrong with you?' && fileopenalias"
 
 #File Opening
 fileopenalias () {
+    alias o="$EDITOR"
     alias vrc="$EDITOR ~/.vimrc"
     alias zrc="$EDITOR ~/.zshrc"
     alias nba="$EDITOR ~/.newsboat/urls"
-    alias tconf="emacs ~/.tmux.conf"
+    alias tconf="$EDITOR ~/.tmux.conf"
+    alias emrc="$EDITOE ~/.emacs.d/init.el"
 }
 fileopenalias
+
+#File Jumps
+alias jgh="cd ~/NAS/Git/Github/"
+alias jdc="cd ~/Documents/"
+alias jdw="cd ~/Downloads/"
+alias jdo="cd ~/dotfiles/"
+alias jco="cd ~/.config/"
 
 #Lynx
 alias lynx="torify lynx -cfg=~/.config/lynx/lynx.cfg -lss=~/.config/lynx/lynx.lss"
@@ -82,12 +78,27 @@ duck () {
 }
 alias '?'="duck"
 
+# ls/exa
+# Makes shur exa is installed before aliasing it to ls.
+# So this scrip can be used with out exa installed on the system.
+if [ $(exa --version | wc -m) != 0 ]; then
+    alias ll="exa -lh --git"
+    alias ls="exa"
+    alias la="exa -a"
+    EXAIN=true
+else
+    alias ll="ls -lh --color"
+    alias ls="ls --color"
+    alias la="ls --color -A"
+fi
+
 #Git
 gc () {; COMMITSTR="$*"; git commit -m $COMMITSTR; }
 alias gp="git push"
 alias gcls="git restore --staged *" # Clears the git staging
 # Sets the repo remote to github.com/MrMip/<Dir Name>.git via ssh
 alias gfix="git remote set-url origin git@github.com:MrMip/${PWD##*/}.git"  
+alias gs="git status"
 ga () {
     if [ $( echo $1 | wc -w ) = 0 ]; then
 	git add .
@@ -105,18 +116,17 @@ alias xrm="sudo xbps-remove"
 alias xro="sudo xbps-remove -o"
 alias xqu="xbps-query"
 
-# ls/exa
-# Makes shur exa is installed before aliasing it to ls.
-# So this scrip can be used with out exa installed on the system.
-if [ $(exa --version | wc -m) != 0 ]; then
-    alias ll="exa -lh --git"
-    alias ls="exa"
-    alias la="exa -a"
-else
-    alias ll="ls -lh --color"
-    alias ls="ls --color"
-    alias la="ls --color -A"
-fi
+#Program Short cuts
+alias vpn="sudo protonvpn"
+alias vpnc="sudo protonvpn c -f"
+alias youtube-dl="bash youtube-dl"
+alias nb="newsboat"
+alias ta="tmux a"
+alias speed="speedtest-cli"
+alias vm="sudo virt-manager"
+alias nas="sh ~/.config/mountnetworkdrive.sh"
+alias tarball="tar -czvf"
+alias cls="clear"
 
 
 # Basic auto/tab complete
