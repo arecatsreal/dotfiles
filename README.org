@@ -31,7 +31,7 @@ A wip qute like Firefox config. [[https://github.com/mrmip/qutefox][link]]
 + zsh-autosuggestions
 + zsh-syntax-highlighting
 *** Alacritty
-I use the dracula thmem, but with the back groud fuly black.
+I use the dracula thmem, but with the backgroud fully black.
 *** Polybar 
 I made it about a simply as it gets.
 
