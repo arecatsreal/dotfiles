@@ -7,6 +7,8 @@
 export TERMINAL=tmux
 export PAGER=less
 export SHELL=zsh
+export BROWSER=qutebrowser
+export TBROWSER=lynx
 
 neofetch
 
@@ -58,7 +60,7 @@ fileopenalias () {
     alias o="$EDITOR"
     alias vrc="$EDITOR ~/.vimrc"
     alias zrc="$EDITOR ~/.zshrc"
-    alias nba="$EDITOR ~/.newsboat/urls"
+    alias nba="$EDITOR ~/.config/newsboat/urls"
     alias tconf="$EDITOR ~/.tmux.conf"
     alias emrc="$EDITOE ~/.emacs.d/init.el"
 }
@@ -77,6 +79,11 @@ duck () {
     torify lynx -cfg=~/.config/lynx/lynx.cfg -lss=~/.config/lynx/lynx.lss "duckduckgo.com/lite?kd=-1&kp=-1&q=$*"
 }
 alias '?'="duck"
+
+#Tuir (Trminal Reddit)
+export TUIR_EDITOR=$EDITOR
+export TUIR_BROWSER=$BROWSER
+alias tuir="tuir --enable-media"
 
 # ls/exa
 # Makes shur exa is installed before aliasing it to ls.
@@ -111,7 +118,7 @@ fi
 
 #Void Linux Xbps
 alias xin="sudo xbps-install"
-alias xup="sudo xbps-install -S"
+alias xup="sudo xbps-install -S -u"
 alias xrm="sudo xbps-remove"
 alias xro="sudo xbps-remove -o"
 alias xqu="xbps-query"
