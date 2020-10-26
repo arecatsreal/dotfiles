@@ -14,7 +14,8 @@ fcitx
 #Turn off sleep
 xset s off & 
 xset -dpms &
-	
+exec ~/.scrips/key_remap.sh & 
+
 #Run WM
 exec /home/mip/.config/dwm/dwm
 #exec emacs #I wish this was a joke lul.
