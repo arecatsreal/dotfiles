@@ -62,7 +62,7 @@ fileopenalias () {
     alias zrc="$EDITOR ~/.zshrc"
     alias nba="$EDITOR ~/.config/newsboat/urls"
     alias tconf="$EDITOR ~/.tmux.conf"
-    alias emrc="$EDITOE ~/.emacs.d/init.el"
+    alias emrc="$EDITOR ~/.emacs.d/init.el"
 }
 fileopenalias
 
