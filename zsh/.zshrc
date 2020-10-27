@@ -4,13 +4,13 @@
 # | |  | || ||  __/ ___) |  / /_ ___) |  _  |  _ <| |___ 
 # |_|  |_|___|_|   |____/  /____|____/|_| |_|_| \_\\____|
 
-export TERMINAL=tmux
-export PAGER=less
-export SHELL=zsh
-export BROWSER=qutebrowser
-export TBROWSER=lynx
-
 neofetch
+
+# Default Settings
+export EDITOR=vim
+export PAGER=less
+export BROWSER=qutebrowser
+export TBROESER=lynx
 
 # Enable colors and change prompt:
 autoload -U colors && colors
@@ -44,16 +44,14 @@ ex () {
 #Alias
 alias gateway="ip route | grep default"
 
-#Editor
-if [ $(emacs --version | wc -m) != 0 ]; then
-    export EDITOR=emacs
-else
-    export EDIROR=vim
-fi
+#Function to lauch emacs in the terminal
 emacs () {; emacsclient -a '' -c -nw $* ;}
-alias setvi="export EDITOR=vim   && echo 'The text editor is now set to vim.' && fileopenalias"
-alias setem="export EDITOR=emacs && echo 'The text editor is now set to emacs.'&& fileopenalias"
-alias setna="export EDITOR=nano  && echo 'What is whrong with you?' && fileopenalias"
+
+# Functions to change the default settings.
+editor () {; export EDITOR=$* && echo "The editor is set to $EDITOR" && fileopenalias;} 
+pager () {; export PAGER=$* && echo "The pager is set to $PAGER"; } 
+browser () {; export BROWSER=$* && echo "The browser is set to $BROWSER"; } 
+tbrowser () {; export TBROESER=$* && echo "The terminal browser is set to $TBROESER"; } 
 
 #File Opening
 fileopenalias () {
@@ -151,8 +149,4 @@ set -o vi mode
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
 
-#Startx
-#[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
-
-source /home/mip/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+source /home/mip/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
