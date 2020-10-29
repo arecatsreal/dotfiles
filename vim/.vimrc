@@ -30,6 +30,9 @@ set conceallevel=2
 colorscheme dracula
 highlight Normal ctermbg=black
 
+"Tab Length
+set ts=4 sw=4
+
 "Status line
 set laststatus=2
 let g:lightline = {'colorscheme': 'dracula',}
