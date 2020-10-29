@@ -1,0 +1,10 @@
+#!/bin/sh 
+
+LYNX_CFG=$HOME/.config/lynx/lynx.cfg
+LYNX_LSS=$HOME/.config/lynx/lynx.lss
+LYNX_PATH=/bin/lynx
+
+lynx () {
+				torify $LYNX_PATH -cfg=$LYNX_CFG -lss=$LYNX_LSS
+}
+

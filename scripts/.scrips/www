@@ -12,7 +12,6 @@ elif [ $1 == "-h" ];then
 	-h - Show this menu"
 elif [ $1 == "-t" ]; then
 	$TBROWSER $2
-	echo dsf
 else
   $BROWSER $2
 fi
