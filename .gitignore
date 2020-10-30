@@ -7,3 +7,4 @@ qutebrowser/.config/qutebrowser/bookmarks/*
 qutebrowser/.config/qutebrowser/quickmarks
 qutebrowser/.config/qutebrowser/dracula
 nnn/.config/nnn/plugins
+mpd/.config/mpd/database

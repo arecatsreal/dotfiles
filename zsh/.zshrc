@@ -99,6 +99,7 @@ alias vm="sudo virt-manager"
 alias nas="sh ~/.config/mountnetworkdrive.sh"
 alias tarball="tar -czvf"
 alias cls="clear"
+alias mu="ncmpcpp"
 
 # Exports
 source $HOME/.zsource/exports 
