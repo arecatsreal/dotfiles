@@ -6,6 +6,10 @@
 
 neofetch
 
+# Exports
+source $HOME/.zsource/exports 
+exports
+
 # Enable colors and change prompt:
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
@@ -100,9 +104,6 @@ alias nas="sh ~/.config/mountnetworkdrive.sh"
 alias tarball="tar -czvf"
 alias cls="clear"
 alias mu="ncmpcpp"
-
-# Exports
-source $HOME/.zsource/exports 
 
 # Basic auto/tab complete
 autoload -U compinit
