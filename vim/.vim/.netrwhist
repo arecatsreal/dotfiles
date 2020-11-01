@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
-let g:netrw_dirhist_4='/home/mip/NAS/Git/GitHub/cTag'
-let g:netrw_dirhist_3='/home/mip/.vimplugins/dracula/colors'
-let g:netrw_dirhist_2='/home/mip/NAS/Documents/coolcode/gcc/INSTALL'
-let g:netrw_dirhist_1='/home/mip/.config/lynx'

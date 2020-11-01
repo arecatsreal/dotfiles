@@ -1,0 +1,17 @@
+#!/bin/bash 
+
+if [ $1 == "-g" ]; then
+	$BROWSER $2
+elif [ $1 == "-h" ];then
+	echo " www - web wbrowser wancher
+
+	www [OPTIONS] 'content'
+
+	-g - Launch with gui browser 
+	-t - Launch with terminal browser
+	-h - Show this menu"
+elif [ $1 == "-t" ]; then
+	$TBROWSER $2
+else
+  $BROWSER $2
+fi

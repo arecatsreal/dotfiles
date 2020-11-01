@@ -3,3 +3,7 @@ PATH=/home/$(whoami)/.scrips/:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/
 
 #Props the use if they want to startx.
 startx_prompt.sh
+
+if [ $TERM == linux ]; then
+	mpd
+fi

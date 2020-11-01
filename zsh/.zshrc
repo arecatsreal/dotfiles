@@ -6,40 +6,13 @@
 
 neofetch
 
-# Default Settings
-export EDITOR=vim
-export PAGER=less
-export BROWSER=qutebrowser
-export TBROESER=lynx
+# Exports
+source $HOME/.zsource/exports 
+exports
 
 # Enable colors and change prompt:
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-
-# Archive Extraction
-ex () {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1   ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *.deb)       ar x $1      ;;
-      *.tar.xz)    tar xf $1    ;;
-      *.tar.zst)   unzstd $1    ;;      
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
 
 #Alias
 alias gateway="ip route | grep default"
@@ -72,10 +45,8 @@ alias jdo="cd ~/dotfiles/"
 alias jco="cd ~/.config/"
 
 #Lynx
-alias lynx="torify lynx -cfg=~/.config/lynx/lynx.cfg -lss=~/.config/lynx/lynx.lss"
-duck () {
-    torify lynx -cfg=~/.config/lynx/lynx.cfg -lss=~/.config/lynx/lynx.lss "duckduckgo.com/lite?kd=-1&kp=-1&q=$*"
-}
+source ~/.zsource/lynx
+duck () {; lynx "duckduckgo.com/lite?kd=-1&kp=-1&q=$*"; }
 alias '?'="duck"
 
 #Tuir (Trminal Reddit)
@@ -132,7 +103,7 @@ alias vm="sudo virt-manager"
 alias nas="sh ~/.config/mountnetworkdrive.sh"
 alias tarball="tar -czvf"
 alias cls="clear"
-
+alias mu="ncmpcpp"
 
 # Basic auto/tab complete
 autoload -U compinit

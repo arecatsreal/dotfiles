@@ -1,0 +1,8 @@
+#!/bin/sh
+
+exports () {
+export EDITOR=vim
+export PAGER=less
+export BROWSER=qutebrowser
+export TBROESER=lynx
+}
