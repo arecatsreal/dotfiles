@@ -17,7 +17,7 @@ config.set('content.proxy', 'socks://localhost:9050/') # Use Tor
 #config.set('content.proxy', 'http://localhost:4444/') # Use I2p
 
 #Settings I like
-config.bind('z', 'hint links spawn mpv --fs {hint-url}') # Opens mpv with the hinted url.
+config.bind('z', 'hint links spawn mpv --fs --ytdl-format="bestvideo[height<=1080]+bestaudio/best" {hint-url}') # Opens mpv with the hinted url at max 1080p.
 config.set("colors.webpage.darkmode.enabled", True) # Dark mode.
 
 #Themeing
