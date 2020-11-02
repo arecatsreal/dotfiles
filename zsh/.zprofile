@@ -6,4 +6,5 @@ startx_prompt.sh
 
 if [ $TERM == linux ]; then
 	mpd
+	key_remap.sh
 fi

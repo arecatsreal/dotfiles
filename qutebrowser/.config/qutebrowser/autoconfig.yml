@@ -46,4 +46,4 @@ settings:
   url.start_pages:
     global: https://3g2upl4pq6kufc4m.onion/
   zoom.default:
-    global: '150'
+    global: '75'
