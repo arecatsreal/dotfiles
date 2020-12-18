@@ -22,7 +22,7 @@ settings:
     global:
     - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
   content.javascript.enabled:
-    global: false
+    global: true
   content.webrtc_ip_handling_policy:
     global: all-interfaces
   fonts.default_family:
