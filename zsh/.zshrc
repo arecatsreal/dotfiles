@@ -34,6 +34,7 @@ fileopenalias () {
     alias nba="$EDITOR ~/.config/newsboat/urls"
     alias tconf="$EDITOR ~/.tmux.conf"
     alias emrc="$EDITOR ~/.emacs.d/init.el"
+	alias dwmc=" $EDITOR ~/.config/dwm/config.def.h && cd ~/.config/dwm"
 }
 fileopenalias
 
@@ -48,6 +49,13 @@ alias jco="cd ~/.config/"
 source ~/.zsource/lynx
 duck () {; lynx "duckduckgo.com/lite?kd=-1&kp=-1&q=$*"; }
 alias '?'="duck"
+
+#fff 
+f() {
+	    fff "$@"
+		    cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"			
+}
+export FFF_LS_COLORS=1
 
 #Tuir (Trminal Reddit)
 export TUIR_EDITOR=$EDITOR
@@ -104,6 +112,7 @@ alias nas="sh ~/.config/mountnetworkdrive.sh"
 alias tarball="tar -czvf"
 alias cls="clear"
 alias mu="ncmpcpp"
+play () {; mpv --fs "$*"; }
 
 # Basic auto/tab complete
 autoload -U compinit
