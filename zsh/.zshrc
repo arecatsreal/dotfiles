@@ -17,8 +17,9 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 #Alias
 alias gateway="ip route | grep default"
 
-#Function to lauch emacs in the terminal
-emacs () {; emacsclient -a '' -c -nw $* ;}
+#Function to lauch emacs
+emacs () {; emacsclient -a '' -c -nw $* ;} # tui
+emacsgui () {; emacsclient -a '' -c $* ;} # gui
 
 # Functions to change the default settings.
 editor () {; export EDITOR=$* && echo "The editor is set to $EDITOR" && fileopenalias;} 

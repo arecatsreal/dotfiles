@@ -13,6 +13,8 @@ settings:
       w: session-save
       wq: quit --save
       wqa: quit --save
+  colors.webpage.darkmode.enabled:
+    global: true
   content.headers.accept_language:
     global: en-US,en;q=0.5
   content.headers.custom:
