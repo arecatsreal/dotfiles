@@ -1,7 +1,5 @@
 #  __  __ ___ ____  ____    _________  _   _ ____   ____
-# |  \/  |_ _|  _ \/ ___|  |__  / ___|| | | |  _ \ / ___|
-# | |\/| || || |_) \___ \    / /\___ \| |_| | |_) | |    
-# | |  | || ||  __/ ___) |  / /_ ___) |  _  |  _ <| |___ 
+# |  \/  |_ _|  _ \/ ___|  |__  / ___|| | | |  _ \ / ___| | |\/| || || |_) \___ \    / /\___ \| |_| | |_) | |    | |  | || ||  __/ ___) |  / /_ ___) |  _  |  _ <| |___ 
 # |_|  |_|___|_|   |____/  /____|____/|_| |_|_| \_\\____|
 
 neofetch
@@ -16,6 +14,8 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 
 #Alias
 alias gateway="ip route | grep default"
+alias disk="df -h -t ext4"
+alias '..'="cd .."
 
 #Function to lauch emacs
 emacs () {; emacsclient -a '' -c -nw $* ;} # tui
@@ -28,8 +28,8 @@ browser () {; export BROWSER=$* && echo "The browser is set to $BROWSER"; }
 tbrowser () {; export TBROESER=$* && echo "The terminal browser is set to $TBROESER"; } 
 
 #File Opening
+source $HOME/.zsource/o 
 fileopenalias () {
-    alias o="$EDITOR"
     alias vrc="$EDITOR ~/.vimrc"
     alias zrc="$EDITOR ~/.zshrc"
     alias nba="$EDITOR ~/.config/newsboat/urls"
@@ -62,20 +62,25 @@ export FFF_LS_COLORS=1
 export TUIR_EDITOR=$EDITOR
 export TUIR_BROWSER=$BROWSER
 alias tuir="tuir --enable-media"
+alias reddit="tuir --enable-media"
 
 # ls/exa
 # Makes shur exa is installed before aliasing it to ls.
 # So this scrip can be used with out exa installed on the system.
 if [ $(exa --version | wc -m) != 0 ]; then
     alias ll="exa -lh --git"
+    alias lla="exa -lh --git"
     alias ls="exa"
     alias la="exa -a"
     EXAIN=true
 else
     alias ll="ls -lh --color"
+    alias lla="ls -lh --color"
     alias ls="ls --color"
     alias la="ls --color -A"
 fi
+
+#cd ..
 
 #Git
 gc () {; COMMITSTR="$*"; git commit -m $COMMITSTR; }
