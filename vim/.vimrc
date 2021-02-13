@@ -28,7 +28,7 @@ set conceallevel=2
 
 "Theme
 colorscheme dracula
-highlight Normal ctermbg=black
+highlight Normal ctermbg=NONE
 
 "Tab Length
 set ts=4 sw=4

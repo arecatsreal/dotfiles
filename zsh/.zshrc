@@ -1,5 +1,6 @@
-#  __  __ ___ ____  ____    _________  _   _ ____   ____
-# |  \/  |_ _|  _ \/ ___|  |__  / ___|| | | |  _ \ / ___| | |\/| || || |_) \___ \    / /\___ \| |_| | |_) | |    | |  | || ||  __/ ___) |  / /_ ___) |  _  |  _ <| |___ 
+# |  \/  |_ _|  _ \/ ___|  |__  / ___|| | | |  _ \ / ___| 
+# | |\/| || || |_) \___ \    / /\___ \| |_| | |_) | |    
+# | |  | || ||  __/ ___) |  / /_ ___) |  _  |  _ <| |___ 
 # |_|  |_|___|_|   |____/  /____|____/|_| |_|_| \_\\____|
 
 neofetch
@@ -14,8 +15,9 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 
 #Alias
 alias gateway="ip route | grep default"
-alias disk="df -h -t ext4"
-alias '..'="cd .."
+alias retor="sudo sv restart tor"
+alias cdl="rm -fr ~/Downloads/*"
+alias tmloop="while true; do; date +"%T" && sleep 1; done"
 
 #Function to lauch emacs
 emacs () {; emacsclient -a '' -c -nw $* ;} # tui
@@ -29,6 +31,7 @@ tbrowser () {; export TBROESER=$* && echo "The terminal browser is set to $TBROE
 
 #File Opening
 source $HOME/.zsource/o 
+source $HOME/.zsource/ex 
 fileopenalias () {
     alias vrc="$EDITOR ~/.vimrc"
     alias zrc="$EDITOR ~/.zshrc"
@@ -86,8 +89,8 @@ fi
 gc () {; COMMITSTR="$*"; git commit -m $COMMITSTR; }
 alias gp="git push"
 alias gcls="git restore --staged *" # Clears the git staging
-# Sets the repo remote to github.com/MrMip/<Dir Name>.git via ssh
-alias gfix="git remote set-url origin git@github.com:MrMip/${PWD##*/}"  
+# Sets the repo remote to github.com/MrMip/<Dir Name> via ssh
+alias gfix="git remote set-url origin git@github.com:MrMip/$1"  
 alias gs="git status"
 ga () {
     if [ $( echo $1 | wc -w ) = 0 ]; then
@@ -119,6 +122,8 @@ alias tarball="tar -czvf"
 alias cls="clear"
 alias mu="ncmpcpp"
 play () {; mpv --fs "$*"; }
+alias disk="df -h -t ext4"
+alias '..'="cd .."
 
 # Basic auto/tab complete
 autoload -U compinit

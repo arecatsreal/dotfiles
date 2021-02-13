@@ -1,0 +1,16 @@
+#!/bin/bash
+
+rn () {
+	touch /tmp/rn-tmp
+	echo $FILE > /tmp/rn-tmp
+	$EDITOR /tmp/rn-tmp
+	mv $FILE $(cat /tmp/rn-tmp) && echo "rn: Renamed $1 to $(cat /tmp/rn-tmp)"
+	rm /tmp/rn-tmp
+}
+
+if [ $(echo $1 | wc -w ) != 0 ];then
+	FILE=$1
+else
+	FILE=$(ls | fzf)
+fi
+rn

@@ -3,6 +3,6 @@
 exports () {
 export EDITOR=vim
 export PAGER=less
-export BROWSER=qutebrowser
+export BROWSER=firefox
 export TBROESER=lynx
 }

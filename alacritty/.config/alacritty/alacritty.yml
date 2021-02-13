@@ -1,5 +1,7 @@
 # ...
 
+background_opacity: .9 
+
 # Colors (Darkula)
 colors:
   # Default colors
