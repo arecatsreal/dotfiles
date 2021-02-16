@@ -1,0 +1,5 @@
+#!/bin/sh
+
+convert -size 16x9 xc:$1 /tmp/colour-tmp.jpg
+feh -Z -F /tmp/colour-tmp.jpg
+rm /tmp/colour-tmp.jpg

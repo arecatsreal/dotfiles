@@ -6,6 +6,7 @@ o () {
 			*.mkv)   mpv	 	$1  ;;      
 			*.mp4)   mpv	 	$1  ;;      
 			*.mp3)   mpv	 	$1  ;;      
+			*.webm)  mpv	 	$1  ;;      
 			*.pdf)   zathura	$1  ;;      
 			*.ps)    zathura	$1  ;;      
 			*.cbz)   zathura	$1  ;;      

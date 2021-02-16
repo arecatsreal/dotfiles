@@ -2,7 +2,6 @@
 # | |\/| || || |_) \___ \    / /\___ \| |_| | |_) | |    
 # | |  | || ||  __/ ___) |  / /_ ___) |  _  |  _ <| |___ 
 # |_|  |_|___|_|   |____/  /____|____/|_| |_|_| \_\\____|
-
 neofetch
 
 # Exports
@@ -14,10 +13,13 @@ autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 #Alias
-alias gateway="ip route | grep default"
-alias retor="sudo sv restart tor"
 alias cdl="rm -fr ~/Downloads/*"
 alias tmloop="while true; do; date +"%T" && sleep 1; done"
+
+#Networking Alias
+alias gateway="ip route | grep default"
+alias retor="sudo sv restart tor"
+alias exip="curl -L ifconfig.me"
 
 #Function to lauch emacs
 emacs () {; emacsclient -a '' -c -nw $* ;} # tui
@@ -48,6 +50,7 @@ alias jdc="cd ~/Documents/"
 alias jdw="cd ~/Downloads/"
 alias jdo="cd ~/dotfiles/"
 alias jco="cd ~/.config/"
+alias watch="f ~/NAS/Media"
 
 #Lynx
 source ~/.zsource/lynx
@@ -83,8 +86,6 @@ else
     alias la="ls --color -A"
 fi
 
-#cd ..
-
 #Git
 gc () {; COMMITSTR="$*"; git commit -m $COMMITSTR; }
 alias gp="git push"
@@ -107,12 +108,11 @@ alias xin="sudo xbps-install"
 alias xup="sudo xbps-install -S -u"
 alias xrm="sudo xbps-remove"
 alias xro="sudo xbps-remove -o"
-alias xqu="xbps-query"
+alias xqu="xbps-query -s"
 
 #Program Short cuts
 alias vpn="sudo protonvpn"
 alias vpnc="sudo protonvpn c -f"
-alias youtube-dl="bash youtube-dl"
 alias nb="newsboat"
 alias ta="tmux a"
 alias speed="speedtest-cli"
@@ -133,8 +133,6 @@ compinit
 
 #Vi mode
 set -o vi mode
-
-#bindkey '^h' _comp_options+=(globdots)	# Include hidden files.
 
 #zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
