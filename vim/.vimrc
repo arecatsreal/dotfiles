@@ -33,9 +33,14 @@ highlight Normal ctermbg=NONE
 "Tab Length
 set ts=4 sw=4
 
+"Multi Line Tab
+:vmap <Tab> >
+:vmap <S-Tab> <
+
 "Status line
 set laststatus=2
 let g:lightline = {'colorscheme': 'dracula',}
 
 "Key Mappings 
+let mapleader = " "
 nnoremap <C-f> :GFiles <CR>

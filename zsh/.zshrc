@@ -1,7 +1,10 @@
-# |  \/  |_ _|  _ \/ ___|  |__  / ___|| | | |  _ \ / ___| 
-# | |\/| || || |_) \___ \    / /\___ \| |_| | |_) | |    
-# | |  | || ||  __/ ___) |  / /_ ___) |  _  |  _ <| |___ 
-# |_|  |_|___|_|   |____/  /____|____/|_| |_|_| \_\\____|
+#!/bin/zsh
+#  __  __ _____ _____  _  _____   ______ _____ _    _ _____   _____
+# |  \/  |_   _|  __ \( )/ ____| |___  // ____| |  | |  __ \ / ____|
+# | \  / | | | | |__) |/| (___      / /| (___ | |__| | |__) | |
+# | |\/| | | | |  ___/   \___ \    / /  \___ \|  __  |  _  /| |
+# | |  | |_| |_| |       ____) |  / /__ ____) | |  | | | \ \| |____
+# |_|  |_|_____|_|      |_____/  /_____|_____/|_|  |_|_|  \_\\_____|
 neofetch
 
 # Exports
@@ -15,21 +18,23 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 #Alias
 alias cdl="rm -fr ~/Downloads/*"
 alias tmloop="while true; do; date +"%T" && sleep 1; done"
+alias reload="source ~/.zshrc"
 
 #Networking Alias
 alias gateway="ip route | grep default"
 alias retor="sudo sv restart tor"
 alias exip="curl -L ifconfig.me"
+alias tping="torify ping"
 
-#Function to lauch emacs
-emacs () {; emacsclient -a '' -c -nw $* ;} # tui
-emacsgui () {; emacsclient -a '' -c $* ;} # gui
+#Functions to lauch emacs
+source $/HOME/.zsource/emacs
 
 # Functions to change the default settings.
 editor () {; export EDITOR=$* && echo "The editor is set to $EDITOR" && fileopenalias;} 
 pager () {; export PAGER=$* && echo "The pager is set to $PAGER"; } 
 browser () {; export BROWSER=$* && echo "The browser is set to $BROWSER"; } 
 tbrowser () {; export TBROESER=$* && echo "The terminal browser is set to $TBROESER"; } 
+filem () {; export FILEM=$* && echo "The file manager is set to $FILEM"; }
 
 #File Opening
 source $HOME/.zsource/o 
@@ -50,19 +55,30 @@ alias jdc="cd ~/Documents/"
 alias jdw="cd ~/Downloads/"
 alias jdo="cd ~/dotfiles/"
 alias jco="cd ~/.config/"
-alias watch="f ~/NAS/Media"
 
 #Lynx
 source ~/.zsource/lynx
 duck () {; lynx "duckduckgo.com/lite?kd=-1&kp=-1&q=$*"; }
 alias '?'="duck"
 
-#fff 
-f() {
-	    fff "$@"
-		    cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"			
+# File Manager
+setfileman() {
+	case $FILEM in 
+		f){
+			f() {
+				fff "$@"
+				cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
+			}
+			export FFF_LS_COLORS=1
+		};;
+		l){
+			source $HOME/.zsource/l
+			export LF_SCRIPDIR="~/.config/lf/scrips" #DO NOT PUT A '/' AT THE END!
+		};;
+		*) echo "There is no file manager set."	;;
+	esac
 }
-export FFF_LS_COLORS=1
+setfileman
 
 #Tuir (Trminal Reddit)
 export TUIR_EDITOR=$EDITOR

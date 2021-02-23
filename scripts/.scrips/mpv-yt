@@ -1,2 +1,3 @@
 #!/bin/sh
+notify-send "Opening video" "$(xclip -o -selection clipboard)"
 mpv --fs "$(xclip -o -selection clipboard)"

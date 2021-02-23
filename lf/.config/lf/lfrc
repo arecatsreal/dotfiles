@@ -1,0 +1,46 @@
+cmd mkdir %{{
+	mkdir $1
+}}
+
+cmd touch %{{
+	touch $1
+}}
+
+cmd rename ${{
+	brn "$(basename $fx)"
+}}
+
+cmd chmod %{{
+	for file in "$fx";do
+		chmod $* $file
+	done
+}}
+
+cmd remove %{{
+	echo -n "Are you shore? [y/N]: "; read INPUT
+	case $INPUT in
+		y){
+			for file in "$fx";do
+				rm -fr $file
+			done
+		};;
+		*) echo -n "Aborting";;
+	esac
+}}
+
+cmd fzf_jump ${{
+    res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+	    if [ -d "$res"  ]; then
+			cmd="cd"
+		else 
+			cmd="select"                                                       
+		fi
+		lf -remote "send $id $cmd \"$res\""
+}}
+
+map <c-f> fzf_jump
+map <enter> $~/.config/lf/scrips/open.sh "$f"
+map e $~/.config/lf/scrips/ex.sh "$f"
+map D remove
+map zh 
+map H set hidden!

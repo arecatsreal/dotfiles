@@ -1,7 +1,7 @@
 #!/bin/zsh
 o () {
-	if [ -f $1 ] ; then
-		case $1 in
+	if [ -f $1 ] ; then # Test to see if $1 if a file or not.
+		case $(echo $1 | awk '{print tolower($0)}') in # If $1 if a file it opens if dependent on the file extinction. 
 			*.org)   emacsgui 	$1  ;;      
 			*.mkv)   mpv	 	$1  ;;      
 			*.mp4)   mpv	 	$1  ;;      
@@ -10,14 +10,17 @@ o () {
 			*.pdf)   zathura	$1  ;;      
 			*.ps)    zathura	$1  ;;      
 			*.cbz)   zathura	$1  ;;      
+			*.cbr)   zathura	$1  ;;      
+			*.epub)  zathura	$1  ;;      
 			*.html)  surf		$1  ;;      
 			*.png)	 feh		$1	;;
 			*.jpg)	 feh		$1	;;
 			*.webp)	 feh		$1	;;
 			*)       vim 		$1	;;
 		esac
-	else
+	elif [ -d $1 ];then # If it is not a file then it tests to see if it's a dir and if so it opens it with the file manager. 
+		$FILEM $1
+	else # If it in nether a File or Dir if will just open it in vim. 
 		vim $1
-		#echo "'$1' is not a valid file"
 	fi
 }
