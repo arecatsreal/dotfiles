@@ -27,7 +27,7 @@ alias exip="curl -L ifconfig.me"
 alias tping="torify ping"
 
 #Functions to lauch emacs
-source $/HOME/.zsource/emacs
+source $HOME/.zsource/emacs
 
 # Functions to change the default settings.
 editor () {; export EDITOR=$* && echo "The editor is set to $EDITOR" && fileopenalias;} 
@@ -72,8 +72,15 @@ setfileman() {
 			export FFF_LS_COLORS=1
 		};;
 		l){
-			source $HOME/.zsource/l
-			export LF_SCRIPDIR="~/.config/lf/scrips" #DO NOT PUT A '/' AT THE END!
+			l () {
+				LF_TEMPDIR="$(mktemp -d -t lf-tempdir-XXXXXX)"
+				LF_TEMPDIR="$LF_TEMPDIR" lf-run -last-dir-path="$LF_TEMPDIR/lastdir" "$@"
+				if [ "$(cat "$LF_TEMPDIR/cdtolastdir" 2>/dev/null)" -eq 1  ]; then
+					cd "$(cat "$LF_TEMPDIR/lastdir")"
+				fi
+				rm -r "$LF_TEMPDIR"
+				unset LF_TEMPDIR							
+			}
 		};;
 		*) echo "There is no file manager set."	;;
 	esac
@@ -100,6 +107,15 @@ else
     alias lla="ls -lh --color"
     alias ls="ls --color"
     alias la="ls --color -A"
+fi
+
+# cat/bat
+if [ $(bat --version | wc -c) > 1 ];then
+	alias cat="bat -n"
+	export BAT_THEME="Dracula"
+	export MANPAGER="bat -n"
+else
+	alias cat="cat -n"
 fi
 
 #Git

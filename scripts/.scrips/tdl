@@ -1,0 +1,20 @@
+#!/bin/sh
+
+run (){
+	case $INPUT in 
+		b) ask	;;
+		a) aria2c $TORRENT --seed-time=0						;;
+		*) aria2c $TORRENT --seed-time=0 --select-file=$INPUT	;;
+	esac
+}
+
+ask (){
+	aria2c $TORRENT -S | $PAGER 
+	echo -n "Back(b), Files(NUM), AllFiles(a): "; read INPUT
+	run
+}
+
+TORRENT=$1
+cd ~/Downloads 
+ask
+rm *.aria2

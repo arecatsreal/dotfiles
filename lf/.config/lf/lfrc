@@ -1,14 +1,29 @@
-cmd mkdir %{{
-	mkdir $1
+# Sets the size of the splits 
+set ratios "1:80:19"
+
+# Sets the scrips to do with the previews
+set previewer "~/.config/lf/scrips/lf-preview" 
+set cleaner "~/.config/lf/scrips/lf-cleaner" 
+
+# Rm the ~/1
+cmd startup &rm ~/1
+startup
+
+# Simple one liners
+cmd mkdir %mkdir $1
+cmd touch %touch $1
+cmd rename $rn $(basename "$f")
+cmd open $~/.config/lf/scrips/open.sh "$f"
+cmd tdl $tdl $f
+
+# Commands 
+cmd dd ${{
+	lsblk
+	echo -n "dd in="$f" of="; read INPUT
+	sudo dd if="$f" of="$INPUT"
+	notify-send "lf: dd" "dd is done wirting $(basename $f) to $INPUT"
 }}
 
-cmd touch %{{
-	touch $1
-}}
-
-cmd rename ${{
-	brn "$(basename $fx)"
-}}
 
 cmd chmod %{{
 	for file in "$fx";do
@@ -38,9 +53,18 @@ cmd fzf_jump ${{
 		lf -remote "send $id $cmd \"$res\""
 }}
 
+cmd q ${{
+	echo "1" > "$LF_TEMPDIR"/cdtolastdir
+	lf -remote "send $id quit"
+		
+}}
+
+# Keymapings
 map <c-f> fzf_jump
-map <enter> $~/.config/lf/scrips/open.sh "$f"
+map <enter> open 
 map e $~/.config/lf/scrips/ex.sh "$f"
 map D remove
 map zh 
 map H set hidden!
+map b $brn
+map q q
