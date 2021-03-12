@@ -1,0 +1,20 @@
+#!/bin/sh
+
+vpnstatus () {
+    STAT=$(ip addr | grep proton | wc -l)
+    if [ $STAT -eq 2 ]
+    then
+	echo "Connected"
+    else
+	echo "Disconneced"
+    fi
+}
+ldate () {
+    echo $(date +"%a %b %D %R:%S")
+}
+
+ram () {
+	free -h | grep Mem | awk '{ print $3"/"$2  }'
+}
+
+notify-send "No Bar" "$(ldate)\nVpn: $(vpnstatus)\nExip: $(curl -L ifconfig.me)\nRam: $(ram)"

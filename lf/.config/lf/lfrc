@@ -5,6 +5,9 @@ set ratios "1:80:19"
 set previewer "~/.config/lf/scrips/lf-preview" 
 set cleaner "~/.config/lf/scrips/lf-cleaner" 
 
+# Enable icons
+set icons true
+
 # Rm the ~/1
 cmd startup &rm ~/1
 startup
@@ -14,13 +17,14 @@ cmd mkdir %mkdir $1
 cmd touch %touch $1
 cmd rename $rn $(basename "$f")
 cmd open $~/.config/lf/scrips/open.sh "$f"
+cmd pack %~/.config/lf/scrips/pack.sh "$f" $1
 cmd tdl $tdl $f
 
 # Commands 
 cmd dd ${{
 	lsblk
 	echo -n "dd in="$f" of="; read INPUT
-	sudo dd if="$f" of="$INPUT"
+	sudo dd if="$f" of="$INPUT" status=progress
 	notify-send "lf: dd" "dd is done wirting $(basename $f) to $INPUT"
 }}
 

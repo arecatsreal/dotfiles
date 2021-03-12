@@ -1,4 +1,6 @@
 set nocompatible
+filetype plugin on
+syntax on
 "Plugin manger
 call plug#begin('~/.vimplugins')
 "Automatic parentheses.
@@ -17,6 +19,10 @@ Plug 'jceb/vim-orgmode'
 Plug 'junegunn/fzf.vim'
 "Status Line
 Plug 'itchyny/lightline.vim'
+"Writeing stuff
+Plug 'junegunn/goyo.vim'
+"Perlang stuff
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
 call plug#end() 
 
 "Turns on line numbers

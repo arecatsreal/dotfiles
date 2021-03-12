@@ -13,12 +13,13 @@ exports
 
 # Enable colors and change prompt:
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+source $HOME/.zsource/prompt 
+prompt
 
 #Alias
 alias cdl="rm -fr ~/Downloads/*"
 alias tmloop="while true; do; date +"%T" && sleep 1; done"
-alias reload="source ~/.zshrc"
+alias reload="source ~/.zshrc && rm ./1"
 
 #Networking Alias
 alias gateway="ip route | grep default"
@@ -36,9 +37,12 @@ browser () {; export BROWSER=$* && echo "The browser is set to $BROWSER"; }
 tbrowser () {; export TBROESER=$* && echo "The terminal browser is set to $TBROESER"; } 
 filem () {; export FILEM=$* && echo "The file manager is set to $FILEM"; }
 
+# Arrive management 
+source $HOME/.zsource/ex 
+source $HOME/.zsource/pack 
+
 #File Opening
 source $HOME/.zsource/o 
-source $HOME/.zsource/ex 
 fileopenalias () {
     alias vrc="$EDITOR ~/.vimrc"
     alias zrc="$EDITOR ~/.zshrc"
@@ -86,6 +90,7 @@ setfileman() {
 	esac
 }
 setfileman
+source $HOME/.zsource/lf-icons 
 
 #Tuir (Trminal Reddit)
 export TUIR_EDITOR=$EDITOR
@@ -96,26 +101,40 @@ alias reddit="tuir --enable-media"
 # ls/exa
 # Makes shur exa is installed before aliasing it to ls.
 # So this scrip can be used with out exa installed on the system.
-if [ $(exa --version | wc -m) != 0 ]; then
+EXAIN=false
+exa --version 2> /dev/null > /dev/null && {
     alias ll="exa -lh --git"
-    alias lla="exa -lh --git"
+    alias lla="exa -lha --git"
     alias ls="exa"
     alias la="exa -a"
     EXAIN=true
-else
+}
+if [ $EXAIN = false ]; then
     alias ll="ls -lh --color"
-    alias lla="ls -lh --color"
+    alias lla="ls -lha --color"
     alias ls="ls --color"
     alias la="ls --color -A"
 fi
 
 # cat/bat
-if [ $(bat --version | wc -c) > 1 ];then
+BATIN=false
+bat --version 2> /dev/null > /dev/null && {
 	alias cat="bat -n"
 	export BAT_THEME="Dracula"
 	export MANPAGER="bat -n"
-else
+    BATIN=true
+}
+if [ $BATIN = false ]; then
 	alias cat="cat -n"
+fi
+# Rip grep/grp
+RGIN=false
+rg --version 2> /dev/null > /dev/null && {
+	alias g="rg"
+	RGIN=true
+}
+if [ $RGIN = false ]; then
+	alias g="grep"
 fi
 
 #Git
@@ -123,7 +142,7 @@ gc () {; COMMITSTR="$*"; git commit -m $COMMITSTR; }
 alias gp="git push"
 alias gcls="git restore --staged *" # Clears the git staging
 # Sets the repo remote to github.com/MrMip/<Dir Name> via ssh
-alias gfix="git remote set-url origin git@github.com:MrMip/$1"  
+alias gfix="git remote set-url origin git@github.com:MrMip/"  
 alias gs="git status"
 ga () {
     if [ $( echo $1 | wc -w ) = 0 ]; then
@@ -150,7 +169,8 @@ alias ta="tmux a"
 alias speed="speedtest-cli"
 alias vm="sudo virt-manager"
 alias nas="sh ~/.config/mountnetworkdrive.sh"
-alias tarball="tar -czvf"
+tarball () {; tar -czvf $1.tar.gz $1; }
+tardir() {; for i in *; do tar -czf $i.tar.gz $i; rm -fr $i; done; }
 alias cls="clear"
 alias mu="ncmpcpp"
 play () {; mpv --fs "$*"; }
@@ -171,3 +191,5 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
 
 source /home/mip/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

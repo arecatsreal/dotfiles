@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+pack () {
+	case $2 in
+		tar.bz2)   tar cjf $1.tar.bz2 $1	 	;;
+		tar.gz)    tar czf $1.tar.gz  $1  	;;
+		bz2)       bunzip2 -z $1	;;
+		rar)       rar a $1.rar $1	;;
+		gz)        gzip $1    		;;
+		tar)       tar cf $1.tar $1    	;;
+		tbz2)      tar cjf $1.tarz2 $1   	;;
+		tgz)       tar czf $1.tgz $1   	;;
+		zip)       zip $1.zip $1	;;
+		7z)        7z a $1.7z $1	;;
+		tar.xz)    tar cf $1.tar.xz $1    	;;
+		*)           echo "'$1' cannot be packed via pack()" ;;
+	esac
+}

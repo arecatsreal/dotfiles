@@ -14,7 +14,7 @@ ask (){
 	run
 }
 
-TORRENT=$1
+TORRENT=$*
 cd ~/Downloads 
 ask
 rm *.aria2

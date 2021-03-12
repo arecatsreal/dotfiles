@@ -15,14 +15,14 @@ settings:
       wqa: quit --save
   colors.webpage.darkmode.enabled:
     global: true
+  content.blocking.hosts.lists:
+    global:
+    - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
   content.headers.accept_language:
     global: en-US,en;q=0.5
   content.headers.custom:
     global:
       accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-  content.host_blocking.lists:
-    global:
-    - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
   content.javascript.enabled:
     global: false
   content.webrtc_ip_handling_policy:
@@ -37,6 +37,8 @@ settings:
     global: opendyslexic
   fonts.web.family.standard:
     global: opendyslexic
+  statusbar.show:
+    global: never
   url.searchengines:
     global:
       DEFAULT: https://3g2upl4pq6kufc4m.onion/html?q={}
@@ -44,6 +46,7 @@ settings:
       gh: https://github.com/search?q={}
       gl: https://gitlab.com/explore?utf8=%E2%9C%93&name={}&sort=latest_activity_desc
       in: http://c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion/search?q={}
+      mal: https://myanimelist.net/anime.php?type=all&keyword={}
       w: https://www.wikipedia.org/w/index.php?title=Special:Search&search={}
   url.start_pages:
     global: https://3g2upl4pq6kufc4m.onion/
