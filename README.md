@@ -1,40 +1,40 @@
-* My Config Files For:
+# My Config Files For:
 
-** Window Managers
-*** Xmonad/Xmobar
+## Window Managers
+### Xmonad/Xmobar
 Just a slightly modified version of DistroTube from early 2019
-*** BSPWM
+### BSPWM
 My Own Custom config of BSPWM with not special in it.
-*** DWM
+### DWM
 Themed DWM with few patches. As well as a script for the bar. [[https://github.com/mrmip/dwm][link]] 
 
-** Text Editors
-*** Vim
+## Text Editors
+### Vim
 A simple vim config that gets the job done.
-**** Plugins
-+ auto-pairs  
+#### Plugins
++ auto-pairs
 + vim-polyglot
-*** Emacs
+### Emacs
 Still in early stages of customizing.
 
-** Web browsers
-*** Lynx
+## Web browsers
+### Lynx
 Super simple config with vi keys
-*** Qutebrowser
+### Qutebrowser
 A privacy oriented config with mpv launch bound to z.
-*** Firefox/Qutefox
+### Firefox/Qutefox
 A wip qute like Firefox config. [[https://github.com/mrmip/qutefox][link]]
-** Other Applications
-*** Zsh
-**** Features
+## Other Applications
+### Zsh
+#### Features
 + Auto Tab Complete
 + zsh-autosuggestions
 + zsh-syntax-highlighting
-*** Alacritty
+### Alacritty
 I use the dracula theme, but with the background fully black.
-*** Polybar
+### Polybar
 I made it about a simply as it gets.
 
 There is also some random scripts.
-*** Dmenu
+### Dmenu
 I just make it look like rofi. [[https://github.com/mrmip/dmenu][link]]

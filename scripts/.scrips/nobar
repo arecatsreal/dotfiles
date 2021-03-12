@@ -16,5 +16,12 @@ ldate () {
 ram () {
 	free -h | grep Mem | awk '{ print $3"/"$2  }'
 }
+ 
+disk () {
+	df -h -t ext4 | awk '{if (NR!=1) {print $6": " $3"/"$2" ("$5")"} }'
+}
+kernal () {
+	uname -r
+}
 
-notify-send "No Bar" "$(ldate)\nVpn: $(vpnstatus)\nExip: $(curl -L ifconfig.me)\nRam: $(ram)"
+notify-send "No Bar" "$(ldate)\nVpn: $(vpnstatus)\nExip: $(curl -L ifconfig.me)\nRam: $(ram)\nKernal: $(kernal)\n\n---Disk Usage---\n$(disk)"
