@@ -6,7 +6,7 @@ Just a slightly modified version of DistroTube from early 2019
 ### BSPWM
 My Own Custom config of BSPWM with not special in it.
 ### DWM
-Themed DWM with few patches. As well as a script for the bar. [[https://github.com/mrmip/dwm][link]] 
+Themed DWM with few patches. As well as a script for the bar. [link](https://github.com/mrmip/dwm)
 
 ## Text Editors
 ### Vim
@@ -23,7 +23,7 @@ Super simple config with vi keys
 ### Qutebrowser
 A privacy oriented config with mpv launch bound to z.
 ### Firefox/Qutefox
-A wip qute like Firefox config. [[https://github.com/mrmip/qutefox][link]]
+A wip qute like Firefox config. [link](https://github.com/mrmip/qutefox)
 ## Other Applications
 ### Zsh
 #### Features
@@ -37,4 +37,4 @@ I made it about a simply as it gets.
 
 There is also some random scripts.
 ### Dmenu
-I just make it look like rofi. [[https://github.com/mrmip/dmenu][link]]
+I just make it look like rofi. [link](https://github.com/mrmip/dmenu)
