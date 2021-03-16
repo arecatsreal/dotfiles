@@ -139,6 +139,7 @@ fi
 
 #Git
 gc () {; COMMITSTR="$*"; git commit -m $COMMITSTR; }
+alias gca="git commit --amend"
 alias gp="git push"
 alias gcls="git restore --staged *" # Clears the git staging
 # Sets the repo remote to github.com/MrMip/<Dir Name> via ssh
@@ -185,6 +186,11 @@ compinit
 
 #Vi mode
 set -o vi mode
+
+# Bedrock fix
+if [ TERM != "linux" ];then
+	LD_PRELOAD=""
+fi
 
 #zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+URL=$(cat $HOME/.config/qutebrowser/bookmarks/urls | dmenu | awk '{print $1}')
+qutebrowser $URL
