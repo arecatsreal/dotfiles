@@ -19,7 +19,7 @@ o () {
 			*)       $EDITOR 	$1	;;
 		esac
 	elif [ -d $1 ];then # If it is not a file then it tests to see if it's a dir and if so it opens it with the file manager. 
-		$FILEM $1
+		$FILEM/ $1
 	else # If it in nether a File or Dir if will just open it in vim. 
 		$EDITOR $1
 	fi

@@ -155,12 +155,46 @@ ga () {
 fi
 }
 
-#Void Linux Xbps
+#Package Manager aliass 
+
+# Void Linux 
 alias xin="sudo xbps-install"
 alias xup="sudo xbps-install -S -u"
 alias xrm="sudo xbps-remove"
 alias xro="sudo xbps-remove -o"
 alias xqu="xbps-query -s"
+
+# Arch Linux 
+YAYIN=false
+yay --version 2> /dev/null > /dev/null && {
+	alias pin="yay -S"
+	alias pup="yay -Syu"
+	alias prm="yay -Rs"
+	alias pro="yay -Qtdq | yay -Rns -"
+	alias pqu="yay -Ss"
+	YAYIN=true
+}
+if [ $YAYIN = false ]; then
+	alias pin="sudo pacman -S"
+	alias pup="sudo pacman -Syu"
+	alias prm="sudo pacman -Rs"
+	alias pro="sudo pacman -Qtdq | sudo pacman -Rns -"
+	alias pqu="pacman -Ss"
+fi
+
+# Debian
+alias ain="sudo apt install"
+alias aup="sudo apt update && apt upgrade"
+alias arm="sudo apt remove"
+alias aqu="apt search"
+
+# Bedrock linux 
+alias pmqu="pmm-query -R -s"
+if [ $YAYIN = false ]; then
+	alias pmup="sudo pmm-install -S -u"
+else
+	alias pmup="sudo pmm-install -S -u && yay -Syu"
+fi
 
 #Program Short cuts
 alias vpn="sudo protonvpn"

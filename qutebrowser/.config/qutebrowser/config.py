@@ -21,7 +21,7 @@ config.set('content.proxy', 'socks://localhost:9050/') # Use Tor
 
 # Settings I like
 config.bind('z', 'hint links spawn mpv --fs {hint-url}') # Opens mpv with the hinted url.
-config.set("colors.webpage.darkmode.enabled", True) # Dark mode.
+config.set("colors.webpage.preferred_color_scheme", "dark") # Dark mode.
 config.bind('xx', 'config-cycle statusbar.show always never') # Hide and unhide the bottom bar.
 
 # Themeing
