@@ -63,6 +63,25 @@ cmd q ${{
 		
 }}
 
+cmd wall ${{
+	case $1 in
+		fill) 	feh --bg-fill 	"$f" ;;
+		max) 	feh --bg-max	"$f" ;;
+		scale) 	feh --bg-scale 	"$f" ;;
+		tile) 	feh --bg-tile 	"$f" ;;
+		*) 		feh --bg-center "$f" ;;
+	esac
+}}
+
+cmd shortcuts ${{
+	shortcuts
+	lf --remote "send $id cd ~/.local/share/shortcuts/"
+}}
+
+cmd sca %{{
+	sca "$f" $NAME
+}}
+
 # Keymapings
 map <c-f> fzf_jump
 map <enter> open 
@@ -72,3 +91,6 @@ map zh
 map H set hidden!
 map b $brn
 map q q
+map w wall
+map m shortcuts
+map M sca

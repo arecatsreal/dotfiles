@@ -5,10 +5,11 @@ displaysetup.sh
 
 #Rice Stuff
 picom & #compton but not compton
-exec ~/.config/dwm/statusBar.sh &
+#exec ~/.config/dwm/statusBar.sh &
 #sxhkd & #Hotkeys working == lul
 #exec ~/.config/polybar/launch.sh & 
-nitrogen --restore &
+#nitrogen --restore &
+~/.fehbg &
 fcitx
 #Turn off sleep
 xset s off & 

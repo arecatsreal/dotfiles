@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if ! test -d ~/.local/share/shortcuts; then
+	mkdir ~/.local/share/shortcuts
+fi
+
+shortcut (){
+	if ! test -f ~/.local/share/shortcuts/$1; then 
+		ln -s $1 ~/.local/share/shortcuts/$2
+	fi
+}
+		 #Location  #Name
+shortcut ~ 			home
+shortcut ~/.config/ config
+shortcut ~/.wallpapers/ wallpapers
+shortcut ~/NAS/Media/ 	Media
+shortcut ~/NAS/Books/ Books

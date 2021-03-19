@@ -17,3 +17,5 @@
 + vpnStatus.sh - Tells if proton VPN is connected or not.
 + webo - Selects application to open different links in.
 + yt - Searches YouTube.
++ shortcuts - Makes a bookmarks folder with symlinks with lf.
++ sca - Adds new shortcuts to ^.

@@ -1,0 +1,3 @@
+#!/bin/sh 
+
+echo "shortcut $1 $2" >> ~/.scrips/shortcuts
