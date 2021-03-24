@@ -25,12 +25,4 @@ config.set("colors.webpage.preferred_color_scheme", "dark") # Dark mode.
 config.bind('xx', 'config-cycle statusbar.show always never') # Hide and unhide the bottom bar.
 
 # Themeing
-import dracula.draw
-
-# Load existing settings made via :set
-dracula.draw.blood(c, {
-     'spacing': {
-          'vertical': 6,
-          'horizontal': 8
-     }
-})
+config.source('nord-qutebrowser.py')

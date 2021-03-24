@@ -13,9 +13,10 @@ o () {
 			*.cbr)   zathura	$1& ;;      
 			*.epub)  zathura	$1& ;;      
 			*.html)  surf		$1& ;;      
-			*.png)	 feh		$1&	;;
-			*.jpg)	 feh		$1&	;;
-			*.webp)	 feh		$1&	;;
+			*.png)	 devour feh		$1&	;;
+			*.jpg)	 devour feh		$1&	;;
+			*.webp)	 devour feh		$1&	;;
+			*.gif)	 devour feh		$1&	;;
 			*)       $EDITOR 	$1	;;
 		esac
 	elif [ -d $1 ];then # If it is not a file then it tests to see if it's a dir and if so it opens it with the file manager. 

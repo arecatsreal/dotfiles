@@ -7,6 +7,7 @@ fi
 shortcut (){
 	if ! test -f ~/.local/share/shortcuts/$1; then 
 		ln -s $1 ~/.local/share/shortcuts/$2
+		echo $1 $2
 	fi
 }
 		 #Location  #Name

@@ -1,0 +1,11 @@
+#!/bin/sh 
+
+case $1 in
+	u) 	mpc volume +10 	;;
+	d) 	mpc volume -10 	;;
+	pl) mpc play	 	;;
+	pu) mpc pause		;;
+	s)  mpc next		;;
+	pr) mpc prev		;;
+	*) vimpc			;;
+esac

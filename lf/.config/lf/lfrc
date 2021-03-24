@@ -73,15 +73,6 @@ cmd wall ${{
 	esac
 }}
 
-cmd shortcuts ${{
-	shortcuts
-	lf --remote "send $id cd ~/.local/share/shortcuts/"
-}}
-
-cmd sca %{{
-	sca "$f" $NAME
-}}
-
 # Keymapings
 map <c-f> fzf_jump
 map <enter> open 

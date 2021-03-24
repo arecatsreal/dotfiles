@@ -85,6 +85,7 @@ setfileman() {
 				rm -r "$LF_TEMPDIR"
 				unset LF_TEMPDIR							
 			}
+			alias m="l ~/.local/share/shortcuts/"
 		};;
 		*) echo "There is no file manager set."	;;
 	esac
@@ -120,7 +121,7 @@ fi
 BATIN=false
 bat --version 2> /dev/null > /dev/null && {
 	alias cat="bat -n"
-	export BAT_THEME="Dracula"
+	export BAT_THEME="Nord"
 	export MANPAGER="bat -n"
     BATIN=true
 }
@@ -207,10 +208,10 @@ alias nas="sh ~/.config/mountnetworkdrive.sh"
 tarball () {; tar -czvf $1.tar.gz $1; }
 tardir() {; for i in *; do tar -czf $i.tar.gz $i; rm -fr $i; done; }
 alias cls="clear"
-alias mu="ncmpcpp"
 play () {; mpv --fs "$*"; }
 alias disk="df -h -t ext4"
 alias '..'="cd .."
+alias gr="go run *.go"
 
 # Basic auto/tab complete
 autoload -U compinit

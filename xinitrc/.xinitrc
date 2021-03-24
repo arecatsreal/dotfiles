@@ -4,7 +4,7 @@
 displaysetup.sh 
 
 #Rice Stuff
-picom & #compton but not compton
+picom --experimental-backends & #compton but not compton
 #exec ~/.config/dwm/statusBar.sh &
 #sxhkd & #Hotkeys working == lul
 #exec ~/.config/polybar/launch.sh & 

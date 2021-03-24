@@ -38,7 +38,7 @@ settings:
   fonts.web.family.standard:
     global: opendyslexic
   statusbar.show:
-    global: never
+    global: always
   url.searchengines:
     global:
       DEFAULT: https://3g2upl4pq6kufc4m.onion/html?q={}
