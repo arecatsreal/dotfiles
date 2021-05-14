@@ -6,7 +6,11 @@ o () {
 			*.mkv)   devour mpv --fs 	$1	;;      
 			*.mp4)   devour mpv --fs	$1 	;;      
 			*.webm)  devour mpv --fs	$1 	;;      
+			*.avi)   devour mpv --fs	$1 	;;      
+			*.m4b)   devour mpv --fs	$1 	;;      
 			*.mp3)   mpv	 	$1  ;;      
+			*.ogg)   mpv	 	$1  ;;      
+			*.flac)  mpv	 	$1  ;;      
 			*.pdf)   zathura	$1& ;;      
 			*.ps)    zathura	$1& ;;      
 			*.cbz)   zathura	$1& ;;      

@@ -1,5 +1,7 @@
 "Plugin manger
 call plug#begin('~/.vimplugins')
+"Nvim in teh browser
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 "Automatic parentheses.
 Plug 'jiangmiao/auto-pairs'
 
@@ -8,19 +10,22 @@ Plug 'sheerun/vim-polyglot'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 "Theme
-"Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'arcticicestudio/nord-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+"Plug 'arcticicestudio/nord-vim'
+
+"Random cosmetic stuff
+Plug 'ryanoasis/vim-devicons'
 
 "Adds the gitgutter on the right.
 Plug 'airblade/vim-gitgutter'
 
-"Fuzzy Find
+"File Managerment
 Plug 'junegunn/fzf.vim'
 
 "Status Line
 Plug 'itchyny/lightline.vim'
 
-"LSP
+"LSP / Autocompetion
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 
@@ -33,15 +38,19 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
 
 call plug#end() 
 
+"Goyo
+let g:goyo_width = 100
+
 "Turns on line numbers
 set number
 
 "Markdown Stuffs
 let g:vim_markdown_folding_disabled = 1
 set conceallevel=2
+set tw=100 " Sets the text with when using gq
 
 "Theme
-colorscheme nord
+colorscheme dracula
 highlight Normal ctermbg=NONE
 
 "Tab Length
@@ -57,11 +66,21 @@ let g:go_def_mapping_enabled = 0
 "Status line
 set laststatus=2
 set noshowmode
-"let g:lightline = {'colorscheme': 'nord',}
-function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
+let g:lightline = {
+      \ 'colorscheme': 'dracula',
+      \ 'component_function': {
+      \   'filetype': 'MyFiletype',
+      \   'fileformat': 'MyFileformat',
+      \ }
+      \ }
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
 endfunction
-let g:lightline = {'colorscheme': 'nord'}
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
 
 "Key Mappings 
 let mapleader = " "
@@ -79,10 +98,12 @@ nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 " LSP-autoformat
-autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.sh lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.cpp lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.c lua vim.lsp.buf.formatting_sync(nil, 100)
 
 " LSP-Servers
 lua require'lspconfig'.bashls.setup{}
 lua require'lspconfig'.gopls.setup{}
+lua require'lspconfig'.clangd.setup{}

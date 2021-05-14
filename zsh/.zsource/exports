@@ -6,4 +6,7 @@ export PAGER=less
 export BROWSER=firefox
 export TBROESER=lynx
 export FILEM=l
+
+# Golang
+export GOPATH=~/go/src
 }

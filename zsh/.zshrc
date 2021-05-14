@@ -26,6 +26,7 @@ alias gateway="ip route | grep default"
 alias retor="sudo sv restart tor"
 alias exip="curl -L ifconfig.me"
 alias tping="torify ping"
+alias ip="ip --color=auto"
 
 #Functions to lauch emacs
 source $HOME/.zsource/emacs
@@ -44,7 +45,7 @@ source $HOME/.zsource/pack
 #File Opening
 source $HOME/.zsource/o 
 fileopenalias () {
-    alias vrc="$EDITOR ~/.vimrc"
+    alias vrc="$EDITOR ~/.config/nvim/init.vim"
     alias zrc="$EDITOR ~/.zshrc"
     alias nba="$EDITOR ~/.config/newsboat/urls"
     alias tconf="$EDITOR ~/.tmux.conf"
@@ -121,7 +122,7 @@ fi
 BATIN=false
 bat --version 2> /dev/null > /dev/null && {
 	alias cat="bat -n"
-	export BAT_THEME="Nord"
+	export BAT_THEME="Dracula"
 	export MANPAGER="bat -n"
     BATIN=true
 }
@@ -144,7 +145,7 @@ alias gca="git commit --amend"
 alias gp="git push"
 alias gcls="git restore --staged *" # Clears the git staging
 # Sets the repo remote to github.com/MrMip/<Dir Name> via ssh
-alias gfix="git remote set-url origin git@github.com:MrMip/"  
+#gfix () {; git remote set-url origin git@github.com:MrMip/$1; }  
 alias gs="git status"
 ga () {
     if [ $( echo $1 | wc -w ) = 0 ]; then
@@ -187,6 +188,7 @@ fi
 alias ain="sudo apt install"
 alias aup="sudo apt update && apt upgrade"
 alias arm="sudo apt remove"
+alias aro="sudo apt autoremove"
 alias aqu="apt search"
 
 # Bedrock linux 
@@ -212,6 +214,7 @@ play () {; mpv --fs "$*"; }
 alias disk="df -h -t ext4"
 alias '..'="cd .."
 alias gr="go run *.go"
+alias irs="export IRS_CONFIG_LOCATION=~/.irs/config.yml && brl strat -r debian ~/.irs/bin/irs"
 
 # Basic auto/tab complete
 autoload -U compinit
@@ -220,7 +223,7 @@ zmodload zsh/complist
 compinit
 
 #Vi mode
-set -o vi mode
+#set -o vi mode
 
 # Bedrock fix
 if [ TERM != "linux" ];then
