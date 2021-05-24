@@ -1,0 +1,3 @@
+#!/bin/sh
+
+date '+%H:%M and %S seconds' | espeak -s 300

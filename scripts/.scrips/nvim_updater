@@ -1,0 +1,8 @@
+#!/bin/sh
+
+cd ~/.local/bin
+rm nvim
+wget $( curl https://api.github.com/repos/neovim/neovim/releases | grep appimage | grep nightly | head -n 1 | sed 's/\"browser_download_url\": "//g' | sed 's/\"//g') 
+mv nvim.appimage nvim
+chmod +x nvim
+echo "neovim installed :)"
