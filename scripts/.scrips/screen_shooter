@@ -1,0 +1,34 @@
+#!/bin/sh
+
+MENU=dmenu
+IMAGEVIEWER=feh
+IMAGEEDITOR=gimp
+SAVEDIR=~
+
+OPTIONS="View\nEdit\nSave\nCopy to Clipbord\nExit"
+
+maim -s /tmp/screen_shooter_tmp.png
+
+choice (){
+	CHOICE=$(echo $OPTIONS | $MENU)
+}
+choice
+
+KICKOUT=true
+while $KICKOUT; do
+	if [ $CHOICE = "View" ];then
+		$IMAGEVIEWER /tmp/screen_shooter_tmp.png
+		choice
+	elif [ $CHOICE = "Edit" ];then
+		$IMAGEEDITOR /tmp/screen_shooter_tmp.png
+		choice
+	elif [ $CHOICE = "Save" ];then
+		mv /tmp/screen_shooter_tmp.png $SAVEDIR/$(date -Ins).png && KICKOUT=false
+	elif [ $CHOICE = "Copy to Clipbord" ]; then
+		xclip -selection clipboard -t image/png -i /tmp/screen_shooter_tmp.png && KICKOUT=false
+	elif [ $CHOICE = "Exit" ]; then
+		KICKOUT=false
+	fi
+done
+
+rm /tmp/screen_shooter_tmp.png

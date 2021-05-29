@@ -1,10 +1,6 @@
 # Sets the size of the splits 
 set ratios "1:80:19"
 
-# Sets the scrips to do with the previews
-set previewer "~/.config/lf/scrips/lf-preview" 
-set cleaner "~/.config/lf/scrips/lf-cleaner" 
-
 # Enable icons
 set icons true
 
@@ -19,6 +15,7 @@ cmd rename $rn $(basename "$f")
 cmd open $~/.config/lf/scrips/open.sh "$f"
 cmd pack %~/.config/lf/scrips/pack.sh "$f" $1
 cmd tdl $tdl $f
+cmd dl %wget "$(xclip -o -selection clipboard)"
 
 # Commands 
 cmd dd ${{
@@ -81,7 +78,7 @@ map D remove
 map zh 
 map H set hidden!
 map b $brn
-map q q
+#map q q
 map w wall
 map m shortcuts
 map M sca

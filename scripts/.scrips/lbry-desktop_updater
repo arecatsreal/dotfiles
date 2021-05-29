@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd ~/.local/bin
+rm lbry-desktop
+wget $(curl https://api.github.com/repos/lbryio/lbry-desktop/releases | grep AppImage | head -n 2| grep browser_download_url | sed 's/\"browser_download_url\": "//g' | sed 's/\"//g' | sed 's/\t//g')
+NAME=$(ls -1 | grep LBRY)
+mv $NAME lbry-desktop
+chmod +x lbry-desktop
+echo "lbry-desktop installed :)"

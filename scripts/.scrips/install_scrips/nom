@@ -1,5 +1,6 @@
 #!/bin/sh
 
+mkdir ~/src
 mkdir ~/src/c
 cd ~/src/c
 git clone https://github.com/salman-abedin/devour

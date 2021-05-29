@@ -1,3 +1,0 @@
-#!/bin/sh
-
-maim -s ~/$(date +"sshot-%D-%R.png" | sed 's/\//_/g')

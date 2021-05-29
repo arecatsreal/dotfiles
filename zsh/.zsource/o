@@ -1,13 +1,37 @@
-#!/bin/zsh
+#!/bin/bash
+
+video_open (){
+	INMEDIADIR=false
+	pwd | grep Media > /dev/null && INMEDIADIR=true 
+
+	if [ $INMEDIADIR = true ]; then
+		RES1080=false
+		RES720=false
+		RES480=false
+		MEDIAINFO=$(mediainfo $1)
+
+		echo $MEDIAINFO | grep 1080 > /dev/null && RES1080=true
+		echo $MEDIAINFO | grep 720 > /dev/null && RES720=true
+		echo $MEDIAINFO | grep 480 > /dev/null && RES480=true
+		if [ $RES1080 = true ]; then
+			devour mpv --fs --glsl-shaders="~~/shaders/Anime4K_Denoise_Bilateral_Mode.glsl:~~/shaders/Anime4K_DarkLines_HQ.glsl:~~/shaders/Anime4K_ThinLines_HQ.glsl:~~/shaders/Anime4K_Upscale_CNN_M_x2_Deblur.glsl" $1
+		elif [ $RES480 = true || $RES720=true ]; then
+			devour mpv --fs --glsl-shaders="~~/shaders/Anime4K_Upscale_CNN_L_x2_Denoise.glsl:~~/shaders/Anime4K_Auto_Downscale_Pre_x4.glsl:~~/shaders/Anime4K_DarkLines_HQ.glsl:~~/shaders/Anime4K_ThinLines_HQ.glsl:~~/shaders/Anime4K_Upscale_CNN_M_x2_Deblur.glsl" $1
+		fi
+	else
+		devour mpv --fs $1
+	fi
+}
+
 o () {
 	if [ -f $1 ] ; then # Test to see if $1 if a file or not.
 		case $(echo $1 | awk '{print tolower($0)}') in # If $1 if a file it opens if dependent on the file extinction. 
 			*.org)   emacsgui 	$1& ;;      
-			*.mkv)   devour mpv --fs 	$1	;;      
-			*.mp4)   devour mpv --fs	$1 	;;      
-			*.webm)  devour mpv --fs	$1 	;;      
-			*.avi)   devour mpv --fs	$1 	;;      
-			*.m4b)   devour mpv --fs	$1 	;;      
+			*.mkv)   video_open 	$1	;;      
+			*.mp4)   video_open	$1 	;;      
+			*.webm)  video_open	$1 	;;      
+			*.avi)   video_open	$1 	;;      
+			*.m4b)   video_open	$1 	;;      
 			*.mp3)   mpv	 	$1  ;;      
 			*.ogg)   mpv	 	$1  ;;      
 			*.flac)  mpv	 	$1  ;;      

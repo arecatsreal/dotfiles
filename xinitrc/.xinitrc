@@ -11,6 +11,8 @@ picom --experimental-backends & #compton but not compton
 #nitrogen --restore &
 ~/.fehbg &
 fcitx
+QT_QPA_PLATFORMTHEME="qt5ct"
+
 #Turn off sleep
 xset s off & 
 xset -dpms &

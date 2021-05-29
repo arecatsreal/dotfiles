@@ -1,0 +1,7 @@
+#!/bin/bash 
+
+FILE=~/.config/spectrwm/*.conf
+
+BINDS=$(cat $FILE | grep 'bind\[' | sed 's/#.*//g' | sed '/^[[:space:]]*$/d' | sed 's/\t//g' | sed 's/bind\[//g' | sed 's/\]\=//g')
+cat $FILE | grep 'bind\[' | sed 's/#.*//g' | sed '/^[[:space:]]*$/d' | sed 's/\t//g' |
+	sed 's/bind\[//g' | sed 's/\]\=//g' | awk '{$1 = sprintf("%-30s", $1)} 1'

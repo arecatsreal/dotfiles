@@ -18,7 +18,10 @@ ram () {
 }
  
 disk () {
+	df -h -t btrfs | awk '{if (NR!=1) {print $6": " $3"/"$2" ("$5")"} }'
 	df -h -t ext4 | awk '{if (NR!=1) {print $6": " $3"/"$2" ("$5")"} }'
+	df -h -t fat32 | awk '{if (NR!=1) {print $6": " $3"/"$2" ("$5")"} }'
+	df -h -t ntfs | awk '{if (NR!=1) {print $6": " $3"/"$2" ("$5")"} }'
 }
 kernal () {
 	uname -r
