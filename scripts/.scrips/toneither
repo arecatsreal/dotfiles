@@ -1,0 +1,5 @@
+#!/bin/sh
+
+CORDS=$*
+
+echo $CORDS | awk '{print $1/8", "$2/8}'

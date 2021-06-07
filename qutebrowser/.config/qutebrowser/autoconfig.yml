@@ -28,15 +28,15 @@ settings:
   content.webrtc_ip_handling_policy:
     global: all-interfaces
   fonts.default_family:
-    global: null
+    global: UbuntuMono Nerd Font Mono
   fonts.tabs.unselected:
     global: default_size default_family
   fonts.web.family.fixed:
-    global: opendyslexic
+    global: UbuntuMono Nerd Font Mono
   fonts.web.family.serif:
-    global: opendyslexic
+    global: UbuntuMono Nerd Font Mono
   fonts.web.family.standard:
-    global: opendyslexic
+    global: UbuntuMono Nerd Font Mono
   statusbar.show:
     global: never
   url.searchengines:
@@ -44,6 +44,7 @@ settings:
       DEFAULT: https://3g2upl4pq6kufc4m.onion/html?q={}
       aw: https://wiki.archlinux.org/index.php?title=Special:Search&search={}
       dw: https://wiki.debian.org/FrontPage?action=fullsearch&context=180&value={}&titlesearch=Titles
+      mw: https://minecraft.fandom.com/wiki/{}
       gh: https://github.com/search?q={}
       gl: https://gitlab.com/explore?utf8=%E2%9C%93&name={}&sort=latest_activity_desc
       in: http://c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion/search?q={}

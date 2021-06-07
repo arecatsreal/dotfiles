@@ -32,6 +32,7 @@ o () {
 			*.webm)  video_open	$1 	;;      
 			*.avi)   video_open	$1 	;;      
 			*.m4b)   video_open	$1 	;;      
+			*.mov)   video_open	$1 	;;      
 			*.mp3)   mpv	 	$1  ;;      
 			*.ogg)   mpv	 	$1  ;;      
 			*.flac)  mpv	 	$1  ;;      

@@ -11,3 +11,4 @@ nnn/.config/nnn/plugins
 mpd/.config/mpd/database
 vim/.vim/.netrwhist
 nvim/.config/nvim/spell
+mpv/.config/mpv/shaders 
