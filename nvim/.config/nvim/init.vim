@@ -32,6 +32,8 @@ Plug 'hrsh7th/nvim-compe'
 "Writeing stuff
 Plug 'junegunn/goyo.vim'
 Plug 'jceb/vim-orgmode'
+Plug 'dhruvasagar/vim-table-mode'
+"Plug 'reedes/vim-pencil'
 
 "Perlang stuff
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
@@ -48,6 +50,11 @@ set number
 let g:vim_markdown_folding_disabled = 1
 set conceallevel=2
 set tw=100 " Sets the text with when using gq
+augroup pencil
+	autocmd!
+	autocmd FileType markdown,mkd call pencil#init()
+	autocmd FileType text         call pencil#init({'wrap': 'soft'})
+augroup END
 
 "Theme
 colorscheme dracula
@@ -107,3 +114,4 @@ autocmd BufWritePre *.c lua vim.lsp.buf.formatting_sync(nil, 100)
 lua require'lspconfig'.bashls.setup{}
 lua require'lspconfig'.gopls.setup{}
 lua require'lspconfig'.clangd.setup{}
+lua require'lspconfig'.pyright.setup{}

@@ -13,8 +13,10 @@
 + mu - Controls mpd.
 + nobar - Gives the information commonly put in a bar in a notification.
 + nosleep.sh - Disables sleeping.
++ np - Script that adds entries to pass.
 + OFpicom - Picom toggle.
 + opacity - Stolen script that changes the opacity of alacritty.
++ p - passmenu fork with less safety and more options. 
 + rn - Renamed stuff in a vim buffer.
 + screen_shooter - A screen shot script.
 + spectrwm_keybinds - Prints keybinds for spectrwm.

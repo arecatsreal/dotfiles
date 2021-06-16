@@ -16,7 +16,7 @@ config.set('content.cookies.store', False)
 config.set('content.headers.referer', 'same-domain')
 
 # Proxys
-config.set('content.proxy', 'socks://localhost:9050/') # Use Tor
+#config.set('content.proxy', 'socks://localhost:9050/') # Use Tor
 #config.set('content.proxy', 'http://localhost:4444/') # Use I2p
 
 # Settings I like

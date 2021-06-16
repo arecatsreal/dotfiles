@@ -41,7 +41,7 @@ o () {
 			*.cbz)   zathura	$1& ;;      
 			*.cbr)   zathura	$1& ;;      
 			*.epub)  zathura	$1& ;;      
-			*.html)  surf		$1& ;;      
+			*.html)  devour badwolf		$1& ;;      
 			*.png)	 devour feh		$1&	;;
 			*.jpg)	 devour feh		$1&	;;
 			*.webp)	 devour feh		$1&	;;

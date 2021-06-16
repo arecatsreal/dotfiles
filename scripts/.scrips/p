@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# This is a fork of passmenu meaning this script is licenced under GPLV2 or latter.
+
+shopt -s nullglob globstar
+PREFIX=${PASSWORD_STORE_DIR-~/.password-store}
+PASSWORD_FILES=( "$PREFIX"/**/*.gpg )
+PASSWORD_FILES=( "${PASSWORD_FILES[@]#"$PREFIX"/}" )
+PASSWORD_FILES=( "${PASSWORD_FILES[@]%.gpg}" )
+
+PASS=$(printf '%s\n' "${PASSWORD_FILES[@]}" | "dmenu" "$@")
+
+[[ -n $PASS ]] || exit 
+
+ACTION=$(printf "Copy Password\nCopy Username\nCopy url\nShow Comments"| dmenu)
+
+case $ACTION in
+	'Copy Password') pass show --clip=1 $PASS ;;
+	'Copy Username') pass show $PASS | grep 'login:' | sed 's/login:\ //' | xclip -selection clipbord;;
+	'Copy url') pass show $PASS | grep 'url:' | sed 's/url:\ //' | xclip -selection clipbord;;
+	'Show Comments') pass show $PASS | grep 'comments:' | sed 's/comments:\ //'
+esac

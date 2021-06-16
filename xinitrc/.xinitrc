@@ -10,8 +10,11 @@ picom --experimental-backends & #compton but not compton
 #exec ~/.config/polybar/launch.sh & 
 #nitrogen --restore &
 ~/.fehbg &
+
 fcitx
 QT_QPA_PLATFORMTHEME="qt5ct"
+pipewire &
+pipewire-pulse &
 
 #Turn off sleep
 xset s off & 

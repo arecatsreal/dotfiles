@@ -1,0 +1,28 @@
+#!/bin/bash
+
+echo -n "Name of entry: "
+read NAME
+if [ $(expr length "$NAME") -eq 0 ]; then
+	echo $NAME
+	expr length "$NAME"
+	echo "You must enter a name"
+	exit
+fi
+
+echo -n "Password Length (120): "
+read LENGTH
+if [ $(expr length "$LENGTH") -eq 0 ]; then
+	LENGTH=120
+fi
+
+echo -n "pwgen flags (-c -s -y): "
+read FLAGS
+if [ $(expr length "$FLAGS") -eq 0 ]; then
+	FLAGS='-c -s -v -N 1'
+else
+	FLAGS="$FLAGS -N 1"
+fi
+
+PASSWORD="$(pwgen $FLAGS $LENGTH)"
+echo $PASSWORD | pass insert -e $NAME
+pass edit $NAME

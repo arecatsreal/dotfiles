@@ -121,6 +121,7 @@ bat --version 2> /dev/null > /dev/null && {
 if [ $BATIN = false ]; then
 	alias cat="cat -n"
 fi
+
 # Rip grep/grp
 RGIN=false
 rg --version 2> /dev/null > /dev/null && {
@@ -130,6 +131,12 @@ rg --version 2> /dev/null > /dev/null && {
 if [ $RGIN = false ]; then
 	alias g="grep"
 fi
+
+# Top
+TOP=top
+bpytop --version 2> /dev/null > /dev/null && TOP=bpytop 
+if [ "$TOP" != "bpytop" ]; then; htop --version 2> /dev/null > /dev/null && TOP=htop; fi
+alias top="$TOP"
 
 #Git
 gc () {; COMMITSTR="$*"; git commit -m $COMMITSTR; }
@@ -219,9 +226,9 @@ compinit
 #set -o vi mode
 
 # Bedrock fix
-if [ TERM != "linux" ];then
-	LD_PRELOAD=""
-fi
+#if [ TERM != "linux" ];then
+#	LD_PRELOAD=""
+#fi
 
 #zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
