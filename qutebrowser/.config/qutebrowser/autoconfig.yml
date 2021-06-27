@@ -41,12 +41,13 @@ settings:
     global: never
   url.searchengines:
     global:
-      DEFAULT: https://duckduckgo.com/html?q={}
+      DEFAULT: https://search.brave.com/search?q={}
       aw: https://wiki.archlinux.org/index.php?title=Special:Search&search={}
+      cf: https://search.brave.com/search?q=site%3Awww.curseforge.com+{}
       dw: https://wiki.debian.org/FrontPage?action=fullsearch&context=180&value={}&titlesearch=Titles
       gh: https://github.com/search?q={}
       gl: https://gitlab.com/explore?utf8=%E2%9C%93&name={}&sort=latest_activity_desc
-      in: http://c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion/search?q={}
+      in: https://invidious.snopyta.org/search?q={}
       lu: https://lutris.net/games?q={}
       mal: https://myanimelist.net/anime.php?type=all&keyword={}
       mw: https://minecraft.fandom.com/wiki/{}
@@ -54,6 +55,6 @@ settings:
       po: https://www.protondb.com/search?q={}
       w: https://www.wikipedia.org/w/index.php?title=Special:Search&search={}
   url.start_pages:
-    global: https://3g2upl4pq6kufc4m.onion/
+    global: https://search.brave.com
   zoom.default:
     global: '150'

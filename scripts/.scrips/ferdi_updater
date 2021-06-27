@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd ~/.local/bin
+rm ferdi
+wget $(curl https://api.github.com/repos/getferdi/ferdi/releases | grep AppImage | grep browser_download_url | sed 's/.*beta.*//' | sed 's/\"browser_download_url\": "//g' | sed '/^[[:space:]]*$/d' | head -n 1 | sed 's/\"//')
+NAME=$(ls -1 | grep Ferdi)
+mv $NAME ferdi
+chmod u+x ferdi
+echo "ferdi installed :)"

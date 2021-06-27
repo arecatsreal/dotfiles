@@ -7,6 +7,10 @@ Just a slightly modified version of DistroTube from early 2019
 My Own Custom config of BSPWM with not special in it.
 ### DWM
 Themed DWM with few patches. As well as a script for the bar. [link](https://github.com/mrmip/dwm)
+### Spectrwm
+Just like my DWM config but with no bars.
+### Herbstluftwm
+Nothing new going on hear.
 
 ## Text Editors
 ### Vim
@@ -15,7 +19,7 @@ A simple vim config that gets the job done.
 + auto-pairs
 + vim-polyglot
 ### Emacs
-Still in early stages of customizing.
+Still in early stages of customizing. 
 
 ## Web browsers
 ### Lynx

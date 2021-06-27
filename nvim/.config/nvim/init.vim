@@ -41,7 +41,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
 call plug#end() 
 
 "Goyo
-let g:goyo_width = 100
+let g:goyo_width = 120
 
 "Turns on line numbers
 set number
@@ -49,12 +49,7 @@ set number
 "Markdown Stuffs
 let g:vim_markdown_folding_disabled = 1
 set conceallevel=2
-set tw=100 " Sets the text with when using gq
-augroup pencil
-	autocmd!
-	autocmd FileType markdown,mkd call pencil#init()
-	autocmd FileType text         call pencil#init({'wrap': 'soft'})
-augroup END
+set tw=120 " Sets the text with when using gq
 
 "Theme
 colorscheme dracula

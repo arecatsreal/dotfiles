@@ -215,6 +215,7 @@ alias '..'="cd .."
 alias gr="go run *.go"
 alias irs="export IRS_CONFIG_LOCATION=~/.irs/config.yml && brl strat -r debian ~/.irs/bin/irs"
 alias getdes="youtube-dl --get-description '$(xclip -o -selection clips)' | cat"
+alias hc="herbstclient"
 
 # Basic auto/tab complete
 autoload -U compinit

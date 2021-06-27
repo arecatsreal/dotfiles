@@ -11,6 +11,8 @@ vpnstatus () {
 }
 ldate () {
     echo $(date +"%a %b %D %R:%S")
+	# Tiawan Time.
+    echo $(TZ=Asia/Taipei date +"%a %b %D %R:%S :TW")
 }
 
 ram () {
@@ -26,5 +28,20 @@ disk () {
 kernal () {
 	uname -r
 }
+timeup () {
+	uptime -p | sed 's/up\ //g' | sed 's/\ //g' | sed 's/\,//g' | sed 's/days/D:/g' | sed 's/hours/H:/g' | sed 's/minutes/M/g'
+}
+cpu_usage () {
+	top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}'
+}
 
-notify-send "No Bar" "$(ldate)\nVpn: $(vpnstatus)\nExip: $(curl -L ifconfig.me)\nRam: $(ram)\nKernal: $(kernal)\n\n---Disk Usage---\n$(disk)"
+notify-send "No Bar" "$(ldate)
+Vpn: $(vpnstatus)
+Exip: $(curl -L ifconfig.me)
+Cpu: $(cpu_usage)
+Ram: $(ram)
+Uptime: $(timeup)
+Kernal: $(kernal)
+
+---Disk Usage---
+$(disk)"

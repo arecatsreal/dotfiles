@@ -1,8 +1,8 @@
 #!/bin/sh
 
-STATE=$(ip addr | grep proton0 | wc -l)
+ip addr | grep proton0 > /dev/null && STATE=true 
 
-if [ $STATE -gt 0 ]
+if [ $STATE ]
 then
     echo "Connected"
 else

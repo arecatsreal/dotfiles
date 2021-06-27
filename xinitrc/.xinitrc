@@ -25,3 +25,4 @@ xset -dpms &
 #exec emacs #I wish this was a joke lul.
 #exec bspwm
 exec spectrwm
+#exec herbstluftwm 

@@ -18,7 +18,7 @@ fi
 echo -n "pwgen flags (-c -s -y): "
 read FLAGS
 if [ $(expr length "$FLAGS") -eq 0 ]; then
-	FLAGS='-c -s -v -N 1'
+	FLAGS='-c -s -y -N 1'
 else
 	FLAGS="$FLAGS -N 1"
 fi
