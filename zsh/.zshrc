@@ -1,10 +1,4 @@
 #!/bin/zsh
-#  __  __ _____ _____  _  _____   ______ _____ _    _ _____   _____
-# |  \/  |_   _|  __ \( )/ ____| |___  // ____| |  | |  __ \ / ____|
-# | \  / | | | | |__) |/| (___      / /| (___ | |__| | |__) | |
-# | |\/| | | | |  ___/   \___ \    / /  \___ \|  __  |  _  /| |
-# | |  | |_| |_| |       ____) |  / /__ ____) | |  | | | \ \| |____
-# |_|  |_|_____|_|      |_____/  /_____|_____/|_|  |_|_|  \_\\_____|
 neofetch
 
 # Exports
@@ -155,6 +149,8 @@ ga () {
 	git status
 fi
 }
+# Github Stuff
+alias ghrc="gh repo create"
 
 #Package Manager aliass 
 
@@ -208,12 +204,11 @@ alias vm="sudo virt-manager"
 alias nas="sh ~/.config/mountnetworkdrive.sh"
 tarball () {; tar -czvf $1.tar.gz $1; }
 tardir() {; for i in *; do tar -czf $i.tar.gz $i; rm -fr $i; done; }
-alias cls="clear"
+alias cls="clear" # The one thing windows did right
 play () {; mpv --fs "$*"; }
 alias disk="df -h -t ext4"
 alias '..'="cd .."
 alias gr="go run *.go"
-alias irs="export IRS_CONFIG_LOCATION=~/.irs/config.yml && brl strat -r debian ~/.irs/bin/irs"
 alias getdes="youtube-dl --get-description '$(xclip -o -selection clips)' | cat"
 alias hc="herbstclient"
 
@@ -222,9 +217,6 @@ autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
-
-#Vi mode
-#set -o vi mode
 
 # Bedrock fix
 #if [ TERM != "linux" ];then

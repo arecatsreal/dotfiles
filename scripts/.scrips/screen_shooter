@@ -10,7 +10,7 @@ OPTIONS="View\nEdit\nSave\nCopy to Clipbord\nExit"
 maim -s /tmp/screen_shooter_tmp.png
 
 choice (){
-	CHOICE=$(echo $OPTIONS | $MENU)
+	CHOICE=$(printf $OPTIONS | $MENU)
 }
 choice
 
@@ -29,6 +29,9 @@ while $KICKOUT; do
 	elif [ $CHOICE = "Exit" ]; then
 		KICKOUT=false
 	fi
+
+	# Kills screen_shooter if the user closes $MENU
+	[[ -n $(pgrep $MENU) ]] || KICKOUT=true
 done
 
 rm /tmp/screen_shooter_tmp.png

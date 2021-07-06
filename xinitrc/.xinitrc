@@ -12,9 +12,10 @@ picom --experimental-backends & #compton but not compton
 ~/.fehbg &
 
 fcitx
-QT_QPA_PLATFORMTHEME="qt5ct"
-pipewire &
-pipewire-pulse &
+export QT_QPA_PLATFORMTHEME="qt5ct"
+otd &
+#pipewire &
+#pipewire-pulse &
 
 #Turn off sleep
 xset s off & 

@@ -29,6 +29,8 @@ settings:
     global: all-interfaces
   fonts.default_family:
     global: UbuntuMono Nerd Font Mono
+  fonts.default_size:
+    global: 10pt
   fonts.tabs.unselected:
     global: default_size default_family
   fonts.web.family.fixed:
