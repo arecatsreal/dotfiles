@@ -46,6 +46,9 @@ o () {
 			*.jpg)	 devour feh		$1&	;;
 			*.webp)	 devour feh		$1&	;;
 			*.gif)	 devour feh		$1&	;;
+			*.sc)	 sc-im		$1	;;
+			*.csv)	 sc-im		$1	;;
+			*.tsv)	 sc-im		$1	;;
 			*)       $EDITOR 	$1	;;
 		esac
 	elif [ -d $1 ];then # If it is not a file then it tests to see if it's a dir and if so it opens it with the file manager. 

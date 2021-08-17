@@ -44,7 +44,7 @@ fileopenalias () {
     alias nba="$EDITOR ~/.config/newsboat/urls"
     alias tconf="$EDITOR ~/.tmux.conf"
     alias emrc="$EDITOR ~/.emacs.d/init.el"
-	alias dwmc=" $EDITOR ~/.config/dwm/config.def.h && cd ~/.config/dwm"
+	#alias dwmc=" $EDITOR ~/.config/dwm/config.def.h && cd ~/.config/dwm"
 }
 fileopenalias
 
@@ -108,8 +108,16 @@ fi
 BATIN=false
 bat --version 2> /dev/null > /dev/null && {
 	alias cat="bat -n"
+	alias bat="bat -n"
 	export BAT_THEME="Dracula"
 	export MANPAGER="bat -n"
+    BATIN=true
+}
+batcat --version 2> /dev/null > /dev/null && {
+	alias cat="batcat -n"
+	alias bat="batcat -n"
+	export BAT_THEME="base16"
+	export MANPAGER="batcat -n"
     BATIN=true
 }
 if [ $BATIN = false ]; then
@@ -137,8 +145,8 @@ gc () {; COMMITSTR="$*"; git commit -m $COMMITSTR; }
 alias gca="git commit --amend"
 alias gp="git push"
 alias gcls="git restore --staged *" # Clears the git staging
-# Sets the repo remote to github.com/MrMip/<Dir Name> via ssh
-#gfix () {; git remote set-url origin git@github.com:MrMip/$1; }  
+# Sets the repo remote to github.com/arecatsreal/<Dir Name> via ssh
+#gfix () {; git remote set-url origin git@github.com:arecatsreal/$1; }  
 alias gs="git status"
 ga () {
     if [ $( echo $1 | wc -w ) = 0 ]; then
@@ -153,7 +161,6 @@ fi
 alias ghrc="gh repo create"
 
 #Package Manager aliass 
-
 # Void Linux 
 alias xin="sudo xbps-install"
 alias xup="sudo xbps-install -S -u"
@@ -180,11 +187,30 @@ if [ $YAYIN = false ]; then
 fi
 
 # Debian
-alias ain="sudo apt install"
-alias aup="sudo apt update && apt upgrade"
-alias arm="sudo apt remove"
-alias aro="sudo apt autoremove"
-alias aqu="apt search"
+APTITUDEIN=false
+aptitude --version 2> /dev/null > /dev/null && {
+	alias ain="sudo aptitude install"
+	alias aup="sudo aptitude update && sudo aptitude safe-upgrade"
+	alias aupd="sudo aptitude update"
+	alias aupg="sudo aptitude full-upgrade"
+	alias arm="sudo aptitude remove"
+	alias aro="sudo aptitude autoremove"
+	alias aqu="aptitude search"
+	alias apt="aptitude"
+	APTITUDEIN=true
+}
+if [ $APTITUDEIN = false ]; then
+	alias ain="sudo apt install"
+	alias aup="sudo apt update && sudo apt upgrade"
+	alias aupd="sudo apt update"
+	alias aupg="sudo apt upgrade"
+	alias arm="sudo apt remove"
+	alias aro="sudo apt autoremove"
+	alias aqu="apt search"
+fi
+	
+alias ap="apt-file find"
+alias apu="apt-file update"
 
 # Bedrock linux 
 alias pmqu="pmm-query -R -s"
@@ -195,7 +221,7 @@ else
 fi
 
 #Program Short cuts
-alias vpn="sudo protonvpn"
+alias vpn="sudo protonnvpn"
 alias vpnc="sudo protonvpn c -f"
 alias nb="newsboat"
 alias ta="tmux a"
@@ -211,6 +237,10 @@ alias '..'="cd .."
 alias gr="go run *.go"
 alias getdes="youtube-dl --get-description '$(xclip -o -selection clips)' | cat"
 alias hc="herbstclient"
+alias cp="cp -r"
+alias ra="xsel | espeak"
+alias pri="nc -q 0 192.168.1.61 9100 <"
+alias ar="aria2c"
 
 # Basic auto/tab complete
 autoload -U compinit

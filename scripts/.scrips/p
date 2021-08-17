@@ -12,11 +12,28 @@ PASS=$(printf '%s\n' "${PASSWORD_FILES[@]}" | "dmenu" "$@")
 
 [[ -n $PASS ]] || exit 
 
-ACTION=$(printf "Copy Password\nCopy Username\nCopy url\nShow Comments"| dmenu)
+ACTION=$(printf "Copy Username\nCopy Password\nAuto Type\nCopy url\nShow Comments"| dmenu)
+
+copy_pass (){
+	pass show --clip=0 $PASS
+}
+
+copy_username (){
+	pass show $PASS | grep 'login:' | sed 's/login:\ //' | xclip -selection clipbord
+}
 
 case $ACTION in
-	'Copy Password') pass show --clip=1 $PASS ;;
-	'Copy Username') pass show $PASS | grep 'login:' | sed 's/login:\ //' | xclip -selection clipbord;;
+	'Copy Username') copy_username;;
+	'Copy Password') copy_pass;;
+	'Auto Type'){
+		copy_username
+		copy_username
+		xdotool key ctrl+v
+		xdotool key Tab
+		copy_pass
+		xdotool key ctrl+v
+		xdotool key Return
+	};;
 	'Copy url') pass show $PASS | grep 'url:' | sed 's/url:\ //' | xclip -selection clipbord;;
 	'Show Comments') pass show $PASS | grep 'comments:' | sed 's/comments:\ //'
 esac

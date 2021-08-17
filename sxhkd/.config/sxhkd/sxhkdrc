@@ -1,3 +1,62 @@
-super + {Return,f,t,p,n}
-	{alacritty,firefox,emacsclient -a "" -c,rofi -show run, mpv --fs $(xclip -o)}	#Launches Application.
+# Sxhkd
+super + control + q
+	pkill sxhkd
 
+# Appliction Launch Keys
+super + Return
+	alacritty
+
+super + f
+	qutebrowser
+
+super + c
+	OFpicom
+
+super + b
+	nobar
+
+super + p
+	dmenu_run
+
+super + shift + b
+	date_read
+
+super + v
+	mpv-yt
+
+super + i
+	image_copy
+
+super + s 
+	screen_shooter
+
+super + control + p
+	p
+
+# dwm
+super + {k,j}
+	dwmc focusstack {-,+}1
+
+super + shift + {k,j}
+	dwmc movestack {-,+}1
+
+super + {h,l}
+	dwmc setmfact {-,+}0.05
+
+super + g
+	dwmc killclient
+
+super + shift + {q,r}
+	dwmc quit {0,1}
+
+super + Tab
+	dwmc view
+
+super + {t,e}
+	dwmc setlayoutex {0,2}
+
+super + {_,ctrl +}{_,shift +} {1-9}
+	dwmc {_,toggle}{viewex,tagex} {0-8}
+
+super + 0
+	dwmc viewall

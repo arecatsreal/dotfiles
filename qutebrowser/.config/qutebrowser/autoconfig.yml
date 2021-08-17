@@ -13,6 +13,8 @@ settings:
       w: session-save
       wq: quit --save
       wqa: quit --save
+  colors.webpage.bg:
+    global: white
   colors.webpage.darkmode.enabled:
     global: true
   content.blocking.hosts.lists:
