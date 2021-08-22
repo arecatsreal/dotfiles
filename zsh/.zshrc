@@ -1,5 +1,15 @@
 #!/bin/zsh
-neofetch
+
+if [ -f ~/.config/dot ]; then
+	CONF=$(cat ~/.config/dot)
+else
+	touch ~/.config/dot
+	echo "main" > dot
+fi
+
+if [ $CONF = 'main' ]; then
+	neofetch
+fi
 
 # Exports
 source $HOME/.zsource/exports 
