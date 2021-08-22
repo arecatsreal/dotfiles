@@ -1,4 +1,0 @@
-#!/bin/sh
-
-pwgen -s -y -c -N 1 $1 | xclip -selection clipbord
-notify-send "qp" "Password Length $1\nPassword copyed to clipbord"

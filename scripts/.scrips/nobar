@@ -12,7 +12,7 @@ vpnstatus () {
 ldate () {
     echo $(date +"%a %b %D %R:%S")
 	# Tiawan Time.
-    echo $(TZ=Asia/Taipei date +"%a %b %D %R:%S :TW")
+#    echo $(TZ=Asia/Taipei date +"%a %b %D %R:%S :TW")
 }
 
 ram () {
@@ -35,9 +35,18 @@ cpu_usage () {
 	top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}'
 }
 
+lanip () {
+	hostname -I | awk '{print  $1}' &
+}
+
+exip () {
+	curl -L ifconfig.me &
+}
+
 notify-send "No Bar" "$(ldate)
 Vpn: $(vpnstatus)
-Exip: $(curl -L ifconfig.me)
+Ip: $(lanip)
+Exip: $(exip)
 Cpu: $(cpu_usage)
 Ram: $(ram)
 Uptime: $(timeup)

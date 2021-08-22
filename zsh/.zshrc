@@ -241,6 +241,7 @@ alias cp="cp -r"
 alias ra="xsel | espeak"
 alias pri="nc -q 0 192.168.1.61 9100 <"
 alias ar="aria2c"
+alias bs="barriers -c ~/.config/barrier/barrier.conf"
 
 # Basic auto/tab complete
 autoload -U compinit

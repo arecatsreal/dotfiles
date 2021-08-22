@@ -33,6 +33,8 @@ config.set("content.javascript.enabled", True, '*://account.protonmail.com/*')
 config.set("content.javascript.enabled", True, '*://mail.protonmail.com/*')
 config.set("content.javascript.enabled", True, '*://monkeytype.com/*')
 config.set("content.javascript.enabled", True, '*://gitlab.com/*')
+config.set("content.javascript.enabled", True, '*://startpage.com/*')
+config.set("content.javascript.enabled", True, '*://anilist.co/*')
 
 # Themeing
 import dracula.draw
