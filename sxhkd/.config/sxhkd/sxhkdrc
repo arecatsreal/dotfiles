@@ -4,8 +4,7 @@ super + control + q
 
 # Appliction Launch Keys
 super + Return
-	alacritty
-
+	term
 super + f
 	qutebrowser
 

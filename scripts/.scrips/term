@@ -1,0 +1,8 @@
+#!/bin/sh
+
+alacritty --version > /dev/null && {
+	alacritty
+	exit
+}
+
+st
