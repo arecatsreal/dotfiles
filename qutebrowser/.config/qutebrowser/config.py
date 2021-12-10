@@ -27,6 +27,9 @@ config.bind('xx', 'config-cycle statusbar.show always never') # Hide and unhide 
 
 config.bind('\\u', 'hint links spawn -u untrack-url -O {hint-url}')
 config.bind('\\U', 'spawn -u untrack-url -p {clipboard}')
+c.aliases = {
+    "proxy": "spawn --userscript proxyswitch.sh"
+}
 
 # Javascipt Whitelist
 config.set("content.javascript.enabled", True, '*://account.protonmail.com/*')
@@ -35,6 +38,17 @@ config.set("content.javascript.enabled", True, '*://monkeytype.com/*')
 config.set("content.javascript.enabled", True, '*://gitlab.com/*')
 config.set("content.javascript.enabled", True, '*://startpage.com/*')
 config.set("content.javascript.enabled", True, '*://anilist.co/*')
+config.set("content.javascript.enabled", True, '*://parcelsapp.com/*')
+
+# Zoom & Font size 
+dot_file = open("/home/mip/.config/dot")
+dot = dot_file.read()
+dot_file.close()
+if dot.strip() == 'main':
+    config.set("zoom.default", 150)
+elif dot.strip() == 'thinkpad':
+    config.set("zoom.default", 100)
+    config.set("fonts.default_size", '8pt')
 
 # Themeing
 import dracula.draw

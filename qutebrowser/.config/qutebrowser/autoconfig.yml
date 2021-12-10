@@ -6,13 +6,6 @@
 
 config_version: 2
 settings:
-  aliases:
-    global:
-      q: close
-      qa: quit
-      w: session-save
-      wq: quit --save
-      wqa: quit --save
   colors.webpage.bg:
     global: white
   colors.webpage.darkmode.enabled:
@@ -27,12 +20,12 @@ settings:
       accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
   content.javascript.enabled:
     global: false
+  content.proxy:
+    global: system
   content.webrtc_ip_handling_policy:
     global: all-interfaces
   fonts.default_family:
     global: UbuntuMono Nerd Font Mono
-  fonts.default_size:
-    global: 10pt
   fonts.tabs.unselected:
     global: default_size default_family
   fonts.web.family.fixed:
@@ -48,7 +41,9 @@ settings:
       DEFAULT: https://search.brave.com/search?q={}
       aw: https://wiki.archlinux.org/index.php?title=Special:Search&search={}
       cf: https://search.brave.com/search?q=site%3Awww.curseforge.com+{}
+      chan: https://www.4chan.org/{}
       dw: https://wiki.debian.org/FrontPage?action=fullsearch&context=180&value={}&titlesearch=Titles
+      eztv: https://eztv.re/search/{}
       gh: https://github.com/search?q={}
       gl: https://gitlab.com/explore?utf8=%E2%9C%93&name={}&sort=latest_activity_desc
       in: https://invidious.snopyta.org/search?q={}
@@ -57,8 +52,7 @@ settings:
       mw: https://minecraft.fandom.com/wiki/{}
       pkg: https://pkgs.org/search/?q={}
       po: https://www.protondb.com/search?q={}
+      tp: https://parcelsapp.com/en/tracking/{}
       w: https://www.wikipedia.org/w/index.php?title=Special:Search&search={}
   url.start_pages:
     global: https://search.brave.com
-  zoom.default:
-    global: '150'

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ $(cat ~/.config/dot) = thinkpad ]; then
+	mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" --fs "$1"
+else
+	mpv --fs "$1"
+fi

@@ -101,8 +101,8 @@ alias reddit="tuir --enable-media"
 # So this scrip can be used with out exa installed on the system.
 EXAIN=false
 exa --version 2> /dev/null > /dev/null && {
-    alias ll="exa -lh --git"
-    alias lla="exa -lha --git"
+    alias ll="exa -lh"
+    alias lla="exa -lha"
     alias ls="exa"
     alias la="exa -a"
     EXAIN=true
@@ -120,14 +120,12 @@ bat --version 2> /dev/null > /dev/null && {
 	alias cat="bat -n"
 	alias bat="bat -n"
 	export BAT_THEME="Dracula"
-	export MANPAGER="bat -n"
     BATIN=true
 }
 batcat --version 2> /dev/null > /dev/null && {
 	alias cat="batcat -n"
 	alias bat="batcat -n"
 	export BAT_THEME="base16"
-	export MANPAGER="batcat -n"
     BATIN=true
 }
 if [ $BATIN = false ]; then
@@ -204,7 +202,7 @@ aptitude --version 2> /dev/null > /dev/null && {
 	alias aupd="sudo aptitude update"
 	alias aupg="sudo aptitude full-upgrade"
 	alias arm="sudo aptitude remove"
-	alias aro="sudo aptitude autoremove"
+	alias aro="sudo apt autoremove"
 	alias aqu="aptitude search"
 	alias apt="aptitude"
 	APTITUDEIN=true
@@ -233,11 +231,11 @@ fi
 #Program Short cuts
 alias vpn="sudo protonnvpn"
 alias vpnc="sudo protonvpn c -f"
-alias nb="newsboat"
+alias nb="newsboat -u ~/sync/newsboat/urls -c ~/sync/newsboat/newsboat_cache.db"
 alias ta="tmux a"
 alias speed="speedtest-cli"
 alias vm="sudo virt-manager"
-alias nas="sh ~/.config/mountnetworkdrive.sh"
+#alias nas="sh ~/.config/mountnetworkdrive.sh"
 tarball () {; tar -czvf $1.tar.gz $1; }
 tardir() {; for i in *; do tar -czf $i.tar.gz $i; rm -fr $i; done; }
 alias cls="clear" # The one thing windows did right
@@ -252,6 +250,8 @@ alias ra="xsel | espeak"
 alias pri="nc -q 0 192.168.1.61 9100 <"
 alias ar="aria2c"
 alias bs="barriers -c ~/.config/barrier/barrier.conf"
+alias s="spt"
+alias w="o ~/Notes/index.md"
 
 # Basic auto/tab complete
 autoload -U compinit

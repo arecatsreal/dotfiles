@@ -32,6 +32,9 @@ super + s
 super + control + p
 	p
 
+super + r
+	xsel | espeak
+
 # dwm
 super + {k,j}
 	dwmc focusstack {-,+}1

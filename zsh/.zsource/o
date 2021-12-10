@@ -31,8 +31,9 @@ o () {
 			*.mp4)   video_open	$1 	;;      
 			*.webm)  video_open	$1 	;;      
 			*.avi)   video_open	$1 	;;      
-			*.m4b)   video_open	$1 	;;      
 			*.mov)   video_open	$1 	;;      
+			*.m4b)   mpv		$1 	;;      
+			*.m4a)   mpv		$1 	;;      
 			*.mp3)   mpv	 	$1  ;;      
 			*.ogg)   mpv	 	$1  ;;      
 			*.flac)  mpv	 	$1  ;;      
@@ -49,6 +50,7 @@ o () {
 			*.sc)	 sc-im		$1	;;
 			*.csv)	 sc-im		$1	;;
 			*.tsv)	 sc-im		$1	;;
+			*.ods)	 sc-im		$1	;;
 			*)       $EDITOR 	$1	;;
 		esac
 	elif [ -d $1 ];then # If it is not a file then it tests to see if it's a dir and if so it opens it with the file manager. 

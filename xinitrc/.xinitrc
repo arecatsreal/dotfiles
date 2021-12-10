@@ -31,7 +31,7 @@ keys &
 displaysetup.sh 
 
 #Run WM
-exec ~/gitStuffs/dwm/dwm
+exec ~/sync/bin/dwm
 #exec emacs #I wish this was a joke lul.
 #exec bspwm
 #exec spectrwm

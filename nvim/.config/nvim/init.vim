@@ -1,4 +1,4 @@
-"Plugin manger
+"nPlugin manger
 call plug#begin('~/.vimplugins')
 "Nvim in teh browser
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
@@ -10,20 +10,22 @@ Plug 'sheerun/vim-polyglot'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 "Theme
-Plug 'dracula/vim', { 'as': 'dracula' }
+"Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'Mofiqul/dracula.nvim'
 "Plug 'arcticicestudio/nord-vim'
 
 "Random cosmetic stuff
 Plug 'ryanoasis/vim-devicons'
 
-"Adds the gitgutter on the right.
-Plug 'airblade/vim-gitgutter'
+"Adds the gitgutter on the left.
+"Plug 'airblade/vim-gitgutter'
 
 "File Managerment
 Plug 'junegunn/fzf.vim'
 
 "Status Line
-Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/lightline.vim'
+Plug 'nvim-lualine/lualine.nvim'
 
 "LSP / Autocompetion
 Plug 'neovim/nvim-lspconfig'
@@ -33,7 +35,8 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'junegunn/goyo.vim'
 Plug 'jceb/vim-orgmode'
 Plug 'dhruvasagar/vim-table-mode'
-"Plug 'reedes/vim-pencil'
+Plug 'vimwiki/vimwiki'
+Plug 'rhysd/vim-grammarous'
 
 "Perlang stuff
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
@@ -51,9 +54,14 @@ let g:vim_markdown_folding_disabled = 1
 set conceallevel=2
 set tw=120 " Sets the text with when using gq
 
+"Vim Wiki
+let g:vimwiki_list = [{'path': '~/Notes/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+"let g:vimwiki_markdown_link_ext = 1
+
 "Theme
 colorscheme dracula
-highlight Normal ctermbg=NONE
+"highlight Normal ctermbg=NONE
 
 "Tab Length
 set ts=4 sw=4
@@ -62,31 +70,41 @@ set ts=4 sw=4
 :vmap <Tab> >
 :vmap <S-Tab> <
 
+"Spits 
+"set splitbelow splitright
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+nnoremap <silent> <C-Right> :vert res +3<CR>
+nnoremap <silent> <C-Left> :vert res -3<CR>
+nnoremap <silent> <C-Up> :res +3<CR>
+nnoremap <silent> <C-Down> :res -3<CR>
+
 "Vim-go
 let g:go_def_mapping_enabled = 0
 
 "Status line
-set laststatus=2
-set noshowmode
-let g:lightline = {
-      \ 'colorscheme': 'dracula',
-      \ 'component_function': {
-      \   'filetype': 'MyFiletype',
-      \   'fileformat': 'MyFileformat',
-      \ }
-      \ }
-
-function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-endfunction
-
-function! MyFileformat()
-  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-endfunction
+lua require('lualine').setup()
 
 "Key Mappings 
 let mapleader = " "
 nnoremap <C-f> :GFiles <CR>
+
+"Spell Check
+set spelllang=en
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.org set filetype=org
+autocmd BufRead,BufNewFile *.groff set filetype=groff
+autocmd BufRead,BufNewFile *.roff set filetype=roff
+autocmd BufRead,BufNewFile *.txt set filetype=text
+"Spellcheck for md and txt files
+autocmd FileType markdown setlocal spell
+autocmd FileType text setlocal spell
+autocmd FileType org setlocal spell
+autocmd FileType groff setlocal spell
+autocmd FileType roff setlocal spell
 
 " LSP config (the mappings used in the default file don't quite work right)
 luafile ~/.config/nvim/compe-config.lua
@@ -102,8 +120,11 @@ nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 " LSP-autoformat
 autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.sh lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.bash lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.zsh lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.cpp lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.c lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
 
 " LSP-Servers
 lua require'lspconfig'.bashls.setup{}
