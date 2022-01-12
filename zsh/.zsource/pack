@@ -13,6 +13,7 @@ pack () {
 		zip)       zip -r $1.zip $1	;;
 		7z)        7z a $1.7z $1	;;
 		tar.xz)    tar cf $1.tar.xz $1    	;;
+		jar)    jar cf $1.jar $1    	;;
 		*)           echo "'$1' cannot be packed via pack()" ;;
 	esac
 }

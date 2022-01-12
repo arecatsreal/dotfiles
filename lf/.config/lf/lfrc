@@ -11,12 +11,15 @@ startup
 # Simple one liners
 cmd mkdir %mkdir $1
 cmd touch %touch $1
-cmd rename $rn $(basename "$f")
+cmd rename $edir $f #$rn $(basename "$f")
 cmd open $~/.config/lf/scrips/open.sh "$f"
 cmd pack %~/.config/lf/scrips/pack.sh "$f" $1
 cmd tdl $tdl $f
 cmd dl $wget "$(xclip -o -selection clipboard)"
 cmd ro $sudo vim $f
+cmd mvbo $mv $f ~/NAS/Books
+cmd mvme $mv $f ~/NAS/Media
+cmd rn $edir $f
 
 # Commands 
 cmd dd ${{
@@ -78,7 +81,7 @@ map e $~/.config/lf/scrips/ex.sh "$f"
 map D remove
 map zh 
 map H set hidden!
-map b $brn
+map b $edir -q #$brn
 #map q q
 map w wall
 map m shortcuts

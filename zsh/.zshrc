@@ -36,7 +36,7 @@ alias ip="ip --color=auto"
 source $HOME/.zsource/emacs
 
 # Functions to change the default settings.
-editor () {; export EDITOR=$* && echo "The editor is set to $EDITOR" && fileopenalias;} 
+editor () {; export EDITOR=$* && echo "The editor is set to $EDITOR" && fileOpenAlias;} 
 pager () {; export PAGER=$* && echo "The pager is set to $PAGER"; } 
 browser () {; export BROWSER=$* && echo "The browser is set to $BROWSER"; } 
 tbrowser () {; export TBROESER=$* && echo "The terminal browser is set to $TBROESER"; } 
@@ -45,25 +45,6 @@ filem () {; export FILEM=$* && echo "The file manager is set to $FILEM"; }
 # Arrive management 
 source $HOME/.zsource/ex 
 source $HOME/.zsource/pack 
-
-#File Opening
-source $HOME/.zsource/o 
-fileopenalias () {
-    alias vrc="$EDITOR ~/.config/nvim/init.vim"
-    alias zrc="$EDITOR ~/.zshrc"
-    alias nba="$EDITOR ~/.config/newsboat/urls"
-    alias tconf="$EDITOR ~/.tmux.conf"
-    alias emrc="$EDITOR ~/.emacs.d/init.el"
-	#alias dwmc=" $EDITOR ~/.config/dwm/config.def.h && cd ~/.config/dwm"
-}
-fileopenalias
-
-#File Jumps
-alias jgh="cd ~/NAS/Git/Github/"
-alias jdc="cd ~/Documents/"
-alias jdw="cd ~/Downloads/"
-alias jdo="cd ~/dotfiles/"
-alias jco="cd ~/.config/"
 
 #Lynx
 source ~/.zsource/lynx
@@ -89,6 +70,27 @@ setfileman() {
 }
 setfileman
 source $HOME/.zsource/lf-icons 
+
+# File/Dir opeing 
+source $HOME/.zsource/o 
+fileOpenAlias () {
+    alias vrc="$EDITOR ~/.config/nvim/init.vim"
+    alias zrc="$EDITOR ~/.zshrc"
+    alias nba="$EDITOR ~/.config/newsboat/urls"
+    alias tconf="$EDITOR ~/.tmux.conf"
+	alias emrc="$EDITOR ~/.emacs.d/init.el"
+	alias w="$EDITOR ~/Notes/index.md"
+	alias sp="$EDITOR $(mktemp --suffix=.md)"
+}
+dirOpenAlias (){
+	alias vid="$FILEM ~/.config/nvim"
+	alias conf="$FILEM ~/.config"
+	alias bo="$FILEM ~/NAS/Books"
+	alias me="$FILEM ~/NAS/Media"
+	alias dw="$FILEM ~/Downloads"
+}
+fileOpenAlias
+dirOpenAlias
 
 #Tuir (Trminal Reddit)
 export TUIR_EDITOR=$EDITOR
@@ -156,6 +158,7 @@ alias gcls="git restore --staged *" # Clears the git staging
 # Sets the repo remote to github.com/arecatsreal/<Dir Name> via ssh
 #gfix () {; git remote set-url origin git@github.com:arecatsreal/$1; }  
 alias gs="git status"
+alias gmgn="touch .gitignore"
 ga () {
     if [ $( echo $1 | wc -w ) = 0 ]; then
 	git add .
@@ -216,7 +219,6 @@ if [ $APTITUDEIN = false ]; then
 	alias aro="sudo apt autoremove"
 	alias aqu="apt search"
 fi
-	
 alias ap="apt-file find"
 alias apu="apt-file update"
 
@@ -241,7 +243,6 @@ tardir() {; for i in *; do tar -czf $i.tar.gz $i; rm -fr $i; done; }
 alias cls="clear" # The one thing windows did right
 play () {; mpv --fs "$*"; }
 alias disk="df -h -t ext4"
-alias '..'="cd .."
 alias gr="go run *.go"
 alias getdes="youtube-dl --get-description '$(xclip -o -selection clips)' | cat"
 alias hc="herbstclient"
@@ -251,7 +252,9 @@ alias pri="nc -q 0 192.168.1.61 9100 <"
 alias ar="aria2c"
 alias bs="barriers -c ~/.config/barrier/barrier.conf"
 alias s="spt"
-alias w="o ~/Notes/index.md"
+alias timer="go-timer -alarmFile ~/sync/bin/alarm.mp3"
+alias wn="devour mpv --loop-file ~/NAS/Media/White_Noise.webm"
+alias y="ytfzf -t"
 
 # Basic auto/tab complete
 autoload -U compinit

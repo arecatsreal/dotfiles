@@ -9,7 +9,7 @@ bind-key J next-feed articlelist
 bind-key K prev-feed articlelist
 bind-key ; macro-prefix
 
-browser "devour mpv %u"
-#macro w set browser "devour mpv --fs --ytdl-format=bestvideo+bestaudio/best %u" ; open-in-browser ; set browser "devour mpv %u"
-macro w set browser "devour nbvid %u" ; open-in-browser ; set browser "devour mpv %u"
-macro c set browser "echo %u | xclip -selection clip" ; open-in-browser ; set browser "devour mpv %u""
+browser "mpv %u"
+#macro w set browser "mpv --fs --ytdl-format=bestvideo+bestaudio/best %u" ; open-in-browser ; set browser "mpv %u"
+macro w set browser "nbvid %u" ; open-in-browser ; set browser "mpv %u"
+macro c set browser "echo %u | xclip -selection clip" ; open-in-browser ; set browser "mpv %u""

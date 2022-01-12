@@ -6,6 +6,9 @@
 
 config_version: 2
 settings:
+  aliases:
+    global:
+      proxy: spawn --userscript proxyswitch.sh
   colors.webpage.bg:
     global: white
   colors.webpage.darkmode.enabled:
@@ -38,9 +41,10 @@ settings:
     global: never
   url.searchengines:
     global:
-      DEFAULT: https://search.brave.com/search?q={}
+      DEFAULT: http://10.0.0.119:8888/?q={}
       aw: https://wiki.archlinux.org/index.php?title=Special:Search&search={}
-      cf: https://search.brave.com/search?q=site%3Awww.curseforge.com+{}
+      br: https://search.brave.com/search?q={}
+      cf: http://10.0.0.119:8888/?q=site%3Awww.curseforge.com+{}
       chan: https://www.4chan.org/{}
       dw: https://wiki.debian.org/FrontPage?action=fullsearch&context=180&value={}&titlesearch=Titles
       eztv: https://eztv.re/search/{}
@@ -55,4 +59,4 @@ settings:
       tp: https://parcelsapp.com/en/tracking/{}
       w: https://www.wikipedia.org/w/index.php?title=Special:Search&search={}
   url.start_pages:
-    global: https://search.brave.com
+    global: https://10.0.0.119:8888

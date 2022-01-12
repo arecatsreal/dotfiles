@@ -1,6 +1,6 @@
-"nPlugin manger
+"Plugin manger
 call plug#begin('~/.vimplugins')
-"Nvim in teh browser
+"Nvim in the browser
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 "Automatic parentheses.
 Plug 'jiangmiao/auto-pairs'
@@ -37,14 +37,21 @@ Plug 'jceb/vim-orgmode'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'vimwiki/vimwiki'
 Plug 'rhysd/vim-grammarous'
+Plug 'junegunn/limelight.vim'
+Plug 'AdamTillou/vim-imager'
 
 "Perlang stuff
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
+
+"Session Saveing 
+Plug 'tpope/vim-obsession'
 
 call plug#end() 
 
 "Goyo
 let g:goyo_width = 120
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
 "Turns on line numbers
 set number
@@ -62,6 +69,14 @@ let g:vimwiki_list = [{'path': '~/Notes/',
 "Theme
 colorscheme dracula
 "highlight Normal ctermbg=NONE
+
+if &term =~ '256color'
+    " disable Background Color Erase (BCE) so that color schemes
+    " render properly when inside 256-color tmux and GNU screen.
+    " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+    set t_ut=
+endif
+
 
 "Tab Length
 set ts=4 sw=4

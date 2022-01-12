@@ -12,7 +12,9 @@ config.set('content.headers.do_not_track', True)
 config.set('content.webrtc_ip_handling_policy', 'default-public-interface-only')
 config.set('content.geolocation', False)
 config.set('content.private_browsing', True)
+config.set('completion.cmd_history_max_items', 0)
 config.set('content.cookies.store', False)
+#config.set('content.cookies.accept', "never")
 config.set('content.headers.referer', 'same-domain')
 
 # Proxys
@@ -39,6 +41,7 @@ config.set("content.javascript.enabled", True, '*://gitlab.com/*')
 config.set("content.javascript.enabled", True, '*://startpage.com/*')
 config.set("content.javascript.enabled", True, '*://anilist.co/*')
 config.set("content.javascript.enabled", True, '*://parcelsapp.com/*')
+config.set("content.javascript.enabled", True, '*://*.lan/*')
 
 # Zoom & Font size 
 dot_file = open("/home/mip/.config/dot")
