@@ -39,6 +39,7 @@ o () {
 			*.flac)  mpv	 	$1  ;;      
 			*.pdf)   zathura	$1& ;;      
 			*.ps)    zathura	$1& ;;      
+			#*.cbz)   qcomicbook	$1& ;;      
 			*.cbz)   zathura	$1& ;;      
 			*.cbr)   zathura	$1& ;;      
 			*.epub)  zathura	$1& ;;      

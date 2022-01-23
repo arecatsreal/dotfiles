@@ -42,6 +42,7 @@ config.set("content.javascript.enabled", True, '*://startpage.com/*')
 config.set("content.javascript.enabled", True, '*://anilist.co/*')
 config.set("content.javascript.enabled", True, '*://parcelsapp.com/*')
 config.set("content.javascript.enabled", True, '*://*.lan/*')
+config.set("content.javascript.enabled", True, '*://mangadex.org/*')
 
 # Zoom & Font size 
 dot_file = open("/home/mip/.config/dot")

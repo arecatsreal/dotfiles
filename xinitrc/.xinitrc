@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #Rice Stuff
-picom --experimental-backends & #compton but not compton
+#picom --experimental-backends & #compton but not compton
 #exec ~/.config/dwm/statusBar.sh &
 #exec ~/.config/polybar/launch.sh & 
 #nitrogen --restore &
@@ -14,6 +14,7 @@ otd &
 #pipewire &
 #pipewire-pulse &
 dunst &
+syncthing --no-browser
 
 #Turn off sleep
 xset s off & 

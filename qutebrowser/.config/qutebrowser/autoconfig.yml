@@ -52,6 +52,7 @@ settings:
       gl: https://gitlab.com/explore?utf8=%E2%9C%93&name={}&sort=latest_activity_desc
       in: https://invidious.snopyta.org/search?q={}
       lu: https://lutris.net/games?q={}
+      ma: https://mangadex.org/titles?q={}
       mal: https://myanimelist.net/anime.php?type=all&keyword={}
       mw: https://minecraft.fandom.com/wiki/{}
       pkg: https://pkgs.org/search/?q={}
@@ -59,4 +60,4 @@ settings:
       tp: https://parcelsapp.com/en/tracking/{}
       w: https://www.wikipedia.org/w/index.php?title=Special:Search&search={}
   url.start_pages:
-    global: https://10.0.0.119:8888
+    global: http://10.0.0.119:8888

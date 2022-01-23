@@ -11,7 +11,7 @@ startup
 # Simple one liners
 cmd mkdir %mkdir $1
 cmd touch %touch $1
-cmd rename $edir $f #$rn $(basename "$f")
+cmd rename $edir "$f" #$rn $(basename "$f")
 cmd open $~/.config/lf/scrips/open.sh "$f"
 cmd pack %~/.config/lf/scrips/pack.sh "$f" $1
 cmd tdl $tdl $f
@@ -59,9 +59,13 @@ cmd fzf_jump ${{
 }}
 
 cmd q ${{
+	if [ $LFPICKER = ture ]; then
+		echo $fx
+	fi
+
+	echo cow
 	echo "1" > "$LF_TEMPDIR"/cdtolastdir
 	lf -remote "send $id quit"
-		
 }}
 
 cmd wall ${{
@@ -86,3 +90,4 @@ map b $edir -q #$brn
 map w wall
 map m shortcuts
 map M sca
+map i $echo cow
