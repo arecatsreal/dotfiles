@@ -59,7 +59,7 @@ set number
 "Markdown Stuffs
 let g:vim_markdown_folding_disabled = 1
 set conceallevel=2
-set tw=120 " Sets the text with when using gq
+set textwidth=120 " Sets the text with when using gq
 
 "Vim Wiki
 let g:vimwiki_list = [{'path': '~/Notes/',

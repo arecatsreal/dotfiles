@@ -41,7 +41,7 @@ settings:
     global: never
   url.searchengines:
     global:
-      DEFAULT: http://10.0.0.119:8888/?q={}
+      DEFAULT: https://search.brave.com/search?q={}
       aw: https://wiki.archlinux.org/index.php?title=Special:Search&search={}
       br: https://search.brave.com/search?q={}
       cf: http://10.0.0.119:8888/?q=site%3Awww.curseforge.com+{}
@@ -60,4 +60,4 @@ settings:
       tp: https://parcelsapp.com/en/tracking/{}
       w: https://www.wikipedia.org/w/index.php?title=Special:Search&search={}
   url.start_pages:
-    global: http://10.0.0.119:8888
+    global: https://search.brave.com

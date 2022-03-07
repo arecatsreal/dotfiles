@@ -1,6 +1,8 @@
 emacs/.emacs.d/*/
 emacs/.emacs.d/recentf
 emacs/.emacs.d/\#recentf\#
+emacs/.emacs.d/eshell
+emacs/.emacs.d/lisp/elfeed-fees.el
 *.o
 *~
 '\#*'

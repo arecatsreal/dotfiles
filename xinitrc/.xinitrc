@@ -10,11 +10,12 @@
 fcitx
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export $(dbus-launch)
-otd &
+#otd &
 #pipewire &
 #pipewire-pulse &
 dunst &
-syncthing --no-browser
+syncthing --no-browser &
+emacs --bg-daemon &
 
 #Turn off sleep
 xset s off & 
@@ -29,7 +30,7 @@ keys (){
 keys &
 
 #Video Setings
-displaysetup.sh 
+#displaysetup.sh 
 
 #Run WM
 exec ~/sync/bin/dwm

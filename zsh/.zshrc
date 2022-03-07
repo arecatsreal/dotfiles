@@ -8,7 +8,7 @@ else
 fi
 
 if [ $CONF = 'main' ]; then
-	neofetch
+#	neofetch
 fi
 
 # Exports
@@ -19,6 +19,9 @@ exports
 autoload -U colors && colors
 source $HOME/.zsource/prompt 
 prompt
+
+# Autojump
+source /usr/share/autojump/autojump.zsh
 
 #Alias
 alias cdl="rm -fr ~/Downloads/*"
@@ -50,6 +53,15 @@ source $HOME/.zsource/pack
 source ~/.zsource/lynx
 duck () {; lynx "duckduckgo.com/lite?kd=-1&kp=-1&q=$*"; }
 alias '?'="duck"
+
+# Pretty-print man pages.
+export LESS_TERMCAP_mb=$'\E[1;31m'
+export LESS_TERMCAP_md=$'\E[1;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[1;33m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[1;32m'
 
 # File Manager
 setfileman() {
@@ -146,8 +158,8 @@ fi
 
 # Top
 TOP=top
-bpytop --version 2> /dev/null > /dev/null && TOP=bpytop 
-if [ "$TOP" != "bpytop" ]; then; htop --version 2> /dev/null > /dev/null && TOP=htop; fi
+btop --version 2> /dev/null > /dev/null && TOP=btop
+if [ "$TOP" != "btop" ]; then; htop --version 2> /dev/null > /dev/null && TOP=htop; fi
 alias top="$TOP"
 
 #Git
@@ -255,6 +267,8 @@ alias s="spt"
 alias timer="go-timer -alarmFile ~/sync/bin/alarm.mp3"
 alias wn="devour mpv --loop-file ~/NAS/Media/White_Noise.webm"
 alias y="ytfzf -t"
+alias black="colour black"
+alias copy="xclip -selection clipbord"
 
 # Basic auto/tab complete
 autoload -U compinit
@@ -266,6 +280,7 @@ compinit
 #if [ TERM != "linux" ];then
 #	LD_PRELOAD=""
 #fi
+
 
 #zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

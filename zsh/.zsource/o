@@ -27,11 +27,16 @@ o () {
 	if [ -f $1 ] ; then # Test to see if $1 if a file or not.
 		case $(echo $1 | awk '{print tolower($0)}') in # If $1 if a file it opens if dependent on the file extinction. 
 			*.org)   emacsgui 	$1& ;;      
-			*.mkv)   video_open 	$1	;;      
-			*.mp4)   video_open	$1 	;;      
-			*.webm)  video_open	$1 	;;      
-			*.avi)   video_open	$1 	;;      
-			*.mov)   video_open	$1 	;;      
+			#*.mkv)   video_open 	$1	;;      
+			#*.mp4)   video_open	$1 	;;      
+			#*.webm)  video_open	$1 	;;      
+			#*.avi)   video_open	$1 	;;      
+			#*.mov)   video_open	$1 	;;      
+			*.mkv)  mpv --fs 	$1	;;      
+			*.mp4)  mpv --fs	$1 	;;      
+			*.webm) mpv --fs	$1 	;;      
+			*.avi)  mpv --fs	$1 	;;      
+			*.mov)  mpv --fs	$1 	;;      
 			*.m4b)   mpv		$1 	;;      
 			*.m4a)   mpv		$1 	;;      
 			*.mp3)   mpv	 	$1  ;;      

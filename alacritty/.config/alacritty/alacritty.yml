@@ -3,7 +3,7 @@
 env:
   TERM: xterm-256color
 
-background_opacity: .99 
+  #background_opacity: .99 
 
 # Colors (Dracula)
 

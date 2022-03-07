@@ -50,6 +50,7 @@ dot = dot_file.read()
 dot_file.close()
 if dot.strip() == 'main':
     config.set("zoom.default", 150)
+    config.set("fonts.default_size", '15pt')
 elif dot.strip() == 'thinkpad':
     config.set("zoom.default", 100)
     config.set("fonts.default_size", '8pt')
