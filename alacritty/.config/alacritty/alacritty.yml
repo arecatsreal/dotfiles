@@ -5,71 +5,44 @@ env:
 
   #background_opacity: .99 
 
-# Colors (Dracula)
-
+# Catppuccin!
 colors:
+  # Default colors
   primary:
-    background: '0x282a36'
-    foreground: '0xf8f8f2'
-  cursor:
-    text: CellBackground
-    cursor: CellForeground
-  vi_mode_cursor:
-    text: CellBackground
-    cursor: CellForeground
-  search:
-    matches:
-      foreground: '0x44475a'
-      background: '0x50fa7b'
-    focused_match:
-      foreground: '0x44475a'
-      background: '0xffb86c'
-    bar:
-      background: '0x282a36'
-      foreground: '0xf8f8f2'
-  line_indicator:
-    foreground: None
-    background: None
-  selection:
-    text: CellForeground
-    background: '0x44475a'
-  normal:
-    black:   '0x000000'
-    red:     '0xff5555'
-    green:   '0x50fa7b'
-    yellow:  '0xf1fa8c'
-    blue:    '0xbd93f9'
-    magenta: '0xff79c6'
-    cyan:    '0x8be9fd'
-    white:   '0xbfbfbf'
-  bright:
-    black:   '0x4d4d4d'
-    red:     '0xff6e67'
-    green:   '0x5af78e'
-    yellow:  '0xf4f99d'
-    blue:    '0xcaa9fa'
-    magenta: '0xff92d0'
-    cyan:    '0x9aedfe'
-    white:   '0xe6e6e6'
-  dim:
-    black:   '0x14151b'
-    red:     '0xff2222'
-    green:   '0x1ef956'
-    yellow:  '0xebf85b'
-    blue:    '0x4d5b86'
-    magenta: '0xff46b0'
-    cyan:    '0x59dffc'
-    white:   '0xe6e6d1'
+    background: '0x1E1D2F'
+    foreground: '0xD9E0EE'
 
-  # Indexed Colors
-  #
-  # The indexed colors include all colors from 16 to 256.
-  # When these are not set, they're filled with sensible defaults.
-  #
-  # Example:
-  #   `- { index: 16, color: '0xff00ff' }`
-  #
-  indexed_colors: []
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x1E1D2F'
+    cursor: '0xF5E0DC'
+
+  # Normal colors
+  normal:
+    black:   '0x6E6C7E'
+    red:     '0xF28FAD'
+    green:   '0xABE9B3'
+    yellow:  '0xFAE3B0'
+    blue:    '0x96CDFB'
+    magenta: '0xF5C2E7'
+    cyan:    '0x89DCEB'
+    white:   '0xD9E0EE'
+
+  # Bright colors
+  bright:
+    black:   '0x988BA2'
+    red:     '0xF28FAD'
+    green:   '0xABE9B3'
+    yellow:  '0xFAE3B0'
+    blue:    '0x96CDFB'
+    magenta: '0xF5C2E7'
+    cyan:    '0x89DCEB'
+    white:   '0xD9E0EE'
+
+  indexed_colors:
+    - { index: 16, color: '0xF8BD96' }
+    - { index: 17, color: '0xF5E0DC' }
+
 
 # Visual Bell
 # ...

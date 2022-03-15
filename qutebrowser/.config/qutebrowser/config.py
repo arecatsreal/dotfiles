@@ -56,14 +56,15 @@ elif dot.strip() == 'thinkpad':
     config.set("fonts.default_size", '8pt')
 
 # Themeing
-import dracula.draw
+#import dracula.draw
+config.source('catppuccin.py')
 
 # Load existing settings made via :set
 config.load_autoconfig()
 
-dracula.draw.blood(c, {
-    'spacing': {
-        'vertical': 6,
-        'horizontal': 8
-    }
-})
+#dracula.draw.blood(c, {
+    #'spacing': {
+        #'vertical': 6,
+        #'horizontal': 8
+    #}
+#})

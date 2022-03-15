@@ -11,7 +11,7 @@ super + f
 super + c
 	OFpicom
 
-super + b
+super + control + b
 	nobar
 
 super + p
@@ -53,6 +53,9 @@ super + shift + {q,r}
 
 super + Tab
 	dwmc view
+
+super + b
+	dwmc togglebar
 
 super + {t,e}
 	dwmc setlayoutex {0,2}

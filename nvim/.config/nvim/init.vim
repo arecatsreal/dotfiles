@@ -11,14 +11,18 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 
 "Theme
 "Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'Mofiqul/dracula.nvim'
+"Plug 'Mofiqul/dracula.nvim'
 "Plug 'arcticicestudio/nord-vim'
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
 "Random cosmetic stuff
 Plug 'ryanoasis/vim-devicons'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 "Adds the gitgutter on the left.
-"Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 "File Managerment
 Plug 'junegunn/fzf.vim'
@@ -46,6 +50,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
 "Session Saveing 
 Plug 'tpope/vim-obsession'
 
+"File Mangagement
+Plug 'vifm/vifm.vim'
+
 call plug#end() 
 
 "Goyo
@@ -55,6 +62,11 @@ autocmd! User GoyoLeave Limelight!
 
 "Turns on line numbers
 set number
+
+" Vifm
+let g:vifm_replace_netrw = 1
+let g:vifm_replace_netrw_cmd = "Vifm"
+nnoremap <silent> <Leader>f :Vifm<CR>
 
 "Markdown Stuffs
 let g:vim_markdown_folding_disabled = 1
@@ -67,8 +79,18 @@ let g:vimwiki_list = [{'path': '~/Notes/',
 "let g:vimwiki_markdown_link_ext = 1
 
 "Theme
-colorscheme dracula
+colorscheme catppuccin
 "highlight Normal ctermbg=NONE
+luafile $HOME/.config/nvim/colorizer.lua
+lua << EOF
+local catppuccin = require("catppuccin")
+catppuccin.setup({
+	styles = {
+		strings = "italic",
+	}
+})
+EOF
+
 
 if &term =~ '256color'
     " disable Background Color Erase (BCE) so that color schemes

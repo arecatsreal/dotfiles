@@ -1,0 +1,50 @@
+" Bookmarks
+mark h ~/
+mark c ~/.config
+mark v ~/.config/nvim
+mark s ~/.scrips
+mark d ~/Downloads
+mark n ~/NAS
+mark m ~/NAS/Media
+mark b ~/NAS/Books
+mark g ~/NAS/Books/Manga
+mark a ~/NAS/Books/audioBooks/Audible
+
+" Theme
+colorscheme dracula 
+source $HOME/.config/vifm/scripts/favicons.vifm
+
+" Custom Commands
+command! Extract source $HOME/.zsource/ex; ex %c
+nnoremap e :Extract<cr>
+command! Pack source $HOME/.zsource/pack; echo -n 'Archive Type?: '; read VIFMPACK; pack %c $VIFMPACK
+nnoremap <C-p> :Pack<cr>
+command! SetwallpFill feh --bg-fill %c
+command! SetwallpMax feh --bg-max %c
+command! SetwallpScale feh --bg-scale %c
+command! SetwallpTile feh --bg-tile %c
+command! SetwallpCenter feh --bg-center %c
+nnoremap w :SetwallpCenter<cr>
+
+" Misc Bindings
+nnoremap q :quit<cr>
+nnoremap o :view<cr>
+nnoremap O :only<cr>
+nnoremap <C-t> :tree!<cr>
+
+" File Opening
+source $HOME/.config/vifm/scripts/file_opening.vifm
+
+" FZF
+command! FZFfind : set noquickview
+                \| let $FZF_PICK = term('find | fzf 2>/dev/tty')
+                \| if $FZF_PICK != ''
+                \|     execute 'goto' fnameescape($FZF_PICK)
+                \| endif
+nnoremap <c-f> :FZFfind<cr>
+
+" Preview Window
+" fileviewer *.html,*.go,*.css,*.md,*.sh,*.rs,*.cpp,*.lisp,*.el highlight -l -O xterm256 --config-file=$HOME/.config/vifm/scripts/dracula.theme -s dracula %c
+fileviewer *.html,*.go,*.css,*.md,*.sh,*.rs,*.cpp,*.lisp,*.el highlight -l -O xterm256 --config-file=$HOME/.config/vifm/scripts/dracula.theme -s dracula %c
+fileviewer <application/json> cat %c | jq | highlight --syntax json -l -O xterm256 --config-file=$HOME/.config/vifm/scripts/dracula.theme -s dracula 
+""source $HOME/.config/vifm/scripts/vifmimgrc.vifm

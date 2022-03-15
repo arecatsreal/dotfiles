@@ -1,10 +1,10 @@
 #!/bin/sh
-
 #Rice Stuff
 #picom --experimental-backends & #compton but not compton
 #exec ~/.config/dwm/statusBar.sh &
 #exec ~/.config/polybar/launch.sh & 
 #nitrogen --restore &
+~/cowsdf.sh &
 ~/.fehbg &
 
 fcitx
@@ -14,8 +14,9 @@ export $(dbus-launch)
 #pipewire &
 #pipewire-pulse &
 dunst &
-syncthing --no-browser &
-emacs --bg-daemon &
+#syncthing --no-browser &
+#emacs --bg-daemon &
+#dwm_bar &
 
 #Turn off sleep
 xset s off & 
@@ -27,13 +28,15 @@ keys (){
 		sxhkd
 	done
 }
-keys &
+#keys &
 
 #Video Setings
 #displaysetup.sh 
 
 #Run WM
-exec ~/sync/bin/dwm
+#exec ~/sync/bin/dwm
+#exec ~/gitStuffs/dwm/dwm
+exec qtile start
 #exec emacs #I wish this was a joke lul.
 #exec bspwm
 #exec spectrwm

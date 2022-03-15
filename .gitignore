@@ -10,8 +10,12 @@ qutebrowser/.config/qutebrowser/bookmarks/*
 qutebrowser/.config/qutebrowser/quickmarks
 qutebrowser/.config/qutebrowser/dracula
 qutebrowser/.config/qsettings
+qutebrowser/.config/qutebrowser/qsettings/*
 nnn/.config/nnn/plugins
 mpd/.config/mpd/database
 vim/.vim/.netrwhist
 nvim/.config/nvim/spell
 mpv/.config/mpv/shaders 
+vifm/.config/vifm/vifminfo.json
+vifm/.config/vifm/vifm-help.txt
+qtile/.config/qtile/__pycache__

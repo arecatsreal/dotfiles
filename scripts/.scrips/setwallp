@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case $1 in
+	fill) 	feh --bg-fill 	"$2" ;;
+	max) 	feh --bg-max	"$2" ;;
+	scale) 	feh --bg-scale 	"$2" ;;
+	tile) 	feh --bg-tile 	"$2" ;;
+	*) 		feh --bg-center "$1" ;;
+esac

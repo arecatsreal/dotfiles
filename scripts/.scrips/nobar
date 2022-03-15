@@ -10,7 +10,7 @@ vpnstatus () {
     fi
 }
 ldate () {
-    echo $(date +"%a %b %D %R:%S")
+    echo $(date +"%a %b %y/%m/%d %R:%S")
 	# Tiawan Time.
 #    echo $(TZ=Asia/Taipei date +"%a %b %D %R:%S :TW")
 }

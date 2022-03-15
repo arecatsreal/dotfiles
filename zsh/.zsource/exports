@@ -5,7 +5,7 @@ export EDITOR=nvim
 export PAGER=less
 export BROWSER=firefox
 export TBROESER=lynx
-export FILEM=l
+export FILEM=vifm
 
 # Golang
 export GOPATH=~/go/src

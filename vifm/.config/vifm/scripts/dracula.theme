@@ -1,0 +1,46 @@
+
+Description="Dracula"
+
+-- Theme created by arecatsreal
+
+Categories = {"dark"}
+
+Default        = { Colour="#F8F8F2" }
+Canvas         = { Colour="#282A36" }
+Number         = { Colour="#8be9fd",}
+Escape         = { Colour="#ff79c6",}
+String         = { Colour="#f1fa8c" }
+StringPreProc  = { Colour="#ff5555" }
+BlockComment   = { Colour="#F8F8F2", Italic=true }
+LineComment    = { Colour="#F8F8F2", Italic=true }
+PreProcessor   = { Colour="#ff5555" }
+LineNum        = { Colour="#F8F8F2" }
+Operator       = { Colour="#ff79c6" }
+Interpolation  = { Colour="#ff79c6" }
+
+Keywords = {
+  { Colour= "#8be9fd" }, -- Class, Types, Struct
+  { Colour= "#f8f8f2" }, -- Var, Interface, enumMember
+  { Colour= "#bd93f9" }, -- Function, Method
+  { Colour= "#ff79c6" }, -- Keywords
+  { Colour= "#ff5555" }, -- Regexp
+  { Colour= "#ffb86c", Italic=true }, -- Parameter
+}
+
+-- new LSP based elements:
+
+SemanticTokenTypes  = {
+  { Type = 'type', Style = Keywords[1]},
+  { Type = 'class', Style = Keywords[1] },
+  { Type = 'struct', Style = Keywords[1] },
+  { Type = 'interface', Style = Keywords[2] },
+  { Type = 'parameter', Style = Keywords[5] },
+  { Type = 'variable', Style = Keywords[2] },
+  { Type = 'enumMember', Style = Keywords[2] },
+  { Type = 'function', Style = Keywords[3] },
+  { Type = 'method', Style = Keywords[3] },
+  { Type = 'keyword', Style =  Keywords[4] },
+  { Type = 'number', Style = Number },
+  { Type = 'regexp', Style = Keywords[5] },
+  { Type = 'operator', Style = Operator },
+}

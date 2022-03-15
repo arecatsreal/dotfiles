@@ -38,12 +38,48 @@ alias ip="ip --color=auto"
 #Functions to lauch emacs
 source $HOME/.zsource/emacs
 
+# File Manager
+setfileman() {
+	case $FILEM in 
+		fff){
+			f() {
+				fff "$@"
+				cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
+			}
+			export FFF_LS_COLORS=1
+		};;
+		lf){
+			source ~/.config/lf-shellcd/lf-shellcd
+			alias m="l ~/.local/share/shortcuts/"
+		};;
+		vifm)
+			v(){
+				local dst="$(command vifmrun --choose-dir - "$@")"
+				if [ -z "$dst" ]; then
+					echo 'Directory picking cancelled/failed'
+					return 1
+				fi
+				cd "$dst"
+			}
+			PATH="$PATH:$HOME/.config/vifm/scripts";;
+
+		*) echo "There is no file manager set."	;;
+	esac
+}
+setfileman
+case $FILEM in
+	fff) alias f="f" ;;
+	lf) alias f="l" ;;
+	vifm) alias f="v" ;;
+esac
+source $HOME/.zsource/lf-icons 
+
 # Functions to change the default settings.
 editor () {; export EDITOR=$* && echo "The editor is set to $EDITOR" && fileOpenAlias;} 
 pager () {; export PAGER=$* && echo "The pager is set to $PAGER"; } 
 browser () {; export BROWSER=$* && echo "The browser is set to $BROWSER"; } 
 tbrowser () {; export TBROESER=$* && echo "The terminal browser is set to $TBROESER"; } 
-filem () {; export FILEM=$* && echo "The file manager is set to $FILEM"; }
+filem () {; export FILEM=$* && echo "The file manager is set to $FILEM" && setfileman; }
 
 # Arrive management 
 source $HOME/.zsource/ex 
@@ -62,26 +98,6 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[1;33m'
 export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[1;32m'
-
-# File Manager
-setfileman() {
-	case $FILEM in 
-		f){
-			f() {
-				fff "$@"
-				cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
-			}
-			export FFF_LS_COLORS=1
-		};;
-		l){
-			source ~/.config/lf-shellcd/lf-shellcd
-			alias m="l ~/.local/share/shortcuts/"
-		};;
-		*) echo "There is no file manager set."	;;
-	esac
-}
-setfileman
-source $HOME/.zsource/lf-icons 
 
 # File/Dir opeing 
 source $HOME/.zsource/o 
@@ -173,11 +189,12 @@ alias gs="git status"
 alias gmgn="touch .gitignore"
 ga () {
     if [ $( echo $1 | wc -w ) = 0 ]; then
-	git add .
-	git status
-    else
-	git add $1
-	git status
+		git restore --staged .
+		git add .
+		git status
+	else
+		git add $1
+		git status
 fi
 }
 # Github Stuff
