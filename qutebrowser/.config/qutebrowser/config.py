@@ -5,7 +5,7 @@ config.load_autoconfig()
 
 # Harding Qutebrowser
 config.set('content.javascript.enabled', False)
-config.set('content.headers.user_agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36')
+config.set('content.headers.user_agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36')
 config.set('content.canvas_reading', False)
 config.set('content.webgl', False)
 config.set('content.headers.do_not_track', True)
@@ -25,13 +25,51 @@ config.set('content.headers.referer', 'same-domain')
 config.bind('z', 'hint links spawn mpv --fs {hint-url}') # Opens mpv with the hinted url.
 config.set("colors.webpage.preferred_color_scheme", "dark") # Dark mode.
 config.set("colors.webpage.darkmode.policy.images", "never")
+config.set('qt.args', ['disable-remote-fonts'])
 config.bind('xx', 'config-cycle statusbar.show always never') # Hide and unhide the bottom bar.
-
 config.bind('\\u', 'hint links spawn -u untrack-url -O {hint-url}')
 config.bind('\\U', 'spawn -u untrack-url -p {clipboard}')
 c.aliases = {
     "proxy": "spawn --userscript proxyswitch.sh"
 }
+
+#Colemak-DH
+config.unbind('m')
+config.unbind('n')
+config.unbind('i')
+config.unbind('j')
+config.unbind('k')
+config.unbind('l')
+config.unbind('J')
+config.unbind('K')
+config.unbind('L')
+config.unbind('f')
+config.unbind('T')
+config.unbind('z')
+config.bind('m', 'mode-enter insert')
+config.bind('t', 'hint')
+config.bind('T', 'hint all tab')
+config.bind('n', 'scroll down')
+config.bind('e', 'scroll up')
+config.bind('i', 'scroll right')
+config.bind('N', 'tab-next')
+config.bind('E', 'tab-prev')
+config.bind('I', 'forward')
+config.bind('k', 'search-next')
+config.bind('K', 'search-prev')
+config.bind('zzm', 'config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload')
+config.set('hints.chars', 'arstneio')
+
+#  Fonts
+config.set("fonts.default_family", "ComicCodeLigatures Nerd Font")
+config.set("fonts.default_size", "13pt")
+config.set("fonts.web.family.cursive", 'ComicCodeLigatures Nerd Font')
+config.set("fonts.web.family.fantasy", 'ComicCodeLigatures Nerd Font')
+config.set("fonts.web.family.fixed", 'ComicCodeLigatures Nerd Font')
+config.set("fonts.web.family.sans_serif", 'ComicCodeLigatures Nerd Font')
+config.set("fonts.web.family.serif", 'ComicCodeLigatures Nerd Font')
+config.set("fonts.web.family.standard", 'ComicCodeLigatures Nerd Font')
+#config.set("fonts.web.family.*", "ComicCodeLigatures Nerd Font")
 
 # Javascipt Whitelist
 config.set("content.javascript.enabled", True, '*://account.protonmail.com/*')
@@ -43,6 +81,7 @@ config.set("content.javascript.enabled", True, '*://anilist.co/*')
 config.set("content.javascript.enabled", True, '*://parcelsapp.com/*')
 config.set("content.javascript.enabled", True, '*://*.lan/*')
 config.set("content.javascript.enabled", True, '*://mangadex.org/*')
+config.set("content.javascript.enabled", True, '*://www.keybr.com/*')
 
 # Zoom & Font size 
 dot_file = open("/home/mip/.config/dot")
@@ -61,6 +100,9 @@ config.source('catppuccin.py')
 
 # Load existing settings made via :set
 config.load_autoconfig()
+
+# Sites
+config.set('content.user.stylesheets', '$HOME/.config/qutebrowser/sytlesheets/catppuccin.css')
 
 #dracula.draw.blood(c, {
     #'spacing': {

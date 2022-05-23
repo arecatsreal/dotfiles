@@ -68,7 +68,7 @@ filextype {*.cbz},<application/x-rar>
         \ devour zathura %f,
 
 " Audio
-filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},
+filetype {*.wav,*.mp3,*.flac,*.m4a,*.m4b,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},
         \<audio/*>
        \ {Play using MPlayer}
        \ mpv --fs %f,

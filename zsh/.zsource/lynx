@@ -2,7 +2,7 @@
 
 LYNX_CFG=$HOME/.config/lynx/lynx.cfg
 LYNX_LSS=$HOME/.config/lynx/lynx.lss
-LYNX_PATH=/bin/lynx
+LYNX_PATH=/usr/bin/lynx
 
 lynx () {
 				$LYNX_PATH -cfg=$LYNX_CFG -lss=$LYNX_LSS $*

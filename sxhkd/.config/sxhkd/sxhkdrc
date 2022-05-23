@@ -5,8 +5,12 @@ super + control + q
 # Appliction Launch Keys
 super + Return
 	term
+
 super + f
 	qutebrowser
+
+super + d
+	speedcrunch
 
 super + c
 	OFpicom
@@ -35,7 +39,7 @@ super + control + p
 super + r
 	xsel | espeak
 
-# dwm
+# dwm 
 super + {k,j}
 	dwmc focusstack {-,+}1
 

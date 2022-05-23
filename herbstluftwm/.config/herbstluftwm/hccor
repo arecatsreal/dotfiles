@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source $HOME/.config/herbstluftwm/dynamicBorderWidth.sh
+herbstclient close_or_remove
+dynamicBorderWidth

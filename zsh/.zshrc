@@ -6,7 +6,6 @@ else
 	touch ~/.config/dot
 	echo "main" > dot
 fi
-
 if [ $CONF = 'main' ]; then
 #	neofetch
 fi
@@ -31,9 +30,16 @@ alias reload="source ~/.zshrc && rm ./1"
 #Networking Alias
 alias gateway="ip route | grep default"
 alias retor="sudo sv restart tor"
-alias exip="curl -L ifconfig.me"
+alias exip="curl -q -L ifconfig.me"
 alias tping="torify ping"
 alias ip="ip --color=auto"
+iploc (); {; curl -q "ipinfo.io/$1" ;}
+
+# Mulvad-Vpn
+alias mc="mullvad connect"
+alias mdc="mullvad disconnect"
+alias mrc="mullvad reconnect"
+alias mcl="mullvad relay set location"
 
 #Functions to lauch emacs
 source $HOME/.zsource/emacs
@@ -110,15 +116,7 @@ fileOpenAlias () {
 	alias w="$EDITOR ~/Notes/index.md"
 	alias sp="$EDITOR $(mktemp --suffix=.md)"
 }
-dirOpenAlias (){
-	alias vid="$FILEM ~/.config/nvim"
-	alias conf="$FILEM ~/.config"
-	alias bo="$FILEM ~/NAS/Books"
-	alias me="$FILEM ~/NAS/Media"
-	alias dw="$FILEM ~/Downloads"
-}
 fileOpenAlias
-dirOpenAlias
 
 #Tuir (Trminal Reddit)
 export TUIR_EDITOR=$EDITOR
@@ -195,7 +193,7 @@ ga () {
 	else
 		git add $1
 		git status
-fi
+	fi
 }
 # Github Stuff
 alias ghrc="gh repo create"
@@ -250,6 +248,7 @@ if [ $APTITUDEIN = false ]; then
 fi
 alias ap="apt-file find"
 alias apu="apt-file update"
+alias ali="dpkg -L"
 
 # Bedrock linux 
 alias pmqu="pmm-query -R -s"
@@ -260,24 +259,19 @@ else
 fi
 
 #Program Short cuts
-alias vpn="sudo protonnvpn"
-alias vpnc="sudo protonvpn c -f"
 alias nb="newsboat -u ~/sync/newsboat/urls -c ~/sync/newsboat/newsboat_cache.db"
 alias ta="tmux a"
 alias speed="speedtest-cli"
-alias vm="sudo virt-manager"
 #alias nas="sh ~/.config/mountnetworkdrive.sh"
 tarball () {; tar -czvf $1.tar.gz $1; }
 tardir() {; for i in *; do tar -czf $i.tar.gz $i; rm -fr $i; done; }
 alias cls="clear" # The one thing windows did right
-play () {; mpv --fs "$*"; }
 alias disk="df -h -t ext4"
 alias gr="go run *.go"
 alias getdes="youtube-dl --get-description '$(xclip -o -selection clips)' | cat"
 alias hc="herbstclient"
 alias cp="cp -r"
 alias ra="xsel | espeak"
-alias pri="nc -q 0 192.168.1.61 9100 <"
 alias ar="aria2c"
 alias bs="barriers -c ~/.config/barrier/barrier.conf"
 alias s="spt"
@@ -286,6 +280,7 @@ alias wn="devour mpv --loop-file ~/NAS/Media/White_Noise.webm"
 alias y="ytfzf -t"
 alias black="colour black"
 alias copy="xclip -selection clipbord"
+alias pm="pulsemixer"
 
 # Basic auto/tab complete
 autoload -U compinit
@@ -298,6 +293,8 @@ compinit
 #	LD_PRELOAD=""
 #fi
 
+# Vimode
+#bindkey -v
 
 #zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -306,3 +303,5 @@ bindkey '^ ' autosuggest-accept
 source /home/mip/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias luamake=/home/mip/gitStuffs/lua-language-server/3rd/luamake/luamake

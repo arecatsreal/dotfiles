@@ -1,13 +1,7 @@
 #!/bin/sh
 
 vpnstatus () {
-    STAT=$(ip addr | grep proton | wc -l)
-    if [ $STAT -eq 2 ]
-    then
-	echo "Connected"
-    else
-	echo "Disconneced"
-    fi
+	vpnStatus.sh
 }
 ldate () {
     echo $(date +"%a %b %y/%m/%d %R:%S")

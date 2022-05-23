@@ -25,18 +25,12 @@ settings:
     global: false
   content.proxy:
     global: system
+  content.user_stylesheets:
+    global: $HOME/.config/qutebrowser/sytlesheets/catppuccin.css
   content.webrtc_ip_handling_policy:
     global: all-interfaces
-  fonts.default_family:
-    global: UbuntuMono Nerd Font Mono
-  fonts.tabs.unselected:
-    global: default_size default_family
-  fonts.web.family.fixed:
-    global: UbuntuMono Nerd Font Mono
-  fonts.web.family.serif:
-    global: UbuntuMono Nerd Font Mono
-  fonts.web.family.standard:
-    global: UbuntuMono Nerd Font Mono
+  qt.highdpi:
+    global: true
   statusbar.show:
     global: never
   url.searchengines:

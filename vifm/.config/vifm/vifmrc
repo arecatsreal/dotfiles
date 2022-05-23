@@ -16,7 +16,7 @@ source $HOME/.config/vifm/scripts/favicons.vifm
 
 " Custom Commands
 command! Extract source $HOME/.zsource/ex; ex %c
-nnoremap e :Extract<cr>
+nnoremap x :Extract<cr>
 command! Pack source $HOME/.zsource/pack; echo -n 'Archive Type?: '; read VIFMPACK; pack %c $VIFMPACK
 nnoremap <C-p> :Pack<cr>
 command! SetwallpFill feh --bg-fill %c
@@ -31,6 +31,12 @@ nnoremap q :quit<cr>
 nnoremap o :view<cr>
 nnoremap O :only<cr>
 nnoremap <C-t> :tree!<cr>
+nnoremap n j
+nnoremap e k
+nnoremap i l
+vnoremap n j
+vnoremap e k
+vnoremap i l
 
 " File Opening
 source $HOME/.config/vifm/scripts/file_opening.vifm

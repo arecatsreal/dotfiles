@@ -46,6 +46,7 @@ Plug 'AdamTillou/vim-imager'
 
 "Perlang stuff
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
+Plug 'dag/vim-fish'
 
 "Session Saveing 
 Plug 'tpope/vim-obsession'
@@ -53,7 +54,16 @@ Plug 'tpope/vim-obsession'
 "File Mangagement
 Plug 'vifm/vifm.vim'
 
+Plug 'beardedfoo/vim-colemak'
+
 call plug#end() 
+
+" Colmak Mod-DH
+"nnoremap l i
+"nnoremap m h
+"nnoremap n j
+"nnoremap e k
+"nnoremap i l
 
 "Goyo
 let g:goyo_width = 120
@@ -72,6 +82,7 @@ nnoremap <silent> <Leader>f :Vifm<CR>
 let g:vim_markdown_folding_disabled = 1
 set conceallevel=2
 set textwidth=120 " Sets the text with when using gq
+nnoremap <silent> <Leader>tt :TableModeToggle<CR>
 
 "Vim Wiki
 let g:vimwiki_list = [{'path': '~/Notes/',
@@ -109,15 +120,15 @@ set ts=4 sw=4
 
 "Spits 
 "set splitbelow splitright
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-nnoremap <silent> <C-Right> :vert res +3<CR>
-nnoremap <silent> <C-Left> :vert res -3<CR>
-nnoremap <silent> <C-Up> :res +3<CR>
-nnoremap <silent> <C-Down> :res -3<CR>
+" nnoremap <C-m> <C-w>m
+" nnoremap <C-n> <C-w>n
+" nnoremap <C-e> <C-w>e
+" nnoremap <C-i> <C-w>i
+" 
+" nnoremap <silent> <C-Right> :vert res +3<CR>
+" nnoremap <silent> <C-Left> :vert res -3<CR>
+" nnoremap <silent> <C-Up> :res +3<CR>
+" nnoremap <silent> <C-Down> :res -3<CR>
 
 "Vim-go
 let g:go_def_mapping_enabled = 0
@@ -136,6 +147,7 @@ autocmd BufRead,BufNewFile *.org set filetype=org
 autocmd BufRead,BufNewFile *.groff set filetype=groff
 autocmd BufRead,BufNewFile *.roff set filetype=roff
 autocmd BufRead,BufNewFile *.txt set filetype=text
+
 "Spellcheck for md and txt files
 autocmd FileType markdown setlocal spell
 autocmd FileType text setlocal spell
@@ -168,3 +180,4 @@ lua require'lspconfig'.bashls.setup{}
 lua require'lspconfig'.gopls.setup{}
 lua require'lspconfig'.clangd.setup{}
 lua require'lspconfig'.pyright.setup{}
+lua require'lspconfig'.sumneko_lua.setup{}

@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-hc() {
-    herbstclient "$@"
-}
-
-PATH="$PATH:$USER/.config/herbstluftwm/scripts"
+PATH="$PATH:$HOME/.config/herbstluftwm"
+source $HOME/.config/herbstluftwm/hc
+dynamicBorderWidth.sh &
 
 hc emit_hook reload
 
@@ -24,33 +22,35 @@ hc keybind $MOD-p spawn dmenu_run
 hc keybind $MOD-Control-p spawn p
 hc keybind $MOD-b spawn nobar
 hc keybind $MOD-i spawn imagecopy
-hc keybind $MOD-f spawn qutebrowser
+hc keybind $MOD-t spawn qutebrowser
 hc keybind $MOD-c spawn OFpicom
 hc keybind $MOD-Shift-b spawn date_read
 hc keybind $MOD-v spawn mpv-yt
+hc keybind $MOD-r xsel | espeak
+hc keybind $MOD-d spawn speedcrunch
 
 # focusing clients
 hc keybind $MOD-h             focus left
-hc keybind $MOD-j             focus down
-hc keybind $MOD-k             focus up
-hc keybind $MOD-l             focus right
-                              
+hc keybind $MOD-n             focus down
+hc keybind $MOD-e             focus up
+hc keybind $MOD-i             focus right
+
 # moving clients              
 hc keybind $MOD-Shift-h       shift left
-hc keybind $MOD-Shift-j       shift down
-hc keybind $MOD-Shift-k       shift up
-hc keybind $MOD-Shift-l       shift right
+hc keybind $MOD-Shift-n       shift down
+hc keybind $MOD-Shift-e       shift up
+hc keybind $MOD-Shift-i       shift right
 
 # splitting frames
-hc keybind $MOD-o             split  right  0.5
-hc keybind $MOD-u             split  bottom   0.5
+hc keybind $MOD-y             split  right  0.5
+hc keybind $MOD-l             split  bottom   0.5
 
 # resizing frames
 resizestep=0.05
 hc keybind $MOD-Control-h      resize left +$resizestep
-hc keybind $MOD-Control-j      resize down +$resizestep
-hc keybind $MOD-Control-k      resize up +$resizestep
-hc keybind $MOD-Control-l      resize right +$resizestep
+hc keybind $MOD-Control-n      resize down +$resizestep
+hc keybind $MOD-Control-e      resize up +$resizestep
+hc keybind $MOD-Control-i      resize right +$resizestep
 
 # tags
 tag_names=("1" "2" "3" "4" "5" "6" "7" "8" "9")
@@ -72,13 +72,13 @@ hc keybind $MOD-comma  use_index -1 --skip-visible
 
 # layouting
 hc keybind $MOD-Shift-g close_or_remove
-hc keybind $MOD-e fullscreen toggle
+hc keybind $MOD-f fullscreen toggle
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.
 # I.e. if there are two windows within a frame, the grid layout is skipped.
 hc keybind $MOD-space                                                           \
             or , and . compare tags.focus.curframe_wcount = 2                   \
-                     . cycle_layout +1 vertical horizontal max vertical grid    \
+                     . cycle_layout +1 vertical max grid    \
                , cycle_layout +1
 
 # mouse
@@ -88,12 +88,13 @@ hc mousebind $MOD-Button2 zoom
 hc mousebind $MOD-Button3 resize
 
 # theme
+
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
-hc set frame_border_active_color '#bd93f9'
-hc set frame_border_normal_color '#44475a'
-hc set frame_bg_normal_color '#bd93f9'
-hc set frame_bg_active_color '#44475a'
+hc set frame_border_active_color '#C9CBFF'
+hc set frame_border_normal_color '#575268'
+hc set frame_bg_normal_color '#C9CBFF'
+hc set frame_bg_active_color '#575268'
 hc set frame_border_width 1
 hc set always_show_frame 0
 hc set frame_bg_transparent 1
@@ -101,18 +102,18 @@ hc set frame_transparent_width 0
 hc set frame_padding 0
 hc set focus_follows_mouse 1
 
-hc attr theme.active.color '#bd93f9'
-hc attr theme.normal.color '#44475a'
+hc attr theme.active.color '#C9CBFF'
+hc attr theme.normal.color '#575268'
 hc attr theme.urgent.color orange
 hc attr theme.inner_width 0
 hc attr theme.inner_color black
-hc attr theme.border_width 1
+hc attr theme.border_width 2
 hc attr theme.floating.border_width 4
 hc attr theme.floating.outer_width 1
 hc attr theme.floating.outer_color black
-hc attr theme.active.inner_color '#3E4A00'
-hc attr theme.active.outer_color '#3E4A00'
-hc attr theme.background_color '#141414'
+hc attr theme.active.inner_color '#F8BD96'
+hc attr theme.active.outer_color '#F8BD96'
+hc attr theme.background_color '#575268'
 
 hc set window_gap 0
 hc set frame_gap 0

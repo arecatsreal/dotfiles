@@ -48,19 +48,19 @@ colors:
 # ...
 font:
   normal:
-    family: UbuntuMono Nerd Font Mono
+    family: ComicCodeLigatures Nerd Font
     style: Regular
 
   bold:
-    family: UbuntuMono Nerd Font Mono
+    family: ComicCodeLigatures Nerd Font
     style: Bold
 
   italic:
-    family: UbuntuMono Nerd Font Mono
+    family: ComicCodeLigatures Nerd Font
     style: Italic
 
   bold_italic:
-    family: UbuntuMono Nerd Font Mono
+    family: ComicCodeLigatures Nerd Font
     style: Bold Italic
 
-  size: 15
+  size: 13

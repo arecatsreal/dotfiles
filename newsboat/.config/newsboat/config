@@ -1,12 +1,12 @@
 show-read-feeds yes
 auto-reload yes
 
-bind-key j down
-bind-key k up
-bind-key j next articlelist
-bind-key k prev articlelist
-bind-key J next-feed articlelist
-bind-key K prev-feed articlelist
+bind-key n down
+bind-key e up
+bind-key n next articlelist
+bind-key e prev articlelist
+bind-key N next-feed articlelist
+bind-key E prev-feed articlelist
 bind-key ; macro-prefix
 
 browser "mpv %u"
