@@ -25,7 +25,7 @@ config.set('content.headers.referer', 'same-domain')
 config.bind('z', 'hint links spawn mpv --fs {hint-url}') # Opens mpv with the hinted url.
 config.set("colors.webpage.preferred_color_scheme", "dark") # Dark mode.
 config.set("colors.webpage.darkmode.policy.images", "never")
-config.set('qt.args', ['disable-remote-fonts'])
+#config.set('qt.args', ['disable-remote-fonts'])
 config.bind('xx', 'config-cycle statusbar.show always never') # Hide and unhide the bottom bar.
 config.bind('\\u', 'hint links spawn -u untrack-url -O {hint-url}')
 config.bind('\\U', 'spawn -u untrack-url -p {clipboard}')
@@ -61,15 +61,22 @@ config.bind('zzm', 'config-cycle -p -t -u *://{url:host}/* content.javascript.en
 config.set('hints.chars', 'arstneio')
 
 #  Fonts
-config.set("fonts.default_family", "ComicCodeLigatures Nerd Font")
-config.set("fonts.default_size", "13pt")
-config.set("fonts.web.family.cursive", 'ComicCodeLigatures Nerd Font')
-config.set("fonts.web.family.fantasy", 'ComicCodeLigatures Nerd Font')
-config.set("fonts.web.family.fixed", 'ComicCodeLigatures Nerd Font')
-config.set("fonts.web.family.sans_serif", 'ComicCodeLigatures Nerd Font')
-config.set("fonts.web.family.serif", 'ComicCodeLigatures Nerd Font')
-config.set("fonts.web.family.standard", 'ComicCodeLigatures Nerd Font')
-#config.set("fonts.web.family.*", "ComicCodeLigatures Nerd Font")
+#config.set("fonts.default_family", "ComicCodeLigatures Nerd Font")
+#config.set("fonts.default_size", "11pt")
+#config.set("fonts.web.family.cursive", 'ComicCodeLigatures Nerd Font')
+#config.set("fonts.web.family.fantasy", 'ComicCodeLigatures Nerd Font')
+#config.set("fonts.web.family.fixed", 'ComicCodeLigatures Nerd Font')
+#config.set("fonts.web.family.sans_serif", 'ComicCodeLigatures Nerd Font')
+#config.set("fonts.web.family.serif", 'ComicCodeLigatures Nerd Font')
+#config.set("fonts.web.family.standard", 'ComicCodeLigatures Nerd Font')
+config.set("fonts.default_family", "VictorMono Nerd Font")
+config.set("fonts.default_size", "11pt")
+config.set("fonts.web.family.cursive", 'VictorMono Nerd Font')
+config.set("fonts.web.family.fantasy", 'VictorMono Nerd Font')
+config.set("fonts.web.family.fixed", 'VictorMono Nerd Font')
+config.set("fonts.web.family.sans_serif", 'VictorMono Nerd Font')
+config.set("fonts.web.family.serif", 'VictorMono Nerd Font')
+config.set("fonts.web.family.standard", 'VictorMono Nerd Font')
 
 # Javascipt Whitelist
 config.set("content.javascript.enabled", True, '*://account.protonmail.com/*')
@@ -96,13 +103,13 @@ elif dot.strip() == 'thinkpad':
 
 # Themeing
 #import dracula.draw
-config.source('catppuccin.py')
+config.source('nord-qutebrowser.py')
 
 # Load existing settings made via :set
 config.load_autoconfig()
 
 # Sites
-config.set('content.user.stylesheets', '$HOME/.config/qutebrowser/sytlesheets/catppuccin.css')
+#config.set('content.user.stylesheets', '$HOME/.config/qutebrowser/sytlesheets/catppuccin.css')
 
 #dracula.draw.blood(c, {
     #'spacing': {

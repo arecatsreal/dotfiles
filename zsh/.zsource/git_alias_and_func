@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+git_alias_and_func () {
+	#Git
+	gc () {; COMMITSTR="$*"; git commit -m $COMMITSTR; }
+	alias gca="git commit --amend"
+	alias gp="git push"
+	alias gcls="git restore --staged *" # Clears the git staging
+	# Sets the repo remote to github.com/arecatsreal/<Dir Name> via ssh
+	#gfix () {; git remote set-url origin git@github.com:arecatsreal/$1; }  
+	alias gs="git status"
+	alias gmgn="touch .gitignore"
+	ga () {
+			if [ $( echo $1 | wc -w ) = 0 ]; then
+			git restore --staged .
+			git add .
+			git status
+		else
+			git add $1
+			git status
+		fi
+	}
+	# Github Stuff
+	alias ghrc="gh repo create"
+}

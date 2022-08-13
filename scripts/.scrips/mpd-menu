@@ -1,0 +1,32 @@
+#!/bin/bash
+
+MENU=dmenu
+
+main_screen (){
+	CURRETSONG=$(mpc current)
+	CURRENTVOL=$(mpc volume)
+	ACTION=$(printf '%s\n%s\n%s\n%s\n%s\n%s' "$CURRETSONG" "Play/Pause" "Next Song" "Previous Song"  "$CURRENTVOL" "exit" | $MENU)
+	option_slection
+}
+
+vol_set (){
+	X=0; while [ $X -lt 1 ]; do
+		NEWVOL=$(printf "[+-]<num>" | $MENU)
+		if [ "$NEWVOL" != "[+-]<num>" ]; then
+			X=1
+			mpc volume $NEWVOL
+		fi
+	done
+}
+
+option_slection (){
+	case $ACTION in
+		'Play/Pause') mpc toggle;;
+		'Next Song') mpc next;;
+		'Previous Song') mpc prev;;
+		$CURRENTVOL) vol_set;;
+		'exit') exit 0;;
+	esac
+	main_screen 
+}
+main_screen

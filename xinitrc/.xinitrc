@@ -4,16 +4,17 @@
 #exec ~/.config/dwm/statusBar.sh &
 #exec ~/.config/polybar/launch.sh & 
 #nitrogen --restore &
-~/cowsdf.sh &
+#~/cowsdf.sh &
 
 #fcitx
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export $(dbus-launch)
-#otd &
-#pipewire &
-#pipewire-pulse &
+
+# Pipewire
+gentoo-pipewire-launcher &
+
 dunst &
-syncthing --no-browser &
+#syncthing --no-browser &
 #emacs --bg-daemon &
 #dwm_bar &
 
@@ -30,8 +31,8 @@ keys (){
 # keys &
 
 #Video Setings
-#displaysetup.sh 
-display_kgpe-d16.sh
+displaysetup.sh &
+#display_kgpe-d16.sh
 ~/.fehbg &
 
 #Run WM

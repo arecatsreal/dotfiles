@@ -239,6 +239,9 @@ filextype */
         \ {View in thunar}
         \ Thunar %f &,
 
+" Plain Text 
+filextype <text/plain> nvim %f
+
 " Syntax highlighting in preview
 "
 " Explicitly set highlight type for some extensions

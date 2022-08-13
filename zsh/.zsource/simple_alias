@@ -1,0 +1,43 @@
+#!/bin/zsh
+
+simple_alias () {
+	#Networking Alias
+	alias gateway="ip route | grep default"
+	alias retor="sudo sv restart tor"
+	alias exip="curl -q -L ifconfig.me"
+	alias tping="torify ping"
+	alias ip="ip --color=auto"
+	iploc (); {; curl -q "ipinfo.io/$1" ;}
+	alias speed="speedtest-cli"
+
+	# Mulvad-Vpn
+	alias mc="mullvad connect"
+	alias mdc="mullvad disconnect"
+	alias mrc="mullvad reconnect"
+	alias mcl="mullvad relay set location"
+
+	#Program Short cuts
+	alias cdl="rm -fr ~/Downloads/*"
+	alias tmloop="while true; do; date +"%T" && sleep 1; done"
+	alias reload="source ~/.zshrc && rm ./1"
+	alias nb="newsboat -u ~/sync/newsboat/urls -c ~/sync/newsboat/newsboat_cache.db"
+	alias ta="tmux a"
+	tarball () {; tar -czvf $1.tar.gz $1; }
+	tardir() {; for i in *; do tar -czf $i.tar.gz $i; rm -fr $i; done; }
+	alias cls="clear" # The one thing windows did right
+	alias disk="df -h -t ext4"
+	alias gr="go run *.go"
+	alias getdes="youtube-dl --get-description '$(xclip -o -selection clips)' | cat"
+	alias hc="herbstclient"
+	alias cp="cp -r"
+	alias ra="xsel | espeak"
+	alias ar="aria2c"
+	alias bs="barriers -c ~/.config/barrier/barrier.conf"
+	alias s="spt"
+	alias timer="go-timer -alarmFile ~/sync/bin/alarm.mp3"
+	alias wn="devour mpv --loop-file ~/NAS/Media/White_Noise.webm"
+	alias y="ytfzf -t"
+	alias black="colour black"
+	alias copy="xclip -selection clipbord"
+	alias pm="pulsemixer"
+}

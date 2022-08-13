@@ -3,9 +3,10 @@
 exports () {
 export EDITOR=nvim
 export PAGER=less
-export BROWSER=firefox
+export BROWSER=qutebrowser
 export TBROESER=lynx
 export FILEM=vifm
+export WEECHAT_HOME=~/.weechat
 
 # Golang
 export GOPATH=~/go/src

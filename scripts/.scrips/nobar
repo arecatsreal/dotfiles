@@ -1,12 +1,12 @@
 #!/bin/sh
 
 vpnstatus () {
-	vpnStatus.sh
+	vpnStatus.sh dunst
 }
 ldate () {
     echo $(date +"%a %b %y/%m/%d %R:%S")
 	# Tiawan Time.
-#    echo $(TZ=Asia/Taipei date +"%a %b %D %R:%S :TW")
+    echo "TW: "$(TZ=Asia/Taipei date +"%y/%m/%d %R:%S")
 }
 
 ram () {
@@ -30,21 +30,26 @@ cpu_usage () {
 }
 
 lanip () {
-	hostname -I | awk '{print  $1}' &
+	hostname -I | awk '{print  $1}'
 }
 
 exip () {
 	curl -L ifconfig.me &
 }
 
-notify-send "No Bar" "$(ldate)
+out () {
+	echo "$(ldate)
 Vpn: $(vpnstatus)
-Ip: $(lanip)
+Ip: $(lanip) 
 Exip: $(exip)
 Cpu: $(cpu_usage)
 Ram: $(ram)
 Uptime: $(timeup)
 Kernal: $(kernal)
 
----Disk Usage---
-$(disk)"
+<b>--- Disk Usage ---</b>
+$(disk)
+"
+}
+
+notify-send "No Bar" "$(out)"

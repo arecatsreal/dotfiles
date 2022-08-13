@@ -1,5 +1,5 @@
 " VIFM COLORS
-" dracula
+" arecatsreal's unitheme
 " based on: https://github.com/istib/dotfiles/blob/master/vifm/vifm-colors
 
 " Default = -1 = None, can be used for transparency or default color
@@ -33,7 +33,7 @@ highlight Selected        cterm=bold ctermfg=magenta    ctermbg=default
 highlight CurrLine        cterm=bold ctermfg=236    ctermbg=blue
 
 highlight WildMenu        cterm=none,reverse ctermfg=blue ctermbg=236
-highlight CmdLine         cterm=none ctermfg=255 ctermbg=236
+"highlight CmdLine         cterm=none ctermfg=255 ctermbg=236
 highlight ErrorMsg        cterm=none ctermfg=red ctermbg=black
 
 highlight Directory       cterm=none ctermfg=blue ctermbg=default

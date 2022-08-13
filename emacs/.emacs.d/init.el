@@ -42,6 +42,7 @@
   (setq evil-want-integration t)
   (evil-collection-init))
 
+
 ;; Clean Folders
 (use-package no-littering)
 
@@ -59,13 +60,16 @@
 ;(use-package dracula-theme
 ;  :config
 ;  (load-theme 'dracula t))
-(use-package doom-themes
-  :ensure t
-  :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-dracula t)
+;(use-package doom-themes
+  ;:ensure t
+  ;:config
+  ;;; Global settings (defaults)
+  ;(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        ;doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  ;(load-theme 'doom-dracula t)
+(use-package catppuccin-theme
+ :config
+ (setq catppuccin-height-title1 1.5)
 
   ;; Enable flashing mode-line on errors
   ;(doom-themes-visual-bell-config)
@@ -75,7 +79,7 @@
   ;(setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
   ;(doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+  ;(doom-themes-org-config))
 
 (scroll-bar-mode 0) ; Disable Scrollbars
 (use-package rainbow-delimiters
