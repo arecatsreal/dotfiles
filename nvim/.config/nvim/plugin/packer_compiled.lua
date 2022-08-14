@@ -74,6 +74,11 @@ _G.packer_plugins = {
     path = "/home/mip/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  aniseed = {
+    loaded = true,
+    path = "/home/mip/.local/share/nvim/site/pack/packer/start/aniseed",
+    url = "https://github.com/Olical/aniseed"
+  },
   ["auto-pairs"] = {
     loaded = true,
     path = "/home/mip/.local/share/nvim/site/pack/packer/start/auto-pairs",
@@ -108,6 +113,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mip/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
+  },
+  conjure = {
+    loaded = true,
+    path = "/home/mip/.local/share/nvim/site/pack/packer/start/conjure",
+    url = "https://github.com/Olical/conjure"
+  },
+  ["fennel.vim"] = {
+    loaded = true,
+    path = "/home/mip/.local/share/nvim/site/pack/packer/start/fennel.vim",
+    url = "https://github.com/jaawerth/fennel.vim"
   },
   firenvim = {
     loaded = true,

@@ -13,11 +13,16 @@ require('packer').startup(function(use)
 
 		-- Perlang stuff
 --		use { 'fatih/vim-go', run = ':GoUpdateBinaries' }
-		use {
+		use { -- Rust
 			'simrat39/rust-tools.nvim',
 			requires = {{'neovim/nvim-lspconfig'}}
 		}
-
+		-- Fennel
+		use 'jaawerth/fennel.vim'
+		use {
+			'Olical/aniseed',
+			requires = {{'Olical/conjure'}}
+		}
 		-- Theme
 		-- use 'Mofiqul/dracula.nvim'
 		-- use 'arcticicestudio/nord-vim'

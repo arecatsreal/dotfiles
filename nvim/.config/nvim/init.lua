@@ -1,8 +1,6 @@
 local fn = vim.fn
 local o = vim.o
 local g = vim.g
-local wo = vim.wo
-local bo = vim.bo
 local map = vim.keymap.set
 
 --- Packer Bootstrap ---
@@ -25,7 +23,10 @@ o.termguicolors = true
 --- Mapings ---
 g.mapleader = " " -- Map leader key
 
+-- Reload main init.lua
 map('n', '<F5>', ':source $HOME/.config/nvim/init.lua<CR>', {noremap = true})
+
+-- Mltiline tabing
 map('v', '<Tab>', '>')
 map('v', 'S-<Tab>', '<')
 
@@ -37,6 +38,11 @@ map('n', 'p', '"+p')
 map('v', 'd', '"+d')
 map('n', 'dd', '"+dd')
 map('n', 'D', '"+D')
+
+-- Keybord shortcutr for multiline commands.
+map('v', 'M', ':norm M', {noremap = true}) -- Change M ot I for vim without colemak bindings.
+map('v', 'A', ':norm A', {noremap = true})
+map('v', 'R', ':s/', {noremap = true}) -- Regex
 
 --- Autocommand ---
 vim.cmd("autocmd BufRead,BufNewFile *.md set filetype=markdown")
