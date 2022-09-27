@@ -56,7 +56,6 @@ require('packer').startup(function(use)
 				{'hrsh7th/cmp-cmdline'}
 		}
 	}
-
 		use {
 			'saadparwaiz1/cmp_luasnip',
 			requires = {
@@ -74,10 +73,19 @@ require('packer').startup(function(use)
 		use 'rhysd/vim-grammarous'
 		use 'junegunn/limelight.vim'
 		use 'AdamTillou/vim-imager'
+		use 'h-hg/fcitx.nvim'
 
 		-- File Mangagement
 		use 'vifm/vifm.vim'
+		use {
+			'kyazdani42/nvim-tree.lua',
+			requires = {
+				{'kyazdani42/nvim-web-devicons' }, -- File Icons
+			}
+		}
+		use 'jremmen/vim-ripgrep'
 
+		-- Rebinds stuff for colemak
 		use 'beardedfoo/vim-colemak'
 
   -- Automatically set up your configuration after cloning packer.nvim

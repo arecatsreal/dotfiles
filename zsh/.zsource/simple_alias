@@ -11,10 +11,10 @@ simple_alias () {
 	alias speed="speedtest-cli"
 
 	# Mulvad-Vpn
-	alias mc="mullvad connect"
-	alias mdc="mullvad disconnect"
-	alias mrc="mullvad reconnect"
-	alias mcl="mullvad relay set location"
+	#alias mc="mullvad connect"
+	#alias mdc="mullvad disconnect"
+	#alias mrc="mullvad reconnect"
+	#alias mcl="mullvad relay set location"
 
 	#Program Short cuts
 	alias cdl="rm -fr ~/Downloads/*"
@@ -40,4 +40,6 @@ simple_alias () {
 	alias black="colour black"
 	alias copy="xclip -selection clipbord"
 	alias pm="pulsemixer"
+	alias w="cd ~/Notes && nvim ~/Notes/index.md +'source ~/.config/nvim/lua/vimwiki_open.lua'"
+	tagre () {; find . -type f -exec sed -i "1i $*" '{}' \;}
 }

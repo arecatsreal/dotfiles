@@ -50,6 +50,7 @@ settings:
       gl: https://gitlab.com/explore?utf8=%E2%9C%93&name={}&sort=latest_activity_desc
       go: http://gpo.zugaina.org/Search?search={}
       in: https://yewtu.be/search?q={}
+      j: https://jisho.org/search?utf8=%E2%9C%93&keyword={}
       lu: https://lutris.net/games?q={}
       ma: https://mangadex.org/titles?q={}
       mal: https://myanimelist.net/anime.php?type=all&keyword={}

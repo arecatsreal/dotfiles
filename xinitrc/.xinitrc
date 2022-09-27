@@ -1,4 +1,5 @@
 #!/bin/sh
+eval "$(dbus-launch --sh-syntax --exit-with-session)"
 #Rice Stuff
 #picom --experimental-backends & #compton but not compton
 #exec ~/.config/dwm/statusBar.sh &
@@ -6,7 +7,17 @@
 #nitrogen --restore &
 #~/cowsdf.sh &
 
-#fcitx
+# Multi lang input
+#export GTX_IM_MODULE=ibus
+#export QT_IM_MODULE=ibus
+#export XMODIFIERS=@im=ibus
+#export GLFW_IM_MODULE=ibus # Kitty
+#ibus-daemon -drx
+export XMODIFIERS="@im=fcitx"
+export QT_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
+fcitx -d &
+
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export $(dbus-launch)
 
@@ -36,7 +47,7 @@ displaysetup.sh &
 ~/.fehbg &
 
 #Run WM
-#exec ~/sync/bin/dwm
+#exec dwm
 #exec ~/gitStuffs/dwm/dwm
 #exec qtile start
 #exec emacs #I wish this was a joke lul.

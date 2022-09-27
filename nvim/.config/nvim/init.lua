@@ -19,6 +19,7 @@ o.textwidth = 120  -- Sets the text with when using gq q
 o.spelllang = "en"
 --o.completeopt = menu,menuone,noselect
 o.termguicolors = true
+o.laststatus =3 -- Global status line
 
 --- Mapings ---
 g.mapleader = " " -- Map leader key

@@ -9,23 +9,26 @@ vim.api.nvim_command('packadd packer.nvim')
 
 local no_errors, error_msg = pcall(function()
 
-  local time
-  local profile_info
-  local should_profile = false
-  if should_profile then
-    local hrtime = vim.loop.hrtime
-    profile_info = {}
-    time = function(chunk, start)
-      if start then
-        profile_info[chunk] = hrtime()
-      else
-        profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
-      end
+_G._packer = _G._packer or {}
+_G._packer.inside_compile = true
+
+local time
+local profile_info
+local should_profile = false
+if should_profile then
+  local hrtime = vim.loop.hrtime
+  profile_info = {}
+  time = function(chunk, start)
+    if start then
+      profile_info[chunk] = hrtime()
+    else
+      profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
     end
-  else
-    time = function(chunk, start) end
   end
-  
+else
+  time = function(chunk, start) end
+end
+
 local function save_profiles(threshold)
   local sorted_times = {}
   for chunk_name, time_taken in pairs(profile_info) do
@@ -38,8 +41,10 @@ local function save_profiles(threshold)
       results[i] = elem[1] .. ' took ' .. elem[2] .. 'ms'
     end
   end
+  if threshold then
+    table.insert(results, '(Only showing plugins that took longer than ' .. threshold .. ' ms ' .. 'to load)')
+  end
 
-  _G._packer = _G._packer or {}
   _G._packer.profile_output = results
 end
 
@@ -119,6 +124,11 @@ _G.packer_plugins = {
     path = "/home/mip/.local/share/nvim/site/pack/packer/start/conjure",
     url = "https://github.com/Olical/conjure"
   },
+  ["fcitx.nvim"] = {
+    loaded = true,
+    path = "/home/mip/.local/share/nvim/site/pack/packer/start/fcitx.nvim",
+    url = "https://github.com/h-hg/fcitx.nvim"
+  },
   ["fennel.vim"] = {
     loaded = true,
     path = "/home/mip/.local/share/nvim/site/pack/packer/start/fennel.vim",
@@ -179,10 +189,20 @@ _G.packer_plugins = {
     path = "/home/mip/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "/home/mip/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/mip/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/mip/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["rainbow_parentheses.vim"] = {
     loaded = true,
@@ -234,6 +254,11 @@ _G.packer_plugins = {
     path = "/home/mip/.local/share/nvim/site/pack/packer/start/vim-polyglot",
     url = "https://github.com/sheerun/vim-polyglot"
   },
+  ["vim-ripgrep"] = {
+    loaded = true,
+    path = "/home/mip/.local/share/nvim/site/pack/packer/start/vim-ripgrep",
+    url = "https://github.com/jremmen/vim-ripgrep"
+  },
   ["vim-surround"] = {
     loaded = true,
     path = "/home/mip/.local/share/nvim/site/pack/packer/start/vim-surround",
@@ -252,6 +277,13 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+
+_G._packer.inside_compile = false
+if _G._packer.needs_bufread == true then
+  vim.cmd("doautocmd BufRead")
+end
+_G._packer.needs_bufread = false
+
 if should_profile then save_profiles() end
 
 end)
