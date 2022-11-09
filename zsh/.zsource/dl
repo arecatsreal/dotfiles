@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+dl () {
+	FZF_IN=false
+	which fzf 2> /dev/null > /dev/null && FZF_IN=true
+	if [[ $FZF_IN ]]; then
+		PICK=$(echo "aria2c\ngit\nyt-dl" | fzf --height=5 --reverse)
+		case $PICK in
+			ariar2c) aria2c -x8 "$1" ;;
+			git) git clone "$1" ;;
+			yt-dl) yt-dlp "$1" ;;
+			*) echo "Error invalad selection!" ;;
+		esac
+	else
+		echo "fzf not installed."
+	fi
+}

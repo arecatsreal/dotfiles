@@ -1,0 +1,10 @@
+#!/usr/bin/env bash 
+
+# Tests to see if $1 is a binary in $PATH 
+# if yes then will print true to stdout,
+# if not then will print false to stdout.
+isin () {
+	IN=false
+	which $1 2> /dev/null > /dev/null && IN=true
+	printf $IN
+}

@@ -1,55 +1,53 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
-complex_prog_alias () {
-    # ls/exa
-    # Makes shur exa is installed before aliasing it to ls.
-    # So this scrip can be used with out exa installed on the system.
-    EXAIN=false
-    exa --version 2> /dev/null > /dev/null && {
-        alias ll="exa -lh"
-        alias lla="exa -lha"
-        alias ls="exa"
-        alias la="exa -a"
-        EXAIN=true
-    }
-    if [ $EXAIN = false ]; then
-        alias ll="ls -lh --color"
-        alias lla="ls -lha --color"
-        alias ls="ls --color"
-        alias la="ls --color -A"
-    fi
-
-    # cat/bat
-    BATIN=false
-    bat --version 2> /dev/null > /dev/null && {
-      alias cat="bat -n"
-      alias bat="bat -n"
-      export BAT_THEME="Dracula"
-        BATIN=true
-    }
-    batcat --version 2> /dev/null > /dev/null && {
-      alias cat="batcat -n"
-      alias bat="batcat -n"
-      export BAT_THEME="base16"
-        BATIN=true
-    }
-    if [ $BATIN = false ]; then
-      alias cat="cat -n"
-    fi
-
-    # Rip grep/grp
-    RGIN=false
-    rg --version 2> /dev/null > /dev/null && {
-      alias g="rg"
-      RGIN=true
-    }
-    if [ $RGIN = false ]; then
-      alias g="grep"
-    fi
-
-    # Top
-    TOP=top
-    btop --version 2> /dev/null > /dev/null && TOP=btop
-    if [ "$TOP" != "btop" ]; then; htop --version 2> /dev/null > /dev/null && TOP=htop; fi
-    alias top="$TOP"
+# ls/exa
+# Makes shur exa is installed before aliasing it to ls.
+# So this scrip can be used with out exa installed on the system.
+EXAIN=false
+exa --version 2> /dev/null > /dev/null && {
+  alias ll="exa -lh"
+  alias lla="exa -lha"
+  alias ls="exa"
+  alias la="exa -a"
+  EXAIN=true
 }
+if [ $EXAIN = false ]; then
+  alias ll="ls -lh --color"
+  alias lla="ls -lha --color"
+  alias ls="ls --color"
+  alias la="ls --color -A"
+fi
+
+# cat/bat
+BATIN=false
+bat --version 2> /dev/null > /dev/null && {
+  alias cat="bat -n"
+  alias bat="bat -n"
+  export BAT_THEME="Dracula"
+    BATIN=true
+}
+batcat --version 2> /dev/null > /dev/null && {
+  alias cat="batcat -n"
+  alias bat="batcat -n"
+  export BAT_THEME="base16"
+    BATIN=true
+}
+if [ $BATIN = false ]; then
+  alias cat="cat -n"
+fi
+
+# Rip grep/grp
+RGIN=false
+rg --version 2> /dev/null > /dev/null && {
+  alias g="rg"
+  RGIN=true
+}
+if [ $RGIN = false ]; then
+  alias g="grep"
+fi
+
+# Top
+TOP=top
+btop --version 2> /dev/null > /dev/null && TOP=btop
+if [ "$TOP" != "btop" ]; then; htop --version 2> /dev/null > /dev/null && TOP=htop; fi
+alias top="$TOP"

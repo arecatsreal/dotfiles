@@ -1,15 +1,10 @@
 #!/bin/zsh
 
 neofetch
-ZSOURCE="$HOME/.zsource"
-
-# Exports
-source $ZSOURCE/exports 
-exports
 
 # Enable colors and change prompt:
 autoload -U colors && colors
-source $ZSOURCE/prompt && prompt
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$fg[yellow]%}🍌%b "
 
 # Pretty-print man pages.
 export LESS_TERMCAP_mb=$'\E[1;35m' # Magenta
@@ -20,22 +15,6 @@ export LESS_TERMCAP_so=$'\E[1;33m' # Yellow
 export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[1;36m' # Cyan
 
-#Alias
-source $ZSOURCE/package_manager_alias && package_manager_alias
-source $ZSOURCE/complex_prog_alias && complex_prog_alias
-source $ZSOURCE/simple_alias && simple_alias
-source $ZSOURCE/git_alias_and_func && git_alias_and_func
-
-# File Manager
-source $ZSOURCE/filem && filem
-
-# Arrive management 
-source $ZSOURCE/ex 
-source $ZSOURCE/pack 
-
-#Functions to lauch emacs
-source $ZSOURCE/emacs
-
 # Functions to change the default settings.
 editor () {; export EDITOR=$* && echo "The editor is set to $EDITOR" && fileOpenAlias;} 
 pager () {; export PAGER=$* && echo "The pager is set to $PAGER"; } 
@@ -44,12 +23,10 @@ tbrowser () {; export TBROESER=$* && echo "The terminal browser is set to $TBROE
 filem () {; export FILEM=$* && echo "The file manager is set to $FILEM" && setfileman; }
 
 #Lynx
-source ~/.zsource/lynx
 duck () {; lynx "duckduckgo.com/lite?kd=-1&kp=-1&q=$*"; }
 alias '?'="duck"
 
 # File/Dir opeing 
-source $ZSOURCE/o 
 fileOpenAlias () {
     alias nba="$EDITOR ~/.config/newsboat/urls"
     alias tconf="$EDITOR ~/.tmux.conf"
@@ -57,12 +34,24 @@ fileOpenAlias () {
 	sp () {; $EDITOR $(mktemp --suffix=.md) ;}
 }
 fileOpenAlias
+confing_dir_edit () {
+    if [[ $2 != "" ]]; then; cd $1; fi
+    CDE_FILE=$(find $1/* -type f | fzf --height=10 --reverse)
+    if [[ $CDE_FILE = "" ]]; then; f $1; else; o $CDE_FILE; fi
+}
+alias zrc="confing_dir_edit $ZSOURCE"
+alias vrc="confing_dir_edit ~/.config/nvim cd" 
+alias vfmc="confing_dir_edit ~/.config/vifm"
+alias pe="confing_dir_edit /etc/portage"
 
-#Tuir (Trminal Reddit)
+# Tuir (Trminal Reddit)
 export TUIR_EDITOR=$EDITOR
 export TUIR_BROWSER=$BROWSER
 alias tuir="tuir --enable-media"
 alias reddit="tuir --enable-media"
+# Edit commandline in $EDITOR
+zstyle :zle:edit-command-line editor $EDITOR -f
+bindkey -M vicmd v edit-command-line
 
 # Plugins
 autoload -U compinit

@@ -1,7 +1,5 @@
 local fn = vim.fn
 local o = vim.o
-local g = vim.g
-local map = vim.keymap.set
 
 --- Packer Bootstrap ---
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -9,7 +7,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
   Packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
   vim.cmd [[packadd packer.nvim]]
 end
-require('plugins') -- Install Plugins
+require('plugins') -- Install Plugins.
+require('mapings') -- Load mappings.
 
 --- Settings ---
 o.number = true -- line numbers
@@ -17,40 +16,21 @@ vim.cmd("let g:vim_markdown_folding_disabled = 1")
 o.conceallevel = 2
 o.textwidth = 120  -- Sets the text with when using gq q
 o.spelllang = "en"
---o.completeopt = menu,menuone,noselect
 o.termguicolors = true
-o.laststatus =3 -- Global status line
+o.laststatus = 3 -- Global status line
+vim.api.nvim_create_user_command('Q', 'bdelete', { nargs = 0 })
 
---- Mapings ---
-g.mapleader = " " -- Map leader key
+--- Auto commands ---
+vim.cmd("autocmd FileType zsh set filetype=bash") -- Changes all files with file type "zsh" to "bash".
 
--- Reload main init.lua
-map('n', '<F5>', ':source $HOME/.config/nvim/init.lua<CR>', {noremap = true})
-
--- Mltiline tabing
-map('v', '<Tab>', '>')
-map('v', 'S-<Tab>', '<')
-
--- Yank and Put from system primayry clipbord.
-map('v', 'y', '"+y')
-map('v', 'p', '"+p')
-map('n', 'y', '"+y')
-map('n', 'p', '"+p')
-map('v', 'd', '"+d')
-map('n', 'dd', '"+dd')
-map('n', 'D', '"+D')
-
--- Keybord shortcutr for multiline commands.
-map('v', 'M', ':norm M', {noremap = true}) -- Change M ot I for vim without colemak bindings.
-map('v', 'A', ':norm A', {noremap = true})
-map('v', 'R', ':s/', {noremap = true}) -- Regex
-
---- Autocommand ---
+-- Better detect file types from exertions. 
 vim.cmd("autocmd BufRead,BufNewFile *.md set filetype=markdown")
 vim.cmd("autocmd BufRead,BufNewFile *.org set filetype=org")
 vim.cmd("autocmd BufRead,BufNewFile *.groff set filetype=groff")
 vim.cmd("autocmd BufRead,BufNewFile *.roff set filetype=roff")
 vim.cmd("autocmd BufRead,BufNewFile *.txt set filetype=text")
+
+-- Auto turn on spell check.
 vim.cmd("autocmd FileType markdown setlocal spell")
 vim.cmd("autocmd FileType text setlocal spell")
 vim.cmd("autocmd FileType org setlocal spell")

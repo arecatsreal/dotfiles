@@ -1,13 +1,12 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-exports () {
 export EDITOR=nvim
+export ROOTEDITOR=doasedit
 export PAGER=less
 export BROWSER=qutebrowser
-export TBROESER=lynx
+export TBROESER=elinks
 export FILEM=vifm
 export WEECHAT_HOME=~/.weechat
 
 # Golang
 export GOPATH=~/go/src
-}

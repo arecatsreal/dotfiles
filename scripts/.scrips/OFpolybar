@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+pgrep -x polybar > /dev/null && {
+	pkill -x polybar
+	exit 0
+}
+polybar &

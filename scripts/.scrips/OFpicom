@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-if [ $(pgrep -x picom | wc -w) != 0 ];then
+pgrep -x picom > /dev/null && {
 	notify-send Killing picom
 	pkill -x picom
-else
-	notify-send Starting picom
-	picom  &
-fi
+	exit 0
+}
+notify-send Starting picom
+picom &

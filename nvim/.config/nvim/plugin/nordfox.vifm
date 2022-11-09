@@ -1,0 +1,56 @@
+" automatically converted from Vim color scheme nordfox
+
+highlight clear
+
+highlight Win guifg=#cdcecf guibg=#2e3440 gui=none
+highlight OtherWin guifg=#5a657d ctermbg=-1 cterm=none
+" no conversion defined for AuxWin
+" no conversion defined for OddLine
+
+highlight TopLine guifg=#7e8188 guibg=#232831 gui=none
+highlight TopLineSel guifg=#abb1bb guibg=#232831 gui=none
+
+highlight TabLine guifg=#abb1bb guibg=#39404f gui=none
+highlight TabLineSel guifg=#2e3440 guibg=#7e8188 gui=none
+
+highlight JobLine guifg=#abb1bb guibg=#232831 gui=none
+highlight StatusLine guifg=#abb1bb guibg=#232831 gui=none
+highlight Border guifg=#232831 ctermbg=17 cterm=none
+
+highlight CurrLine guifg=#2e3440 guibg=#cdcecf gui=none
+highlight OtherLine guifg=#2e3440 guibg=#cdcecf gui=none
+highlight LineNr guifg=#7e8188 ctermbg=-1 cterm=none
+
+highlight Selected ctermfg=0 guibg=#3e4a5b gui=none
+highlight CmpMismatch ctermfg=0 guibg=#364150 gui=none
+
+highlight SuggestBox guifg=#cdcecf guibg=#2e3440 gui=none
+highlight WildMenu guifg=#cdcecf guibg=#3e4a5b gui=none
+
+highlight CmdLine guifg=#cdcecf guibg=#2e3440 gui=none
+highlight ErrorMsg guifg=#bf616a ctermbg=1 cterm=none
+
+highlight Directory guifg=#b48ead ctermbg=-1 cterm=none
+highlight Executable guifg=#d092ce ctermbg=-1 cterm=none
+highlight Socket guifg=#8cafd2 ctermbg=-1 cterm=none
+highlight Device guifg=#8cafd2 ctermbg=-1 cterm=none
+highlight Fifo guifg=#a3be8c ctermbg=-1 cterm=none
+highlight Link guifg=#c9826b ctermbg=-1 cterm=none
+highlight BrokenLink guifg=#2e3440 guibg=#81a1c1 gui=none
+" no conversion defined for HardLink
+
+" no conversion defined for User1..User9
+
+" warnings:
+" - incomplete source color scheme: missing bg of NonText
+" - incomplete source color scheme: missing bg of VertSplit
+" - incomplete source color scheme: missing bg of LineNr
+" - incomplete source color scheme: missing fg of Visual
+" - incomplete source color scheme: missing fg of DiffChange
+" - incomplete source color scheme: missing bg of ErrorMsg
+" - incomplete source color scheme: missing bg of Keyword
+" - incomplete source color scheme: missing bg of Macro
+" - incomplete source color scheme: missing bg of Debug
+" - incomplete source color scheme: missing bg of Delimiter
+" - incomplete source color scheme: missing bg of String
+" - incomplete source color scheme: missing bg of Number

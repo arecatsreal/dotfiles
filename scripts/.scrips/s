@@ -1,0 +1,26 @@
+#!/bin/sh
+
+SEARCH=$(echo $* | sed -s "s/$1//")
+case $1 in
+	aw) $TBROESER "https://wiki.archlinux.org/index.php?title=Special:Search&search=$SEARCH" ;;
+	bs|br) $TBROESER "https://search.brave.com/search?q=$SEARCH" ;;
+	cf) $TBROESER "http://10.0.0.119:8888/?q=site%3Awww.curseforge.com+$SEARCH" ;;
+	chan) $TBROESER "https://www.4chan.org/$SEARCH" ;;
+	dw) $TBROESER "https://wiki.debian.org/FrontPage?action=fullsearch&context=180&value=$SEARCH&titlesearch=Titles" ;;
+	eztv) $TBROESER "https://eztv.re/search/$SEARCH" ;;
+	gh) $TBROESER "https://github.com/search?q=$SEARCH" ;;
+	gl) $TBROESER "https://gitlab.com/explore?utf8=%E2%9C%93&name=$SEARCH&sort=latest_activity_desc" ;;
+	go) $TBROESER "http://gpo.zugaina.org/Search?search=$SEARCH" ;;
+	in) $TBROESER "https://yewtu.be/search?q=$SEARCH" ;;
+	j) $TBROESER "https://jisho.org/search?utf8=%E2%9C%93&keyword=$SEARCH" ;;
+	lu) $TBROESER "https://lutris.net/games?q=$SEARCH" ;;
+	ma) $TBROESER "https://mangadex.org/titles?q=$SEARCH" ;;
+	mal) $TBROESER "https://myanimelist.net/anime.php?type=all&keyword=$SEARCH" ;;
+	mw) $TBROESER "https://minecraft.fandom.com/wiki/$SEARCH" ;;
+	pkg) $TBROESER "https://pkgs.org/search/?q=$SEARCH" ;;
+	po) $TBROESER "https://www.protondb.com/search?q=$SEARCH" ;;
+	tp) $TBROESER "https://parcelsapp.com/en/tracking/$SEARCH" ;;
+	w) $TBROESER "https://www.wikipedia.org/w/index.php?title=Special:Search&search=$SEARCH" ;;
+	du) $TBROESER "https://duckduckgo.com/lite?kd=-1&kp=-1&q=$SEARCH" ;;
+	*) $TBROESER "https://search.brave.com/search?q=$*" ;;
+esac

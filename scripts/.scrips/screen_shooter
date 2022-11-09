@@ -1,38 +1,61 @@
-#!/bin/sh
+#!/usr/bin/env bash
+source $HOME/.zsource/isin
 
 MENU=dmenu
 IMAGEVIEWER=feh
 IMAGEEDITOR=gimp
+IMAGETMPNAME=/tmp/screen_shooter_tmp.png 
 SAVEDIR=~
+NOTEDIR="$HOME/Notes/Tid-bits"
 
-OPTIONS="View\nEdit\nSave\nCopy to Clipbord\nExit"
-
-maim -s /tmp/screen_shooter_tmp.png
+MAIMIN=$(isin mmaim)
+if [ $MAIMIN ]; then
+	echo $(isin mmaim)
+	maim -s $IMAGETMPNAME
+else
+	echo "screen_shooter: Maim is not found in \$PATH."
+	exit 1
+fi
 
 choice (){
-	printf $OPTIONS
-	CHOICE=$(echo $OPTIONS | $MENU)
+	CHOICE=$(printf "View\nEdit\nSave\nSave and Note\nCopy to Clipbord\nExit" | $MENU)
 }
 choice
 
 KICKOUT=true
 while $KICKOUT; do
-	if [ $CHOICE = "View" ];then
-		$IMAGEVIEWER /tmp/screen_shooter_tmp.png
-		choice
-	elif [ $CHOICE = "Edit" ];then
-		$IMAGEEDITOR /tmp/screen_shooter_tmp.png
-		choice
-	elif [ $CHOICE = "Save" ];then
-		mv /tmp/screen_shooter_tmp.png $SAVEDIR/$(date -Ins).png && KICKOUT=false
-	elif [ $CHOICE = "Copy to Clipbord" ]; then
-		xclip -selection clipboard -t image/png -i /tmp/screen_shooter_tmp.png && KICKOUT=false
-	elif [ $CHOICE = "Exit" ]; then
+	case $CHOICE in
+	View)
+		$IMAGEVIEWER $IMAGETMPNAME
+		choice ;;
+	Edit)
+		$IMAGEEDITOR $IMAGETMPNAME
+		choice ;;
+	Save) 
+		mv $IMAGETMPNAME $SAVEDIR/$(date -Iseconds).png 
+		KICKOUT=false ;;
+	"Save and Note")
+		NOTENAME=$(printf "== Enter Name ==" | $MENU)
+		NOTENAMESP=$NOTENAME # Saves $NOTENAME with spaces to $NOTENAMESP.
+		NOTENAME=$(echo $NOTENAME | sed 's/ /_/g') # Replaces spaces ' ' in $NOTENAME with underscors '_'.
+		IMAGENAME="$NOTEDIR/$(date -Iseconds)-$NOTENAME.png"
+		mv $IMAGETMPNAME $IMAGENAME
+		printf "#$NOTENAMESP\n\n![$NOTENAMESP]($IMAGENAME)" > "$NOTEDIR/$NOTENAME.md"
+		printf "\n[$NOTENAMESP][$NOTENAME.md]" >> "$NOTEDIR/index.md" # Append index.md.
+		case $(printf "Edit Note\nExit" | $MENU) in
+			"Edit Note") alacritty -e $EDITOR "$NOTEDIR/$NOTENAME.md" ;;
+			Exit) KICKOUT=false ;;
+		esac ;;
+	"Copy to Clipbord") 
+		xclip -selection clipboard -t image/png -i $IMAGETMPNAME 
+		KICKOUT=false ;;
+	Exit) KICKOUT=false ;;
+	esac
+	
+	# Closes prosses if usesr closes $MENU.
+	if [ -n $(pgrep $MENU) ]; then
 		KICKOUT=false
 	fi
-
-	# Kills screen_shooter if the user closes $MENU
-	[[ -n $(pgrep $MENU) ]] || KICKOUT=false
 done
 
-rm /tmp/screen_shooter_tmp.png
+test -f $IMAGETMPNAME && rm $IMAGETMPNAME

@@ -5,10 +5,10 @@ LYNX_LSS=$HOME/.config/lynx/lynx.lss
 LYNX_PATH=/usr/bin/lynx
 
 lynx () {
-				$LYNX_PATH -cfg=$LYNX_CFG -lss=$LYNX_LSS $*
+	$LYNX_PATH -cfg=$LYNX_CFG -lss=$LYNX_LSS $*
 }
 
 torlynx () {
-				torify $LYNX_PATH -cfg=$LYNX_CFG -lss=$LYNX_LSS $*
+	torify $LYNX_PATH -cfg=$LYNX_CFG -lss=$LYNX_LSS $*
 }
 

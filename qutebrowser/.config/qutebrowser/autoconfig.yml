@@ -9,6 +9,8 @@ settings:
   aliases:
     global:
       proxy: spawn --userscript proxyswitch.sh
+  backend:
+    global: webengine
   colors.webpage.bg:
     global: white
   colors.webpage.darkmode.enabled:

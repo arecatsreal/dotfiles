@@ -1,0 +1,3 @@
+#!/bin/sh
+
+xdotool type $(cat $HOME/.config/qutebrowser/bookmarks/urls | dmenu -l 30 | awk '{print $1 }')

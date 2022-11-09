@@ -1,84 +1,83 @@
 #!/bin/zsh
 
 #Package Manager alias
-package_manager_alias () {
-	# Void Linux 
-	alias xin="sudo xbps-install"
-	alias xup="sudo xbps-install -S -u"
-	alias xrm="sudo xbps-remove"
-	alias xro="sudo xbps-remove -o"
-	alias xqu="xbps-query -s"
 
-	# Arch Linux 
-	YAYIN=false
-	yay --version 2> /dev/null > /dev/null && {
-		alias pin="yay -S"
-		alias pup="yay -Syu"
-		alias prm="yay -Rs"
-		alias pro="yay -Qtdq | yay -Rns -"
-		alias pqu="yay -Ss"
-		YAYIN=true
-	}
-	if [ $YAYIN = false ]; then
-		alias pin="sudo pacman -S"
-		alias pup="sudo pacman -Syu"
-		alias prm="sudo pacman -Rs"
-		alias pro="sudo pacman -Qtdq | sudo pacman -Rns -"
-		alias pqu="pacman -Ss"
-	fi
+# Void Linux 
+alias xin="sudo xbps-install"
+alias xup="sudo xbps-install -S -u"
+alias xrm="sudo xbps-remove"
+alias xro="sudo xbps-remove -o"
+alias xqu="xbps-query -s"
 
-	# Debian
-	APT=apt
-	which aptitude 2> /dev/null > /dev/null && APT=aptitude
-	which nala 2> /dev/null > /dev/null && APT=nala
-
-	if [ $APT = "nala" ]; then
-		alias ain="sudo nala install"
-		alias aup="sudo nala upgrade"
-		alias aupd="sudo nala update"
-		alias arm="sudo nala remove"
-		alias aro="sudo nala autoremove"
-		alias aqu="nala search"
-		alias afe="sudo nala fetch --debian testing --auto"
-		alias apt="nala"
-	elif [ $APT = "aptitude" ]; then
-		alias ain="sudo aptitude install"
-		alias aup="sudo aptitude update && sudo aptitude safe-upgrade"
-		alias aupd="sudo aptitude update"
-		alias aupg="sudo aptitude full-upgrade"
-		alias arm="sudo aptitude remove"
-		alias aro="sudo apt autoremove"
-		alias aqu="aptitude search"
-		alias apt="aptitude"
-	else
-		alias ain="sudo apt install"
-		alias aup="sudo apt update && sudo apt upgrade"
-		alias aupd="sudo apt update"
-		alias aupg="sudo apt upgrade"
-		alias arm="sudo apt remove"
-		alias aro="sudo apt autoremove"
-		alias aqu="apt search"
-	fi
-	alias ap="apt-file find"
-	alias apu="apt-file update"
-	alias ali="dpkg -L"
-
-	# Gentoo
-	alias e="doas emerge"
-	alias ein="doas emerge -va"
-	alias erm="doas emerge -va --unmerge"
-	alias ero="doas emerge -va --depclean"
-	alias eup="doas emerge -auvDU @world"
-	which eix 2> /dev/null > /dev/null && {; 
-	alias equ="eix"
-	alias eqr="eix -R"
-	}
-
-	# Bedrock linux 
-	alias pmqu="pmm-query -R -s"
-	if [ $YAYIN = false ]; then
-		alias pmup="sudo pmm-install -S -u"
-	else
-		alias pmup="sudo pmm-install -S -u && yay -Syu"
-	fi
+# Arch Linux 
+YAYIN=false
+yay --version 2> /dev/null > /dev/null && {
+	alias pin="yay -S"
+	alias pup="yay -Syu"
+	alias prm="yay -Rs"
+	alias pro="yay -Qtdq | yay -Rns -"
+	alias pqu="yay -Ss"
+	YAYIN=true
 }
+if [ $YAYIN = false ]; then
+	alias pin="sudo pacman -S"
+	alias pup="sudo pacman -Syu"
+	alias prm="sudo pacman -Rs"
+	alias pro="sudo pacman -Qtdq | sudo pacman -Rns -"
+	alias pqu="pacman -Ss"
+fi
+
+# Debian
+APT=apt
+which aptitude 2> /dev/null > /dev/null && APT=aptitude
+which nala 2> /dev/null > /dev/null && APT=nala
+
+if [ $APT = "nala" ]; then
+	alias ain="sudo nala install"
+	alias aup="sudo nala upgrade"
+	alias aupd="sudo nala update"
+	alias arm="sudo nala remove"
+	alias aro="sudo nala autoremove"
+	alias aqu="nala search"
+	alias afe="sudo nala fetch --debian testing --auto"
+	alias apt="nala"
+elif [ $APT = "aptitude" ]; then
+	alias ain="sudo aptitude install"
+	alias aup="sudo aptitude update && sudo aptitude safe-upgrade"
+	alias aupd="sudo aptitude update"
+	alias aupg="sudo aptitude full-upgrade"
+	alias arm="sudo aptitude remove"
+	alias aro="sudo apt autoremove"
+	alias aqu="aptitude search"
+	alias apt="aptitude"
+else
+	alias ain="sudo apt install"
+	alias aup="sudo apt update && sudo apt upgrade"
+	alias aupd="sudo apt update"
+	alias aupg="sudo apt upgrade"
+	alias arm="sudo apt remove"
+	alias aro="sudo apt autoremove"
+	alias aqu="apt search"
+fi
+alias ap="apt-file find"
+alias apu="apt-file update"
+alias ali="dpkg -L"
+
+# Gentoo
+alias e="doas emerge"
+alias ein="doas emerge -va"
+alias erm="doas emerge -va --unmerge"
+alias ero="doas emerge -va --depclean"
+alias eup="doas emerge -auvDU @world"
+which eix 2> /dev/null > /dev/null && {; 
+alias equ="eix"
+alias eqr="eix -R"
+}
+
+# Bedrock linux 
+alias pmqu="pmm-query -R -s"
+if [ $YAYIN = false ]; then
+	alias pmup="sudo pmm-install -S -u"
+else
+	alias pmup="sudo pmm-install -S -u && yay -Syu"
+fi

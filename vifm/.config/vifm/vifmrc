@@ -3,6 +3,7 @@ mark h ~/
 mark c ~/.config
 mark v ~/.config/nvim
 mark s ~/.scrips
+mark w ~/sync/wallpapers
 mark d ~/Downloads
 mark n ~/NAS
 mark u ~/NAS/Music
@@ -12,7 +13,7 @@ mark g ~/NAS/Books/Manga
 mark a ~/NAS/Books/audioBooks
 
 " Theme
-colorscheme unitheme 
+colorscheme unitheme
 source $HOME/.config/vifm/scripts/favicons.vifm
 
 " Custom Commands
@@ -40,7 +41,8 @@ vnoremap e k
 vnoremap i l
 
 " File Opening
-source $HOME/.config/vifm/scripts/file_opening.vifm
+" source $HOME/.config/vifm/scripts/file_opening.vifm
+filextype {.*},<*/*> ~/.config/lf/scrips/open.sh %d/%f
 
 " FZF
 command! FZFfind : set noquickview
@@ -48,7 +50,8 @@ command! FZFfind : set noquickview
                 \| if $FZF_PICK != ''
                 \|     execute 'goto' fnameescape($FZF_PICK)
                 \| endif
-nnoremap <c-f> :FZFfind<cr>
+nnoremap ? /
+nnoremap / :FZFfind<cr>
 
 " Preview Window
 " fileviewer *.html,*.go,*.css,*.md,*.sh,*.rs,*.cpp,*.lisp,*.el highlight -l -O xterm256 --config-file=$HOME/.config/vifm/scripts/dracula.theme -s dracula %c

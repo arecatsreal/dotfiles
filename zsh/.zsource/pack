@@ -1,20 +1,27 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 pack () {
-	case $2 in
-		tar.bz2)   tar cjf $1.tar.bz2 $1	 	;;
-		tar.gz)    tar czf $1.tar.gz  $1  	;;
-		bz2)       bunzip2 -z $1	;;
-		rar)       rar a $1.rar $1	;;
-		gz)        gzip $1    		;;
-		tar)       tar cf $1.tar $1    	;;
-		tbz2)      tar cjf $1.tarz2 $1   	;;
-		tgz)       tar czf $1.tgz $1   	;;
-		zip)       zip -r $1.zip $1	;;
-		cbz)       zip -r $1.cbz $1	;;
-		7z)        7z a $1.7z $1	;;
-		tar.xz)    tar cf $1.tar.xz $1    	;;
-		jar)    jar cf $1.jar $1    	;;
-		*)           echo "'$1' cannot be packed via pack()" ;;
-	esac
+	FZF_IN=false
+	which fzf 2> /dev/null > /dev/null && FZF_IN=true
+	if [[ $FZF_IN ]]; then
+		PICK=$(echo "tar.bz2\ntar.gz\nbz2\nrar\ngz\ntar\ntbz2\ntgz\nzip\ncbz\n7z\ntar.xz\njar" | fzf --height=10 --reverse)
+		case $PICK in
+			tar.bz2)   tar cjf $1.tar.bz2 $1	 	;;
+			tar.gz)    tar czf $1.tar.gz  $1  	;;
+			bz2)       bunzip2 -z $1	;;
+			rar)       rar a $1.rar $1	;;
+			gz)        gzip $1    		;;
+			tar)       tar cf $1.tar $1    	;;
+			tbz2)      tar cjf $1.tarz2 $1   	;;
+			tgz)       tar czf $1.tgz $1   	;;
+			zip)       zip -r $1.zip $1	;;
+			cbz)       zip -r $1.cbz $1	;;
+			7z)        7z a $1.7z $1	;;
+			tar.xz)    tar cf $1.tar.xz $1    	;;
+			jar)    jar cf $1.jar $1    	;;
+			*)           echo "Error invalad selection!" ;;
+		esac
+	else
+		echo "fzf not installed."
+	fi
 }

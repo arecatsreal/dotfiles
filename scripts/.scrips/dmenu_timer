@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+CHOICE=$(printf "=== Timer ===\nStop Timer\nStopwatch\n-m 5\n-m 10\n-m 15\n-m 18" | dmenu)
+echo $CHOICE
+if [[ $CHOICE = "Stop Timer" ]]; then
+	pkill go-timer	
+elif [[ $CHOICE = "Stopwatch" ]]; then
+	go-timer -stopwatch -timeFile
+else
+	go-timer -alarmFile ~/sync/bin/alarm.mp3 -timeFile $CHOICE
+fi

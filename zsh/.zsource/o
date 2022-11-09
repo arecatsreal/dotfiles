@@ -1,69 +1,82 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-video_open (){
-	INMEDIADIR=false
-	pwd | grep Media > /dev/null && INMEDIADIR=true 
+# Openers
+OPEN_VIDEO="mpv"
+OPEN_AUDIO="mpv"
+OPEN_IMAGE="feh"
+OPEN_SPREDSHEET="sc-im"
+OPEN_DOCUMENT="zathura"
+OPEN_COMICBOOK="$OPEN_DOCUMENT"
+OPEN_TOURRENT="qbittorrent"
 
-	if [ $INMEDIADIR = true ]; then
-		RES1080=false
-		RES720=false
-		RES480=false
-		MEDIAINFO=$(mediainfo $1)
-
-		echo $MEDIAINFO | grep 1080 > /dev/null && RES1080=true
-		echo $MEDIAINFO | grep 720 > /dev/null && RES720=true
-		echo $MEDIAINFO | grep 480 > /dev/null && RES480=true
-		if [ $RES1080 = true ]; then
-			devour mpv --fs --glsl-shaders="~~/shaders/Anime4K_Denoise_Bilateral_Mode.glsl:~~/shaders/Anime4K_DarkLines_HQ.glsl:~~/shaders/Anime4K_ThinLines_HQ.glsl:~~/shaders/Anime4K_Upscale_CNN_M_x2_Deblur.glsl" $1
-		elif [ $RES480 = true || $RES720=true ]; then
-			devour mpv --fs --glsl-shaders="~~/shaders/Anime4K_Upscale_CNN_L_x2_Denoise.glsl:~~/shaders/Anime4K_Auto_Downscale_Pre_x4.glsl:~~/shaders/Anime4K_DarkLines_HQ.glsl:~~/shaders/Anime4K_ThinLines_HQ.glsl:~~/shaders/Anime4K_Upscale_CNN_M_x2_Deblur.glsl" $1
-		fi
+o () { # Open
+	if [[ $1 == "" ]]; then  # Just open $EDITOR if no args are given.
+		$EDITOR
 	else
-		devour mpv --fs $1
-	fi
-}
-
-o () {
-	if [ -f $1 ] ; then # Test to see if $1 if a file or not.
-		case $(echo $1 | awk '{print tolower($0)}') in # If $1 if a file it opens if dependent on the file extinction. 
-			*.org)   emacsgui 	$1& ;;      
-			#*.mkv)   video_open 	$1	;;      
-			#*.mp4)   video_open	$1 	;;      
-			#*.webm)  video_open	$1 	;;      
-			#*.avi)   video_open	$1 	;;      
-			#*.mov)   video_open	$1 	;;      
-			*.mkv)  mpv --fs 	$1	;;      
-			*.mp4)  mpv --fs	$1 	;;      
-			*.webm) mpv --fs	$1 	;;      
-			*.avi)  mpv --fs	$1 	;;      
-			*.mov)  mpv --fs	$1 	;;      
-			*.m4b)   mpv		$1 	;;      
-			*.m4a)   mpv		$1 	;;      
-			*.mp3)   mpv	 	$1  ;;      
-			*.ogg)   mpv	 	$1  ;;      
-			*.flac)  mpv	 	$1  ;;      
-			*.pdf)   zathura	$1& ;;      
-			*.ps)    zathura	$1& ;;      
-			#*.cbz)   qcomicbook	$1& ;;      
-			*.cbz)   zathura	$1& ;;      
-			*.cbr)   zathura	$1& ;;      
-			*.epub)  zathura	$1& ;;      
-			*.html)  devour badwolf		$1& ;;      
-			*.png)	 devour feh		$1&	;;
-			*.jpg)	 devour feh		$1&	;;
-			*.webp)	 devour feh		$1&	;;
-			*.gif)	 devour feh		$1&	;;
-			*.sc)	 sc-im		$1	;;
-			*.csv)	 sc-im		$1	;;
-			*.tsv)	 sc-im		$1	;;
-			*.ods)	 sc-im		$1	;;
-			*)       $EDITOR 	$1	;;
-		esac
-	# If it is not a file then it tests to see if it's a dir and if so it opens it with the file manager. 
-	elif [ -d $1 ];then 
-		#$FILEM $1 # Uncomment if not useing my zshrc.
-		f $1 # Comment if not useing my zshrc.
-	else # If it in nether a File or Dir if will just open it in vim. 
-		$EDITOR $1
+		if [ -f $1 ]; then # Test to see if $1 if a file or not.
+			MIME_TYPE=$(file --mime-type $1 | sed 's/.*: //') # Gets mime type and shaves off file name.
+			MIME_TYPE_FP=$(echo $MIME_TYPE | awk -F '/' '{print $1}') # Gets the first part of the mime type ex: (image/jpeg) the image part.
+			case $(uname -s) in # Checks OS.
+				Linux) IN_OWNER=$(stat -c '%U' $1) ;; # GNU Coreutils
+				*) IN_OWNER=$(stat -f '%Su' $1) ;; # non-GNU Coreutils
+				esac
+			if [[ $IN_OWNER == "root" ]]; then # If file owner is root opens it in $ROOTEDITOR A.K.A. sudoedit.
+				if [[ $ROOTEDITOR == '' ]]; then # Tests it $ROOTEDITOR is blank if is then just uses sudoedit.
+					sudoedit $1	
+				else
+					$ROOTEDITOR $1
+				fi
+			elif [[ $1 == '' ]]; then # If input is blank just opens $EDITOR.
+				$EDITOR	
+			# Open Video
+			elif [[ $MIME_TYPE_FP == 'video' ]]; then
+				$OPEN_VIDEO $1
+			# Open Audio
+			elif [[ $MIME_TYPE_FP == 'audio' ]]; then
+				$OPEN_AUDIO $1
+			# Open Image
+			elif [[ $MIME_TYPE_FP == 'image' ]]; then
+				$OPEN_IMAGE $1&
+			# Open Text
+			elif [[ $MIME_TYPE_FP == 'text' ]]; then
+				case $(echo $MIME_TYPE | awk -F '/' '{print $2}') in
+					csv|tsv|ods) $OPEN_SPREDSHEET $1;;
+					html) $BROWSER $1 ;;
+					*) $EDITOR $1 ;;
+				esac
+			else
+				case $MIME_TYPE in
+					application/epub|application/epub+zip) $OPEN_DOCUMENT $1 ;;
+					application/pdf) $OPEN_DOCUMENT $1 ;;
+					application/ps) $OPEN_DOCUMENT $1 ;;
+					application/x-sc) $OPEN_SPREDSHEET $1 ;;
+					application/x-bittorrent) $OPEN_TOURRENT $1 ;;
+					application/zip|application/x-rar)
+						# Handaling cbz/cbr.
+							case $(echo $1 | awk '{print tolower($0)}') in 
+								*.cbz|*.cbr) $OPEN_COMICBOOK $1 ;;      
+								*) $EDITOR $1 ;;
+							esac
+						;;
+					*) $EDITOR $1 ;;
+				esac
+		fi
+			# If it is not a file then it tests to see if it's a dir and if so it opens it with the file manager. 
+			elif [ -d $1 ];then 
+				# Tests to if f is a function else if $FILEM is set else just cds.
+				MZZSHRC=false; which f 2> /dev/null > /dev/null && MZSHRC=true
+				if [[ $MZSHRC ]]; then
+					f $1	
+				else
+					if [[ $FILEM == '' ]]; then
+						cd $1
+						ls -l $1
+					else
+						$FILEM $1
+					fi
+				fi
+			else # If it in nether a File or Dir if will just open it in the $EDITOR.
+				$EDITOR $1
+		fi
 	fi
 }

@@ -2,7 +2,7 @@
 
 PATH="$PATH:$HOME/.config/herbstluftwm"
 source $HOME/.config/herbstluftwm/hc
-dynamicBorderWidth.sh &
+#dynamicBorderWidth.sh &
 
 hc emit_hook reload
 
@@ -20,7 +20,9 @@ hc keybind $MOD-g close_or_remove
 hc keybind $MOD-Return spawn $TERM
 hc keybind $MOD-p spawn dmenu_run
 hc keybind $MOD-Control-p spawn p
-hc keybind $MOD-b spawn nobar
+hc keybind $MOD-Shift-p spawn bookmarktype
+hc keybind $MOD-B spawn nobar
+hc keybind $MOD-b spawn OFpolybar
 hc keybind $MOD-i spawn imagecopy
 hc keybind $MOD-t spawn qutebrowser
 hc keybind $MOD-c spawn OFpicom
@@ -29,6 +31,8 @@ hc keybind $MOD-v spawn mpv-yt
 hc keybind $MOD-r xsel | espeak
 hc keybind $MOD-d spawn speedcrunch
 hc keybind $MOD-m spawn mpd-menu
+hc keybind $MOD-s spawn screen_shooter
+hc keybind $MOD-a spawn dmenu_timer
 
 # focusing clients
 hc keybind $MOD-h             focus left

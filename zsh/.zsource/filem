@@ -1,42 +1,40 @@
 #!/bin/zsh
 
-filem () {
-	# File Manager
-	setfileman() {
-		case $FILEM in 
-			fff){
-				f() {
-					fff "$@"
-					cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
-				}
-				export FFF_LS_COLORS=1
-			};;
-			lf){
-				source ~/.config/lf-shellcd/lf-shellcd
-				alias m="l ~/.local/share/shortcuts/"
-				source $ZSOURCE/lf-icons 
-			};;
-			vifm)
-				v(){
-					#local dst="$(command vifmrun --choose-dir - "$@")"
-					local dst="$(command vifm --choose-dir - "$@")"
-					if [ -z "$dst" ]; then
-						echo 'Directory picking cancelled/failed'
-						return 1
-					fi
-					cd "$dst"
-				}
-				PATH="$PATH:$HOME/.config/vifm/scripts";;
+# File Manager
+setfileman() {
+	case $FILEM in 
+		fff){
+			f() {
+				fff "$@"
+				cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
+			}
+			export FFF_LS_COLORS=1
+		};;
+		lf){
+			source ~/.config/lf-shellcd/lf-shellcd
+			alias m="l ~/.local/share/shortcuts/"
+			source $ZSOURCE/lf-icons 
+		};;
+		vifm)
+			v(){
+				#local dst="$(command vifmrun --choose-dir - "$@")"
+				local dst="$(command vifm --choose-dir - "$@")"
+				if [ -z "$dst" ]; then
+					echo 'Directory picking cancelled/failed'
+					return 1
+				fi
+				cd "$dst"
+			}
+			PATH="$PATH:$HOME/.config/vifm/scripts";;
 
-			*) echo "There is no file manager set."	;;
-		esac
-	}
-	setfileman
-	case $FILEM in
-		fff) f() {; f $*; } ;;
-		lf) f() {; l $*; } ;;
-		vifm) f() {; v $*; } ;;
+		*) echo "There is no file manager set."	;;
 	esac
-	alias vrc="f $HOME/.config/nvim"
-	alias zrc="f $HOME/.zsource"
 }
+setfileman
+case $FILEM in
+	fff) f() {; f $*; } ;;
+	lf) f() {; l $*; } ;;
+	vifm) f() {; v $*; } ;;
+esac
+#alias vrc="f $HOME/.config/nvim"
+#alias zrc="f $HOME/.zsource"
