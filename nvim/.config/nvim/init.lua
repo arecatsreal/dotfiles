@@ -7,11 +7,13 @@ if fn.empty(fn.glob(install_path)) > 0 then
   Packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
   vim.cmd [[packadd packer.nvim]]
 end
-require('plugins') -- Install Plugins.
+require('colemak') -- Load Colemak rebinds.
 require('mapings') -- Load mappings.
+require('plugins') -- Install plugins.
 
 --- Settings ---
-o.number = true -- line numbers
+o.number = true -- Line numbers
+o.relativenumber = true -- Relative line numbers
 vim.cmd("let g:vim_markdown_folding_disabled = 1")
 o.conceallevel = 2
 o.textwidth = 120  -- Sets the text with when using gq q
@@ -22,6 +24,7 @@ vim.api.nvim_create_user_command('Q', 'bdelete', { nargs = 0 })
 
 --- Auto commands ---
 vim.cmd("autocmd FileType zsh set filetype=bash") -- Changes all files with file type "zsh" to "bash".
+vim.cmd("autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o") -- Disable auto commenting on newline.
 
 -- Better detect file types from exertions. 
 vim.cmd("autocmd BufRead,BufNewFile *.md set filetype=markdown")

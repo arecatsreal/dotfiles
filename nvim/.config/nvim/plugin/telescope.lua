@@ -1,5 +1,5 @@
 local present, telescope = pcall(require, "telescope")
 if not present then return end
 
-telescope.setup({
-})
+telescope.setup()
+require("telescope").load_extension "neoclip"

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+pgrep proton-mail-bri > /dev/null 2> /dev/null && {
+	neomutt
+	exit 0
+}
+proton-mail-bridge &
+neomutt

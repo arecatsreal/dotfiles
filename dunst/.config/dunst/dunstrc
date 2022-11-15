@@ -83,7 +83,8 @@
     # Defines color of the frame around the notification window.
     #frame_color = "#C9CBFF" # Cappuccin
     #frame_color = "#bd93f9" # Dracula 
-    frame_color = "#8FBCBB" # Nord
+    # frame_color = "#8FBCBB" # Nord
+    frame_color = "#47407d" # Duskfox
 
     # Define a color for the separator.
     # possible values are:
@@ -319,8 +320,10 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#434C5E" # Nord
-    foreground = "#D8DEE9" # Nord
+    background = "#232136" # Duskfox
+    foreground = "#e0def4" # Duskfox
+    # background = "#434C5E" # Nord
+    # foreground = "#D8DEE9" # Nord
     #background = "#282a36" # Dracula
     #foreground = "#ffffff"  # Dracula
     #background = "#1E1E2E" # Cappuccin
@@ -330,8 +333,10 @@
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#434C5E" # Nord
-    foreground = "#D8DEE9" # Nord
+    background = "#232136" # Duskfox
+    foreground = "#e0def4" # Duskfox
+    # background = "#434C5E" # Nord
+    # foreground = "#D8DEE9" # Nord
     #background = "#282a36" # Dracula
     #foreground = "#ffffff" # Dracula
     #background = "#1E1E2E" # Cappuccin

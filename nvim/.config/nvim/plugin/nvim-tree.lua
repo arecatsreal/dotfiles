@@ -1,3 +1,5 @@
+local present, nvimtree = pcall(require, "nvim-tree")
+if not present then return end
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
@@ -10,7 +12,7 @@ vim.keymap.set('n', '`', ':NvimTreeFocus <CR>')
 vim.keymap.set('n', 'C-<F3>', ':NvimTreeFindFileToggle <CR>')
 
 -- OR setup with some options
-require("nvim-tree").setup({
+nvimtree.setup({
   sort_by = "case_sensitive",
   view = {
     adaptive_size = true,

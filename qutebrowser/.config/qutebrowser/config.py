@@ -103,7 +103,7 @@ elif dot.strip() == 'thinkpad':
 
 # Themeing
 #import dracula.draw
-config.source('nord-qutebrowser.py')
+config.source('duskfox.py')
 
 # Load existing settings made via :set
 config.load_autoconfig()
