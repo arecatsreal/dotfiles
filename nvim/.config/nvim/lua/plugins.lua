@@ -70,6 +70,8 @@ require('packer').startup(function(use)
 		}
 	}
 
+		use 'glepnir/lspsaga.nvim'
+
 		-- Writeing stuffs / Markdown stuffs
 		use 'Pocco81/true-zen.nvim'
 		use 'folke/twilight.nvim'
@@ -102,7 +104,7 @@ require('packer').startup(function(use)
 		-- Mic
 		use 'ThePrimeagen/vim-be-good'
 		use 'glepnir/dashboard-nvim'
-		use 'simrat39/symbols-outline.nvim'
+		-- use 'simrat39/symbols-outline.nvim'
 		use {
 			"akinsho/toggleterm.nvim", tag = '*', config = function()
 			require("toggleterm").setup()

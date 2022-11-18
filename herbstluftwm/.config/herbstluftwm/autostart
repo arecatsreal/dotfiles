@@ -99,7 +99,7 @@ hc mousebind $MOD-Button3 resize
 # FBNC="#434C5E"
 
 # Duskfox
-FBAC="#ccb1ed"
+FBAC="#9ccfd8"
 FBNC="#393552"
 
 hc attr theme.tiling.reset 1

@@ -5,7 +5,11 @@ vim.g.mapleader = " " -- Maps leader key.
 map('n', '<Leader>f', ':Vifm<CR>') -- Opens Vifm.
 map('n', 'C-t', ':TableModeToggle<CR>', {noremap = true})
 -- map('n', 'zz', ':bdelete<CR>')
-map('n', '<Leader>s', ':SymbolsOutline<CR>')
+map('n', '<Leader>rn', ':Lspsaga rename<CR>')
+map('n', '<Leader>d', ':Lspsaga hover_doc<CR>')
+map('n', '<Leader>ca', ':Lspsaga code_action<CR>')
+map('n', '<Leader>lf', ':Lspsaga lsp_finder<CR>')
+map('n', '<Leader>s', ':LSoutlineToggle<CR>')
 
 -- Zen Mod
 map('n', '<Leader>zz', ':TZAtaraxis<CR>') -- Open Propper zen mode.
@@ -45,7 +49,7 @@ end
 map('n', '<F5>', ':lua Source_and_save()<CR>', {noremap = true})
 
 -- Tree
-map('n', '<F3>', ':NeoTreeShowToggle <CR>')
+map('n', '<F3>', ':Neotree<CR>')
 
 -- Fuzzyfinding
 map('n', '<F1>', ':Telescope buffers<CR>', {noremap = true})
