@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This is a fork of passmenu meaning this script is licenced under GPLV2 or latter.
 
@@ -7,6 +7,18 @@ PREFIX=${PASSWORD_STORE_DIR-~/.password-store}
 PASSWORD_FILES=( "$PREFIX"/**/*.gpg )
 PASSWORD_FILES=( "${PASSWORD_FILES[@]#"$PREFIX"/}" )
 PASSWORD_FILES=( "${PASSWORD_FILES[@]%.gpg}" )
+
+# len_check (){
+# 	i="${#PASSWORD_FILES[@]}"; ((--i))
+# 	while [[ i > 0 ]]; do
+# 		ITEM=${PASSWORD_FILES[$i]}
+# 		echo $ITEM
+# 		# if [[ ${#ITEM} > 30 ]]; then
+# 		# 	{PASSWORD_FILES[$i]}=""
+# 		# fi	
+# 		((--i))
+# 	done
+# }; len_check
 
 PASS=$(printf '%s\n' "${PASSWORD_FILES[@]}" | "dmenu" "$@")
 

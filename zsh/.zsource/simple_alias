@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 #Networking Alias
 alias gateway="ip route | grep default"
@@ -14,6 +14,21 @@ alias speed="speedtest-cli"
 #alias mdc="mullvad disconnect"
 #alias mrc="mullvad reconnect"
 #alias mcl="mullvad relay set location"
+
+# Mounting
+if [ $USER != "root" ]; then
+	alias mount="doas mount"
+	alias umount="doas umount"
+fi
+
+# Zip dir 
+zdir () {
+	for dir in ./* ;do
+			if [[ -d $dir ]];then
+					zip -r ${dir}.$1 $dir
+			fi
+	done
+}
 
 #Program Short cuts
 alias cdl="rm -fr ~/Downloads/*"
@@ -41,3 +56,5 @@ alias pm="pulsemixer"
 alias w="cd ~/Notes && nvim ~/Notes/index.md +'source ~/.config/nvim/lua/vimwiki_open.lua'"
 tagre () {; find . -type f -exec sed -i "1i $*" '{}' \;}
 #read () {; "FILE=$(mktemp); xsel | espeak -w $FILE; mpv $FILE; rm $FILE" ;}
+alias countingloop="i=0; while true; do ((i++)); echo $i; done"
+alias qrcode="qrencode -t ansiutf8"

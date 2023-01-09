@@ -51,6 +51,7 @@ o () { # Open
 					application/ps) $OPEN_DOCUMENT $1 ;;
 					application/x-sc) $OPEN_SPREDSHEET $1 ;;
 					application/x-bittorrent) $OPEN_TOURRENT $1 ;;
+					application/octet-stream) $OPEN_AUDIO $1 ;; # mp3 ????
 					application/zip|application/x-rar)
 						# Handaling cbz/cbr.
 							case $(echo $1 | awk '{print tolower($0)}') in 

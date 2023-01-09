@@ -1,0 +1,14 @@
+-- local present, go_nvim = pcall(require, "go")
+-- if not present then return end
+-- require("go.format").goimport() -- goimport + gofmt
+-- go_nvim.setup()
+--
+-- vim.cmd('autocmd BufWritePre (InsertLeave?) <buffer> lua vim.lsp.buf.formatting_sync(nil,500)')
+-- -- Run gofmt + goimport on save
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = "*.go",
+--   callback = function()
+--     require('go.format').goimport()
+--   end,
+--   group = format_sync_grp,
+-- })

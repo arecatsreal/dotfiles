@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 
-CHOICE=$(printf "=== Timer ===\nStop Timer\nStopwatch\n-m 5\n-m 10\n-m 15\n-m 18" | dmenu)
+ACTIVE=false
+pgrep -x go-timer > /dev/null && {
+	ACTIVE=true
+}
+
+if $ACTIVE; then
+	CHOICE=$(printf "=== $(cat /tmp/go-timer) ===\nStop Timer\nStopwatch\n-m 5\n-m 10\n-m 15\n-m 18" | dmenu)
+else
+	CHOICE=$(printf "=== Timer ===\nStop Timer\nStopwatch\n-m 5\n-m 10\n-m 15\n-m 18" | dmenu)
+fi
+
 echo $CHOICE
 if [[ $CHOICE = "Stop Timer" ]]; then
 	pkill go-timer	

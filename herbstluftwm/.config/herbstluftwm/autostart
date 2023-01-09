@@ -24,6 +24,7 @@ hc keybind $MOD-Shift-p spawn bookmarktype
 hc keybind $MOD-B spawn nobar
 hc keybind $MOD-b spawn OFpolybar
 hc keybind $MOD-i spawn imagecopy
+hc keybind $MOD-Shift-t spawn bookmarkopen
 hc keybind $MOD-t spawn qutebrowser
 hc keybind $MOD-c spawn OFpicom
 hc keybind $MOD-Shift-b spawn date_read

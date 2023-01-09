@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 emacs () {; emacsclient -a '' -c -nw $* ;} # tui
 emacsgui () {; emacsclient -a '' -c $* ;} # gui

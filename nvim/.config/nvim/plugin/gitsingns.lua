@@ -1,6 +1,7 @@
 local present, gitsigns = pcall(require, "gitsigns")
 if not present then return end
 
+vim.cmd("autocmd FileType vimwiki Gitsigns toggle_signs") -- Disable gitsigns in vimwiki files.
 gitsigns.setup{
   signs = {
     add          = { hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'    },

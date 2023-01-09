@@ -1,8 +1,11 @@
 #!/bin/sh
 
 pgrep proton-mail-bri > /dev/null 2> /dev/null && {
+	echo "em: Proton mail bridge alredy runing."
 	neomutt
 	exit 0
 }
-proton-mail-bridge &
+echo "em: Starting proton mail bridge."
+proton-mail-bridge > /dev/null 2> /dev/null &
+sleep 15
 neomutt

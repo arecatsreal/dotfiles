@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [[ $(xdotool getactivewindow getwindowclassname) == "qutebrowser" ]]; then
+	OPEN="qutebrowser --target tab"
+else
+	OPEN="qutebrowser --target window"
+fi
+
+$OPEN $(cat $HOME/.config/qutebrowser/bookmarks/urls | dmenu -l 30 | awk '{print $1 }')

@@ -42,11 +42,10 @@ map('n', '<Leader>tn', ':ToggleTerm dir=. direction=horizontal size=20<CR>')
 map('n', '<Leader>th', ':ToggleTerm dir=. direction=vertical size=80<CR>')
 
 -- Source Current file
-function Source_and_save()
+map('n', '<F5>', function ()
 	vim.cmd(":w")
 	vim.cmd(":source %")
-end
-map('n', '<F5>', ':lua Source_and_save()<CR>', {noremap = true})
+end, { noremap = true })
 
 -- Tree
 map('n', '<F3>', ':Neotree<CR>')

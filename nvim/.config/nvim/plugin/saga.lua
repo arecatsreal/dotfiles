@@ -8,6 +8,16 @@ lspsaga.init_lsp_saga({
       }
 })
 
+-- Turns the Winbar on and off with :WinbarToggle.
+local winbarState = false -- true = off
+vim.api.nvim_create_user_command('WinbarToggle', function ()
+    if winbarState == true then
+        winbarState = false
+    else
+        winbarState = true
+    end
+end, { nargs = 0 })
+
 local function get_file_name(include_path)
     local file_name = require('lspsaga.symbolwinbar').get_file_name()
     if vim.fn.bufname '%' == '' then return '' end
@@ -30,8 +40,15 @@ local function config_winbar_or_statusline()
         ['prompt'] = true,
         ['neo-tree'] = true,
         ['help'] = true,
+
+        ['vimwiki'] = true,
+        ['markdown'] = true,
+        ['org'] = true,
+        ['text'] = true,
+        ['vifm-rename'] = true,
+        ['utf-8'] = true,
     } -- Ignore float windows and exclude filetype
-    if vim.api.nvim_win_get_config(0).zindex or exclude[vim.bo.filetype] then
+    if vim.api.nvim_win_get_config(0).zindex or exclude[vim.bo.filetype] or winbarState then
         vim.wo.winbar = ''
     else
         local ok, lspsaga_winbar = pcall(require, 'lspsaga.symbolwinbar')

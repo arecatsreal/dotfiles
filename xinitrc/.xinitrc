@@ -55,3 +55,4 @@ displaysetup.sh &
 #exec spectrwm
 exec herbstluftwm 
 #exec notion
+# exec i3

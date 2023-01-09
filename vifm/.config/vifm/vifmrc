@@ -5,7 +5,7 @@ mark v ~/.config/nvim
 mark s ~/.scrips
 mark w ~/sync/wallpapers
 mark d ~/Downloads
-mark n ~/NAS
+mark n ~/Notes
 mark u ~/NAS/Music
 mark m ~/NAS/Media
 mark b ~/NAS/Books
