@@ -2,7 +2,7 @@
 
 MENU=dmenu
 
-NEW_PROXY=$(echo "system\ntor\ni2p" | $MENU)
+NEW_PROXY=$(printf "system\ntor\ni2p" | $MENU)
 
 case $NEW_PROXY in
 	"tor")

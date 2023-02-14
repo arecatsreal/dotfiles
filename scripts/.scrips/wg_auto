@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+if [ $(whoami) != 'root' ]; then
+	echo "!!!MUST BE RUN AS ROOT!!!"
+else
+	if [[ $(wg show) == '' ]]; then
+		echo "Connecting"
+		wg-quick up $(ls -1 /etc/wireguard | fzf --height=10 --reverse | sed 's/\.conf//')
+	else
+		echo -n "Alredy connected. (r)econnect or (d)issconnect? [r] "; read INPUT
+		if [[ $INPUT == [Dd]* ]]; then
+			echo "Disonnecting"
+			wg-quick down $(wg show | grep "interface" | sed 's/interface: //') 
+		else
+			echo "Disonnecting"
+			wg-quick down $(wg show | grep "interface" | sed 's/interface: //') 
+			echo "Connecting"
+			wg-quick up $(ls -1 /etc/wireguard | fzf --height=10 --reverse | sed 's/\.conf//')
+		fi
+	fi
+fi

@@ -23,7 +23,7 @@ o.laststatus = 3 -- Global status line
 vim.api.nvim_create_user_command('Q', 'bdelete', { nargs = 0 })
 
 --- Auto commands ---
-vim.cmd("autocmd FileType zsh set filetype=bash") -- Changes all files with file type "zsh" to "bash".
+vim.cmd("autocmd FileType zsh set filetype=sh") -- Changes all files with file type "zsh" to "bash".
 vim.cmd("autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o") -- Disable auto commenting on newline.
 
 -- Better detect file types from exertions. 
@@ -39,3 +39,4 @@ vim.cmd("autocmd FileType text setlocal spell")
 vim.cmd("autocmd FileType org setlocal spell")
 vim.cmd("autocmd FileType groff setlocal spell")
 vim.cmd("autocmd FileType roff setlocal spell")
+vim.cmd("autocmd FileType mail setlocal spell")

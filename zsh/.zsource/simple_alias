@@ -21,7 +21,7 @@ if [ $USER != "root" ]; then
 	alias umount="doas umount"
 fi
 
-# Zip dir 
+# Zip dir
 zdir () {
 	for dir in ./* ;do
 			if [[ -d $dir ]];then
@@ -40,7 +40,7 @@ tarball () {; tar -czvf $1.tar.gz $1; }
 tardir() {; for i in *; do tar -czf $i.tar.gz $i; rm -fr $i; done; }
 alias cls="clear" # The one thing windows did right
 alias disk="df -h -t ext4"
-alias gr="go run *.go"
+alias gr="go run -v *.go"
 alias getdes="youtube-dl --get-description '$(xclip -o -selection clips)' | cat"
 alias hc="herbstclient"
 alias cp="cp -r"
@@ -58,3 +58,4 @@ tagre () {; find . -type f -exec sed -i "1i $*" '{}' \;}
 #read () {; "FILE=$(mktemp); xsel | espeak -w $FILE; mpv $FILE; rm $FILE" ;}
 alias countingloop="i=0; while true; do ((i++)); echo $i; done"
 alias qrcode="qrencode -t ansiutf8"
+alias lsblk_uudi="lsblk -o NAME,MOUNTPOINTS,UUID"

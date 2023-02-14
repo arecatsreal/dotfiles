@@ -64,14 +64,15 @@ alias apu="apt-file update"
 alias ali="dpkg -L"
 
 # Gentoo
-alias e="doas emerge"
-alias ein="doas emerge -va"
-alias erm="doas emerge -va --unmerge"
-alias ero="doas emerge -va --depclean"
-alias eup="doas emerge -auvDU @world"
+alias e="doas emerge --autounmask"
+alias ein="doas emerge --autounmask -va"
+alias erm="doas emerge --autounmask -va --unmerge"
+alias ero="doas emerge --autounmask -va --depclean"
+alias eup="doas emerge --autounmask -auvDU @world"
 which eix 2> /dev/null > /dev/null && {; 
 alias equ="eix"
 alias eqr="eix -R"
+alias etcup="doas etc-update"
 }
 
 # Bedrock linux 

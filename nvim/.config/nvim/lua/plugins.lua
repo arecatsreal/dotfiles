@@ -13,22 +13,25 @@ require('packer').startup(function(use)
 
 		-- Perlang stuff
 		-- use { 'fatih/vim-go', run = ':GoUpdateBinaries' }
-		use 'ray-x/go.nvim'
+		-- use 'ray-x/go.nvim'
 		use { -- Rust
 			'simrat39/rust-tools.nvim',
 			requires = {{'neovim/nvim-lspconfig'}}
 		}
 		-- Fennel
-		use 'jaawerth/fennel.vim'
-		use {
-			'Olical/aniseed',
-			requires = {{'Olical/conjure'}}
-		}
+		-- use 'jaawerth/fennel.vim'
+		-- use {
+		-- 	'Olical/aniseed',
+		-- 	requires = {{'Olical/conjure'}}
+		-- }
 		-- Theme
 		-- use 'Mofiqul/dracula.nvim'
 		-- use 'arcticicestudio/nord-vim'
 		use {'catppuccin/nvim', as = 'catppuccin'}
 		use 'EdenEast/nightfox.nvim'
+
+		-- Database Viwer
+		use 'tpope/vim-dadbod'
 
 		-- Random cosmetic stuff
 		use 'p00f/nvim-ts-rainbow'
@@ -69,8 +72,28 @@ require('packer').startup(function(use)
 				{'rafamadriz/friendly-snippets'}
 		}
 	}
+		use {
+			'williamboman/mason.nvim',
+			requires = {
+				"williamboman/mason-lspconfig.nvim",
+				"neovim/nvim-lspconfig",
+			}
+		}
+		use 'mhartington/formatter.nvim'
 
-		use 'glepnir/lspsaga.nvim'
+		-- TODO Accualy up date this right...
+		use {
+			'glepnir/lspsaga.nvim',
+			-- commit = "b7b4777"
+		}
+
+		-- REST api
+		use {
+			'rest-nvim/rest.nvim',
+			require = {
+				'nvim-lua/plenary.nvim'
+			}
+		}
 
 		-- Writeing stuffs / Markdown stuffs
 		use 'Pocco81/true-zen.nvim'
@@ -103,13 +126,19 @@ require('packer').startup(function(use)
 
 		-- Mic
 		use 'ThePrimeagen/vim-be-good'
-		use 'glepnir/dashboard-nvim'
+		-- use 'glepnir/dashboard-nvim'
+		-- use {
+		-- 	'Shatur/neovim-session-manager',
+		-- 	require = {
+		-- 		'nvim-lua/plenary.nvim'
+		-- 	}
+		-- }
 		-- use 'simrat39/symbols-outline.nvim'
-		use {
-			"akinsho/toggleterm.nvim", tag = '*', config = function()
-			require("toggleterm").setup()
-			end
-		}
+		-- use {
+		-- 	"akinsho/toggleterm.nvim", tag = '*', config = function()
+		-- 	require("toggleterm").setup()
+		-- 	end
+		-- }
 		use 'numToStr/Comment.nvim'
 		use {
 			'ggandor/leap.nvim',

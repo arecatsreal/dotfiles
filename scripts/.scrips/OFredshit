@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+pgrep -x redshift > /dev/null && {
+	notify-send Killing redshift
+	pkill -x redshift
+  redshift -O 6500k
+	exit 0
+}
+notify-send Starting redshift
+rs.sh &

@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-neofetch
+# neofetch
+echo && pfetch
 
 # Enable colors and change prompt:
 autoload -U colors && colors
@@ -38,7 +39,7 @@ confing_dir_edit () {
     if [[ $2 != "" ]]; then; cd $1; fi
     CDE_FILE=$(find $1/* -type f | fzf --height=10 --reverse)
     if [[ $CDE_FILE = "" ]]; then 
-        if [[ $2 != "" ]]; then; nvim +SessionLoad; else; f $1; fi
+        if [[ $2 != "" ]]; then; nvim +"SessionManager load_current_dir_session"; else; f $1; fi
     else
         o $CDE_FILE 
     fi

@@ -52,6 +52,26 @@ o () { # Open
 					application/x-sc) $OPEN_SPREDSHEET $1 ;;
 					application/x-bittorrent) $OPEN_TOURRENT $1 ;;
 					application/octet-stream) $OPEN_AUDIO $1 ;; # mp3 ????
+					application/x-executable)
+						EXE=false
+						test -x $1 && EXE=true
+						if [ $EXE = false ]; then
+							echo -n "$1 is not executable, who'd you like to change that? (Y/n)"; read $CHOICE
+							if [ $CHOICE == [Nn]* ]; then
+								echo "Doing nothing."
+							else
+								echo "Making $1 executable, and running it!"
+								chmod +x $1
+							fi
+						else
+							echo -n "Do you want to execute $1? (N/y)"; read $CHOICE
+							if [ $CHOICE == [Yn]* ]; then
+								exec $1
+							else
+								echo "Aborting..."
+							fi
+						fi
+						;;
 					application/zip|application/x-rar)
 						# Handaling cbz/cbr.
 							case $(echo $1 | awk '{print tolower($0)}') in 

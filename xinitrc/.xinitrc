@@ -18,6 +18,9 @@ export QT_IM_MODULE=fcitx
 export GTK_IM_MODULE=fcitx
 fcitx -d &
 
+# Redshift
+rs.sh &
+
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export $(dbus-launch)
 

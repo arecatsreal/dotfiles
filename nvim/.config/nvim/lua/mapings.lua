@@ -9,7 +9,7 @@ map('n', '<Leader>rn', ':Lspsaga rename<CR>')
 map('n', '<Leader>d', ':Lspsaga hover_doc<CR>')
 map('n', '<Leader>ca', ':Lspsaga code_action<CR>')
 map('n', '<Leader>lf', ':Lspsaga lsp_finder<CR>')
-map('n', '<Leader>s', ':LSoutlineToggle<CR>')
+map('n', '<Leader>s', ':Lspsaga outline<CR>')
 
 -- Zen Mod
 map('n', '<Leader>zz', ':TZAtaraxis<CR>') -- Open Propper zen mode.
@@ -41,6 +41,11 @@ map('n', '<Leader>tt', ':ToggleTerm dir=. direction=float<CR>')
 map('n', '<Leader>tn', ':ToggleTerm dir=. direction=horizontal size=20<CR>')
 map('n', '<Leader>th', ':ToggleTerm dir=. direction=vertical size=80<CR>')
 
+-- REST 
+map('n', '<Leader>rr', '<Plug>RestNvim')
+map('n', '<Leader>rp', '<Plug>RestNvimPreview')
+map('n', '<Leader>rl', '<Plug>RestNvimLast')
+
 -- Source Current file
 map('n', '<F5>', function ()
 	vim.cmd(":w")
@@ -57,10 +62,6 @@ map('n', 'z=', ':Telescope spell_suggest<CR>'); map('n', '?', '/', {noremap = tr
 map('n', '/', ':Telescope current_buffer_fuzzy_find<CR>')
 map('n', 'T', ':Telescope treesitter<CR>')
 map('n', 'P', ":Telescope neoclip<CR>")
-
--- Multi line tabbing
-map('v', '<Tab>', '>')
-map('v', 'S-<Tab>', '<')
 
 -- Yank and Put from system primary clipboard.
 map('v', 'y', '"+y')

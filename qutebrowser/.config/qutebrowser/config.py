@@ -22,16 +22,24 @@ config.set('content.headers.referer', 'same-domain')
 #config.set('content.proxy', 'http://localhost:4444/') # Use I2p
 
 # Settings I like
+config.set("url.start_pages", "https://search.brave.com")
 config.bind('z', 'hint links spawn mpv --fs {hint-url}') # Opens mpv with the hinted url.
 config.set("colors.webpage.preferred_color_scheme", "dark") # Dark mode.
+config.set("colors.webpage.darkmode.enabled", True)
 config.set("colors.webpage.darkmode.policy.images", "never")
-#config.set('qt.args', ['disable-remote-fonts'])
-config.bind('xx', 'config-cycle statusbar.show always never') # Hide and unhide the bottom bar.
+config.set('qt.args', ['disable-remote-fonts'])
+config.set('qt.highdpi', True)
 config.bind('\\u', 'hint links spawn -u untrack-url -O {hint-url}')
 config.bind('\\U', 'spawn -u untrack-url -p {clipboard}')
 c.aliases = {
     "proxy": "spawn --userscript proxyswitch.sh"
 }
+c.aliases = {
+    "unddit": "spawn --userscript unddit.sh"
+}
+# Status Bars
+config.set("statusbar.show", "never")
+config.bind('xx', 'config-cycle statusbar.show always never') # Hide and unhide the bottom bar.
 
 #Colemak-DH
 config.unbind('m')
@@ -89,8 +97,36 @@ config.set("content.javascript.enabled", True, '*://parcelsapp.com/*')
 config.set("content.javascript.enabled", True, '*://*.lan/*')
 config.set("content.javascript.enabled", True, '*://mangadex.org/*')
 config.set("content.javascript.enabled", True, '*://www.keybr.com/*')
+config.set("content.javascript.enabled", True, '*://10.0.0.1/*')
 
-# Zoom & Font size 
+# Search Engines
+search_engines = {"DEFAULT": "https://search.brave.com/search?q={}",
+  "aw": "https://wiki.archlinux.org/index.php?title=Special:Search&search={}",
+  "br": "https://search.brave.com/search?q={}",
+  "cf": "http://10.0.0.119:8888/?q=site%3Awww.curseforge.com+{}",
+  "chan": "https://www.4chan.org/{}",
+  "dw": "https://wiki.debian.org/FrontPage?action=fullsearch&context=180&value={}&titlesearch=Titles",
+  "eztv": "https://eztv.re/search/{}",
+  "gh": "https://github.com/search?q={}",
+  "gl": "https://gitlab.com/explore?utf8=%E2%9C%93&name={}&sort=latest_activity_desc",
+  "go": "http://gpo.zugaina.org/Search?search={}",
+  "in": "https://invidious.tiekoetter.com/search?q={}",
+  "j": "https://jisho.org/search?utf8=%E2%9C%93&keyword={}",
+  "lu": "https://lutris.net/games?q={}",
+  "ma": "https://mangadex.org/titles?q={}",
+  "mal": "https://myanimelist.net/anime.php?type=all&keyword={}",
+  "mw": "https://minecraft.fandom.com/wiki/{}",
+  "pkg": "https://pkgs.org/search/?q={}",
+  "po": "https://www.protondb.com/search?q={}",
+  "tp": "https://parcelsapp.com/en/tracking/{}",
+  "vn": "https://vndb.org/v?q={}&ch=&f=022gen164oand4odos4ops14opsp4opsv4ovnd&s=33w",
+  "vndb": "https://vndb.org/v?sq={}",
+  "ebay": "https://www.ebay.com/sch/i.html?_from=R40&_trksid=m570.l1313&_nkw={}&_sacat=0",
+  "w": "https://www.wikipedia.org/w/index.php?title=Special:Search&search={}"
+}
+config.set("url.searchengines", search_engines)
+
+# Zoom & Font size
 dot_file = open("/home/mip/.config/dot")
 dot = dot_file.read()
 dot_file.close()
