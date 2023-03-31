@@ -30,7 +30,7 @@
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
     geometry = "0x0-30+20"
-	
+
     # Turn on the progess bar
     progress_bar = true
 
@@ -40,14 +40,14 @@
 
     # Set the frame width of the progress bar
     progress_bar_frame_width = 1
-    
+
     # Set the minimum width for the progress bar
     progress_bar_min_width = 150
 
     # Set the maximum width for the progress bar
     progress_bar_max_width = 300
-    
-    
+
+
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
 
@@ -78,13 +78,14 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 3
+    frame_width = 2
 
     # Defines color of the frame around the notification window.
     #frame_color = "#C9CBFF" # Cappuccin
-    #frame_color = "#bd93f9" # Dracula 
+    #frame_color = "#bd93f9" # Dracula
     # frame_color = "#8FBCBB" # Nord
-    frame_color = "#47407d" # Duskfox
+    # frame_color = "#47407d" # Duskfox
+    frame_color = "#7aa4a1" # Terafox
 
     # Define a color for the separator.
     # possible values are:
@@ -249,7 +250,7 @@
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
-    # parameter, an application may close the notification sent before the 
+    # parameter, an application may close the notification sent before the
     # user defined timeout.
     ignore_dbusclose = false
 
@@ -320,8 +321,10 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#232136" # Duskfox
-    foreground = "#e0def4" # Duskfox
+    # background = "#232136" # Duskfox
+    # foreground = "#e0def4" # Duskfox
+    background = "#152528" # Terafox
+    foreground = "#e6eaea" # Terafox
     # background = "#434C5E" # Nord
     # foreground = "#D8DEE9" # Nord
     #background = "#282a36" # Dracula
@@ -333,8 +336,10 @@
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#232136" # Duskfox
-    foreground = "#e0def4" # Duskfox
+    # background = "#232136" # Duskfox
+    # foreground = "#e0def4" # Duskfox
+    background = "#152528" # Terafox
+    foreground = "#e6eaea" # Terafox
     # background = "#434C5E" # Nord
     # foreground = "#D8DEE9" # Nord
     #background = "#282a36" # Dracula

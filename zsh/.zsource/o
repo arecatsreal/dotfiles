@@ -22,12 +22,12 @@ o () { # Open
 				esac
 			if [[ $IN_OWNER == "root" ]]; then # If file owner is root opens it in $ROOTEDITOR A.K.A. sudoedit.
 				if [[ $ROOTEDITOR == '' ]]; then # Tests it $ROOTEDITOR is blank if is then just uses sudoedit.
-					sudoedit $1	
+					sudoedit $1
 				else
 					$ROOTEDITOR $1
 				fi
 			elif [[ $1 == '' ]]; then # If input is blank just opens $EDITOR.
-				$EDITOR	
+				$EDITOR
 			# Open Video
 			elif [[ $MIME_TYPE_FP == 'video' ]]; then
 				$OPEN_VIDEO $1
@@ -36,7 +36,19 @@ o () { # Open
 				$OPEN_AUDIO $1
 			# Open Image
 			elif [[ $MIME_TYPE_FP == 'image' ]]; then
-				$OPEN_IMAGE $1&
+				WALLP=false
+          pwd | grep "wallpaper" > /dev/null && {
+					WALLP=true
+					VOS=$(echo -n "View\nSet Wallpaper" | fzf --height=10 --reverse )
+					if [[ $VOS == 'Set Wallpaper' ]]; then
+						setwallp $1
+					else
+						WALLP=false
+					fi
+				}
+				if [ $WALLP = false ]; then
+					$OPEN_IMAGE $1&
+				fi
 			# Open Text
 			elif [[ $MIME_TYPE_FP == 'text' ]]; then
 				case $(echo $MIME_TYPE | awk -F '/' '{print $2}') in
@@ -74,20 +86,20 @@ o () { # Open
 						;;
 					application/zip|application/x-rar)
 						# Handaling cbz/cbr.
-							case $(echo $1 | awk '{print tolower($0)}') in 
-								*.cbz|*.cbr) $OPEN_COMICBOOK $1 ;;      
+							case $(echo $1 | awk '{print tolower($0)}') in
+								*.cbz|*.cbr) $OPEN_COMICBOOK $1 ;;
 								*) $EDITOR $1 ;;
 							esac
 						;;
 					*) $EDITOR $1 ;;
 				esac
 		fi
-			# If it is not a file then it tests to see if it's a dir and if so it opens it with the file manager. 
-			elif [ -d $1 ];then 
+			# If it is not a file then it tests to see if it's a dir and if so it opens it with the file manager.
+			elif [ -d $1 ];then
 				# Tests to if f is a function else if $FILEM is set else just cds.
 				MZZSHRC=false; which f 2> /dev/null > /dev/null && MZSHRC=true
 				if [[ $MZSHRC ]]; then
-					f $1	
+					f $1
 				else
 					if [[ $FILEM == '' ]]; then
 						cd $1

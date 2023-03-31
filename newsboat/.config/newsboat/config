@@ -13,3 +13,8 @@ browser "mpv %u"
 #macro w set browser "mpv --fs --ytdl-format=bestvideo+bestaudio/best %u" ; open-in-browser ; set browser "mpv %u"
 macro w set browser "nbvid %u" ; open-in-browser ; set browser "mpv %u"
 macro c set browser ; open-in-browser ; set browser "echo %u | xclip -selection clip"
+
+color info green black reverse
+color listnormal_unread green default bold
+color listfocus green default reverse bold
+color listfocus_unread green default reverse bold

@@ -36,12 +36,12 @@ map('n', '<Leader>g', ':GrammarousCheck<CR>') -- Lints current buffer with Langu
 map('v', '<Leader>g', ":'<,'>GrammarousCheck<CR>") -- Lints current selection with LanguageTool.
 
 -- Terminal
-map('t', '<ESC>', '<C-\\><C-n>') -- Exit term with <ESC>.
+-- map('t', '<ESC>', '<C-\\><C-n>') -- Exit term with <ESC>.
 map('n', '<Leader>tt', ':ToggleTerm dir=. direction=float<CR>')
 map('n', '<Leader>tn', ':ToggleTerm dir=. direction=horizontal size=20<CR>')
 map('n', '<Leader>th', ':ToggleTerm dir=. direction=vertical size=80<CR>')
 
--- REST 
+-- REST
 map('n', '<Leader>rr', '<Plug>RestNvim')
 map('n', '<Leader>rp', '<Plug>RestNvimPreview')
 map('n', '<Leader>rl', '<Plug>RestNvimLast')
@@ -53,7 +53,7 @@ map('n', '<F5>', function ()
 end, { noremap = true })
 
 -- Tree
-map('n', '<F3>', ':Neotree<CR>')
+-- map('n', '<F3>', ':Neotree<CR>')
 
 -- Fuzzyfinding
 map('n', '<F1>', ':Telescope buffers<CR>', {noremap = true})

@@ -1,7 +1,7 @@
 ;;; Startup
 (setq user-emacs-directory "~/.cache/emacs")
 ;;; PACKAGE LIST
-(setq package-archives 
+(setq package-archives
       '(("melpa" . "https://melpa.org/packages/")
         ("elpa" . "https://elpa.gnu.org/packages/")))
 
@@ -42,6 +42,8 @@
   (setq evil-want-integration t)
   (evil-collection-init))
 
+(use-package evil-colemak-basics
+  :after evil)
 
 ;; Clean Folders
 (use-package no-littering)
@@ -52,7 +54,7 @@
 ;(use-package perspective
 ;  :bind (("C-x b" . persp-switch-to-buffer*)
 ;         ("C-x k" . persp-kill-buffer*))
-;  :init 
+;  :init
 ;  (setq persp-initial-frame-name "ground")
 ;  (persp-mode))
 
@@ -118,7 +120,7 @@
 (use-package vertico
   :bind (:map vertico-map
 	      ("C-j" . vertico-next)
-	      ("C-k" . vertico-previous)) 
+	      ("C-k" . vertico-previous))
   :init
   (vertico-mode))
 (use-package savehist

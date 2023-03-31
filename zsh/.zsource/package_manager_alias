@@ -2,14 +2,14 @@
 
 #Package Manager alias
 
-# Void Linux 
+# Void Linux
 alias xin="sudo xbps-install"
 alias xup="sudo xbps-install -S -u"
 alias xrm="sudo xbps-remove"
 alias xro="sudo xbps-remove -o"
 alias xqu="xbps-query -s"
 
-# Arch Linux 
+# Arch Linux
 YAYIN=false
 yay --version 2> /dev/null > /dev/null && {
 	alias pin="yay -S"
@@ -69,13 +69,14 @@ alias ein="doas emerge --autounmask -va"
 alias erm="doas emerge --autounmask -va --unmerge"
 alias ero="doas emerge --autounmask -va --depclean"
 alias eup="doas emerge --autounmask -auvDU @world"
-which eix 2> /dev/null > /dev/null && {; 
-alias equ="eix"
-alias eqr="eix -R"
+alias eupd="doas emaint --auto sync"
 alias etcup="doas etc-update"
+which eix 2> /dev/null > /dev/null && {;
+	alias equ="eix"
+	alias eqr="eix -R"
 }
 
-# Bedrock linux 
+# Bedrock linux
 alias pmqu="pmm-query -R -s"
 if [ $YAYIN = false ]; then
 	alias pmup="sudo pmm-install -S -u"

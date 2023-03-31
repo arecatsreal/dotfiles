@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# This is a fork of passmenu meaning this script is licenced under GPLV2 or latter.
+
+shopt -s nullglob globstar
+PREFIX=${PASSWORD_STORE_DIR-~/.password-store}
+PASSWORD_FILES=( "$PREFIX"/**/*.gpg )
+PASSWORD_FILES=( "${PASSWORD_FILES[@]#"$PREFIX"/}" )
+PASSWORD_FILES=( "${PASSWORD_FILES[@]%.gpg}" )
+
+PASS=$(printf '%s\n' "${PASSWORD_FILES[@]}" | "fzf" "$@")
+
+[[ -n $PASS ]] || exit
+
+pass edit $PASS

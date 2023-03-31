@@ -13,7 +13,7 @@ mark g ~/NAS/Books/Manga
 mark a ~/NAS/Books/audioBooks
 
 " Theme
-colorscheme unitheme
+colorscheme terafox
 source $HOME/.config/vifm/scripts/favicons.vifm
 
 " Custom Commands
@@ -56,5 +56,5 @@ nnoremap / :FZFfind<cr>
 " Preview Window
 " fileviewer *.html,*.go,*.css,*.md,*.sh,*.rs,*.cpp,*.lisp,*.el highlight -l -O xterm256 --config-file=$HOME/.config/vifm/scripts/dracula.theme -s dracula %c
 fileviewer *.html,*.go,*.css,*.md,*.sh,*.rs,*.cpp,*.lisp,*.el highlight -l -O xterm256 --config-file=$HOME/.config/vifm/scripts/dracula.theme -s dracula %c
-fileviewer <application/json> cat %c | jq | highlight --syntax json -l -O xterm256 --config-file=$HOME/.config/vifm/scripts/dracula.theme -s dracula 
+fileviewer <application/json> cat %c | jq | highlight --syntax json -l -O xterm256 --config-file=$HOME/.config/vifm/scripts/dracula.theme -s dracula
 ""source $HOME/.config/vifm/scripts/vifmimgrc.vifm

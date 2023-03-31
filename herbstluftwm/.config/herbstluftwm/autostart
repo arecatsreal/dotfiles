@@ -42,7 +42,7 @@ hc keybind $MOD-n             focus down
 hc keybind $MOD-e             focus up
 hc keybind $MOD-i             focus right
 
-# moving clients              
+# moving clients
 hc keybind $MOD-Shift-h       shift left
 hc keybind $MOD-Shift-n       shift down
 hc keybind $MOD-Shift-e       shift up
@@ -101,8 +101,12 @@ hc mousebind $MOD-Button3 resize
 # FBNC="#434C5E"
 
 # Duskfox
-FBAC="#9ccfd8"
-FBNC="#393552"
+# FBAC="#9ccfd8"
+# FBNC="#393552"
+
+# Terafox
+FBAC="#7aa4a1"
+FBNC="#2f3239"
 
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
@@ -152,6 +156,8 @@ hc rule title~"aseprite" floating=true
 hc rule class~"SpeedCrunch" floating=true
 hc rule class~"pinentry-qt5" floating=true
 hc rule class~"winecfg.exe" floating=true
+hc rule class~"gcolor3" floating=true
+hc rule class~"Gcolor3" floating=true
 
 # unlock, just to be sure
 hc unlock

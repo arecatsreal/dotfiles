@@ -15,14 +15,14 @@ PASSWORD_FILES=( "${PASSWORD_FILES[@]%.gpg}" )
 # 		echo $ITEM
 # 		# if [[ ${#ITEM} > 30 ]]; then
 # 		# 	{PASSWORD_FILES[$i]}=""
-# 		# fi	
+# 		# fi
 # 		((--i))
 # 	done
 # }; len_check
 
 PASS=$(printf '%s\n' "${PASSWORD_FILES[@]}" | "dmenu" "$@")
 
-[[ -n $PASS ]] || exit 
+[[ -n $PASS ]] || exit
 
 ACTION=$(printf "Copy Username\nCopy Password\nAuto Type\nCopy url\nShow Comments"| dmenu)
 

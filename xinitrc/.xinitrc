@@ -3,7 +3,7 @@ eval "$(dbus-launch --sh-syntax --exit-with-session)"
 #Rice Stuff
 #picom --experimental-backends & #compton but not compton
 #exec ~/.config/dwm/statusBar.sh &
-#exec ~/.config/polybar/launch.sh & 
+#exec ~/.config/polybar/launch.sh &
 #nitrogen --restore &
 #~/cowsdf.sh &
 
@@ -19,7 +19,7 @@ export GTK_IM_MODULE=fcitx
 fcitx -d &
 
 # Redshift
-rs.sh &
+# rs.sh &
 
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export $(dbus-launch)
@@ -33,7 +33,7 @@ dunst &
 #dwm_bar &
 
 #Turn off sleep
-xset s off & 
+xset s off &
 xset -dpms &
 
 #Keys
@@ -56,6 +56,6 @@ displaysetup.sh &
 #exec emacs #I wish this was a joke lul.
 #exec bspwm
 #exec spectrwm
-exec herbstluftwm 
+exec herbstluftwm
 #exec notion
 # exec i3

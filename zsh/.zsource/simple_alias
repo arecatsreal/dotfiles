@@ -23,11 +23,15 @@ fi
 
 # Zip dir
 zdir () {
-	for dir in ./* ;do
-			if [[ -d $dir ]];then
-					zip -r ${dir}.$1 $dir
-			fi
-	done
+  if [ $1 != "" ]; then
+    for dir in ./* ;do
+        if [[ -d $dir ]];then
+            zip -r ${dir}.$1 $dir
+        fi
+    done
+  else
+    echo "Please state file extinction."
+  fi
 }
 
 #Program Short cuts
@@ -59,3 +63,4 @@ tagre () {; find . -type f -exec sed -i "1i $*" '{}' \;}
 alias countingloop="i=0; while true; do ((i++)); echo $i; done"
 alias qrcode="qrencode -t ansiutf8"
 alias lsblk_uudi="lsblk -o NAME,MOUNTPOINTS,UUID"
+alias reboot="doas reboot"

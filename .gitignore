@@ -15,8 +15,9 @@ nnn/.config/nnn/plugins
 mpd/.config/mpd/database
 vim/.vim/.netrwhist
 nvim/.config/nvim/spell
+nvim/.config/nvim/lazy-lock.json
 nvim/.config/nvim/plugins/packer_compiled.lua
-mpv/.config/mpv/shaders 
+mpv/.config/mpv/shaders
 vifm/.config/vifm/vifminfo.json
 vifm/.config/vifm/vifminfo.json*
 vifm/.config/vifm/vifm-help.txt

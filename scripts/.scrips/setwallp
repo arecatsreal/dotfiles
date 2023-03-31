@@ -1,9 +1,10 @@
 #!/bin/sh
 
-case $1 in
-	fill) 	feh --bg-fill 	"$2" ;;
-	max) 	feh --bg-max	"$2" ;;
-	scale) 	feh --bg-scale 	"$2" ;;
-	tile) 	feh --bg-tile 	"$2" ;;
+CHOICE=$(printf "Center\nFill\nMax\nScale\nTile" | fzf --height=10 --reverse)
+case $CHOICE in
+	Fill) 	feh --bg-fill 	"$1" ;;
+	Max) 	feh --bg-max	"$1" ;;
+	Scale) 	feh --bg-scale 	"$1" ;;
+	Tile) 	feh --bg-tile 	"$1" ;;
 	*) 		feh --bg-center "$1" ;;
 esac

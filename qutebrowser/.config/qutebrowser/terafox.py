@@ -1,20 +1,20 @@
 palette = {
-    'background': '#232136',
-    'background-alt': '#47407d',
-    'border': '#c4a7e7',
-    'current-line': '#393552',
-    'selection': '#48407d',
-    'foreground': '#e0def4',
-    'foreground-alt': '#e0def4',
-    'foreground-attention': '#a3be8c',
-    'comment': '#393552',
-    'magenta': '#c4a7e7',
-    'yellow': '#f6c177',
-    'brightmagenta':'#ccb1ed',
-    'red': '#eb6f92',
-    'blue': '#569fba',
-    'green':'#a3be8c',
-    'cyan': '#a6dae3',
+    'background': '#152528',
+    'background-alt': '#2f3239',
+    'border': '#7aa4a1',
+    'current-line': '#8eb2af',
+    'selection': '#8eb2af',
+    'foreground': '#e6eaea',
+    'foreground-alt': '#4e5157',
+    'foreground-attention': '#eb746b',
+    'comment': '#4e5157',
+    'magenta': '#ad5c7c',
+    'yellow': '#fda47f',
+    'brightmagenta':'#b97490',
+    'red': '#e85c51',
+    'blue': '#5a93aa',
+    'green':'#7aa4a1',
+    'cyan': '#a1cdd8',
 }
 
 ## Background color of the completion widget category headers.
@@ -48,10 +48,10 @@ c.colors.completion.item.selected.border.bottom = palette['selection']
 c.colors.completion.item.selected.border.top = palette['selection']
 
 ## Foreground color of the selected completion item.
-c.colors.completion.item.selected.fg = palette['foreground']
+c.colors.completion.item.selected.fg = palette['foreground-alt']
 
 ## Foreground color of the matched text in the completion.
-c.colors.completion.match.fg = palette['brightmagenta']
+c.colors.completion.match.fg = palette['cyan']
 
 ## Color of the scrollbar in completion view
 c.colors.completion.scrollbar.bg = palette['background']
@@ -85,7 +85,7 @@ c.colors.downloads.system.bg = 'none'
 c.colors.hints.bg = palette['background']
 
 ## Font color for hints.
-c.colors.hints.fg = palette['magenta']
+c.colors.hints.fg = palette['cyan']
 
 ## Hints
 c.hints.border = '1px solid ' + palette['background-alt']
@@ -97,7 +97,7 @@ c.colors.hints.match.fg = palette['foreground-alt']
 c.colors.keyhint.bg = palette['background']
 
 ## Text color for the keyhint widget.
-c.colors.keyhint.fg = palette['magenta']
+c.colors.keyhint.fg = palette['cyan']
 
 ## Highlight color for keys to complete the current keychain.
 c.colors.keyhint.suffix.fg = palette['selection']
@@ -212,7 +212,7 @@ c.colors.statusbar.url.warn.fg = palette['yellow']
 
 ## Background color of the tab bar.
 ## Type: QtColor
-c.colors.tabs.bar.bg = palette['selection']
+c.colors.tabs.bar.bg = palette['background']
 
 ## Foreground color of the tab bar.
 ## Type: QtColor
@@ -220,7 +220,7 @@ c.colors.tabs.bar.bg = palette['selection']
 
 ## Background color of unselected even tabs.
 ## Type: QtColor
-c.colors.tabs.even.bg = palette['selection']
+c.colors.tabs.even.bg = palette['background-alt']
 
 ## Foreground color of unselected even tabs.
 ## Type: QtColor
@@ -249,7 +249,7 @@ c.colors.tabs.indicator.system = 'none'
 
 ## Background color of unselected odd tabs.
 ## Type: QtColor
-c.colors.tabs.odd.bg = palette['selection']
+c.colors.tabs.odd.bg = palette['background-alt']
 
 ## Foreground color of unselected odd tabs.
 ## Type: QtColor

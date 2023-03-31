@@ -2,7 +2,6 @@
 
 # neofetch
 echo && pfetch
-
 # Enable colors and change prompt:
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$fg[yellow]%}🍌%b "
@@ -17,17 +16,17 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[1;36m' # Cyan
 
 # Functions to change the default settings.
-editor () {; export EDITOR=$* && echo "The editor is set to $EDITOR" && fileOpenAlias;} 
-pager () {; export PAGER=$* && echo "The pager is set to $PAGER"; } 
-browser () {; export BROWSER=$* && echo "The browser is set to $BROWSER"; } 
-tbrowser () {; export TBROESER=$* && echo "The terminal browser is set to $TBROESER"; } 
+editor () {; export EDITOR=$* && echo "The editor is set to $EDITOR" && fileOpenAlias;}
+pager () {; export PAGER=$* && echo "The pager is set to $PAGER"; }
+browser () {; export BROWSER=$* && echo "The browser is set to $BROWSER"; }
+tbrowser () {; export TBROESER=$* && echo "The terminal browser is set to $TBROESER"; }
 filem () {; export FILEM=$* && echo "The file manager is set to $FILEM" && setfileman; }
 
-#Lynx
+# Lynx
 duck () {; lynx "duckduckgo.com/lite?kd=-1&kp=-1&q=$*"; }
 alias '?'="duck"
 
-# File/Dir opeing 
+# File/Dir opeing
 fileOpenAlias () {
     alias nba="$EDITOR ~/.config/newsboat/urls"
     alias tconf="$EDITOR ~/.tmux.conf"
@@ -38,14 +37,14 @@ fileOpenAlias
 confing_dir_edit () {
     if [[ $2 != "" ]]; then; cd $1; fi
     CDE_FILE=$(find $1/* -type f | fzf --height=10 --reverse)
-    if [[ $CDE_FILE = "" ]]; then 
-        if [[ $2 != "" ]]; then; nvim +"SessionManager load_current_dir_session"; else; f $1; fi
+    if [[ $CDE_FILE = "" ]]; then
+        if [[ $2 != "" ]]; then; cd $1 && nvim +"SessionManager load_current_dir_session"; else; f $1; fi
     else
-        o $CDE_FILE 
+        o $CDE_FILE
     fi
 }
 alias zrc="confing_dir_edit $ZSOURCE"
-alias vrc="confing_dir_edit ~/.config/nvim cd" 
+alias vrc="confing_dir_edit ~/.config/nvim cd"
 alias vfmc="confing_dir_edit ~/.config/vifm"
 alias pe="confing_dir_edit /etc/portage"
 
