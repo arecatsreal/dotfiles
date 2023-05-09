@@ -27,6 +27,6 @@ option_slection (){
 		$CURRENTVOL) vol_set;;
 		'exit') exit 0;;
 	esac
-	main_screen 
+	main_screen
 }
 main_screen

@@ -6,8 +6,9 @@ pack () {
 	if [[ $FZF_IN ]]; then
 		PICK=$(echo "tar.bz2\ntar.gz\nbz2\nrar\ngz\ntar\ntbz2\ntgz\nzip\nzip_cript\ncbz\n7z\niso\nntar.xz\njar" | fzf --height=10 --reverse)
 		case $PICK in
-			tar.bz2)   tar cjf $1.tar.bz2 $1	 	;;
-			tar.gz)    tar czf $1.tar.gz  $1  	;;
+			tar.bz2)   tar vcjf $1.tar.bz2 $1	 	;;
+			tar.gz)    tar vczf $1.tar.gz  $1  	;;
+			tar.xz)    tar vcf $1.tar.xz $1    	;;
 			bz2)       bunzip2 -z $1	;;
 			rar)       rar a $1.rar $1	;;
 			gz)        gzip $1    		;;
@@ -19,7 +20,6 @@ pack () {
 			cbz)       zip -r $1.cbz $1	;;
 			7z)        7z a $1.7z $1	;;
 			iso)       7z a $1.iso $1	;;
-			tar.xz)    tar cf $1.tar.xz $1    	;;
 			jar)    jar cf $1.jar $1    	;;
 			*)           echo "Error invalad selection!" ;;
 		esac

@@ -2,7 +2,7 @@
 
 # File Manager
 setfileman() {
-	case $FILEM in 
+	case $FILEM in
 		fff){
 			f() {
 				fff "$@"
@@ -13,11 +13,10 @@ setfileman() {
 		lf){
 			source ~/.config/lf-shellcd/lf-shellcd
 			alias m="l ~/.local/share/shortcuts/"
-			source $ZSOURCE/lf-icons 
+			source $ZSOURCE/lf-icons
 		};;
 		vifm)
 			v(){
-				#local dst="$(command vifmrun --choose-dir - "$@")"
 				local dst="$(command vifm --choose-dir - "$@")"
 				if [ -z "$dst" ]; then
 					echo 'Directory picking cancelled/failed'
@@ -36,5 +35,3 @@ case $FILEM in
 	lf) f() {; l $*; } ;;
 	vifm) f() {; v $*; } ;;
 esac
-#alias vrc="f $HOME/.config/nvim"
-#alias zrc="f $HOME/.zsource"

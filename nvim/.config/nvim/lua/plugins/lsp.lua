@@ -49,6 +49,8 @@ return {
         'bashls',
         'jsonls',
         'vimls',
+        'tsserver',
+        'rome',
       })
 
 

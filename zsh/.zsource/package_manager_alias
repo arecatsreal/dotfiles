@@ -74,6 +74,7 @@ alias etcup="doas etc-update"
 which eix 2> /dev/null > /dev/null && {;
 	alias equ="eix"
 	alias eqr="eix -R"
+  alias eupd="eix-sync"
 }
 
 # Bedrock linux

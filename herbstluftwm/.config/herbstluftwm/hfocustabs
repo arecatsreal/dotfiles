@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+source $HOME/.config/herbstluftwm/hc
+
+UP=false
+MAX=false
+if [ $1 == "up" ]; then
+  UP=true
+elif [ $1 != "down" ]; then
+  echo "hfocustabs: \"$1\" is not valid please use \"up\" or \"down\""
+  exit 1
+fi
+
+# Max
+hc layout | grep max | grep "[FOCUS]" > /dev/null && {
+  MAX=true
+  if [[ $UP ]]; then
+    echo up
+    hc focus --level=tabs right
+  else
+    echo down
+    hc focus --level=tabs left
+  fi
+}
+echo $UP
+
+# Anything else
+if [ $MAX = false ]; then
+  hc focus $1
+fi

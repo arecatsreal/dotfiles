@@ -56,6 +56,6 @@ displaysetup.sh &
 #exec emacs #I wish this was a joke lul.
 #exec bspwm
 #exec spectrwm
-exec herbstluftwm
+exec herbstluftwm >> $HOME/herb.log
 #exec notion
 # exec i3

@@ -1,5 +1,6 @@
 local fn = vim.fn
 local o = vim.o
+local cmd = vim.api.nvim_create_user_command
 
 require('colemak') -- Load Colemak rebinds.
 require('mapings') -- Load mappings.
@@ -22,11 +23,15 @@ o.expandtab = true
 o.spelllang = "en"
 o.termguicolors = true
 o.laststatus = 3 -- Global status line
-vim.api.nvim_create_user_command('Q', 'bdelete', {nargs = 0})
+cmd('Q', 'bdelete', {nargs = 0})
 
 -- Vim Wiki
 vim.cmd(
     "let g:vimwiki_list = [{'path': '~/Notes/', 'syntax': 'markdown', 'ext': '.md'}]")
 vim.cmd("autocmd FileType vimwiki setlocal filetype=markdown")
 
-vim.api.nvim_create_user_command('WordCount', '!wc -w %', {}) -- Prints word count of buffer.
+cmd('WordCount', '!wc -w %', {}) -- Prints word count of buffer.
+
+-- Write As Root
+-- cmd('RW', 'w !sudo tee %', {}) -- SUDO
+cmd('RW', 'w !doas tee %', {}) -- DOAS

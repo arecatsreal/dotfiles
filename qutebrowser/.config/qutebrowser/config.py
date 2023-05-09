@@ -38,12 +38,24 @@ config.set("qt.highdpi", True)
 config.bind("\\u", "hint links spawn -u untrack-url -O {hint-url}")
 config.bind("\\U", "spawn -u untrack-url -p {clipboard}")
 c.aliases = {"proxy": "spawn --userscript proxyswitch.sh"}
-# c.aliases = {"unddit": "spawn --userscript unddit.sh"}
 # Status Bars
 config.set("statusbar.show", "never")
 config.bind(
     "xx", "config-cycle statusbar.show always never"
 )  # Hide and unhide the bottom bar.
+
+# Yomichand
+c.aliases = {"yomichan": "spawn --userscript yomichad"}
+config.bind('gs', 'spawn --userscript yomichad')
+config.bind('gS', 'spawn --userscript yomichad --prefix-search')
+config.bind('gn', 'spawn --userscript yomichad --names')
+
+# Contaners
+config.bind('C','spawn --userscript container-open')
+config.bind('<Alt-c>','set-cmd-text -s :spawn --userscript container-open')
+config.bind('<Alt-t>','hint links userscript container-open')
+config.bind('<Alt-t>','hint links userscript container-open')
+c.aliases['container-open'] = 'spawn --userscript container-open'
 
 # Colemak-DH
 config.unbind("m")
@@ -73,6 +85,12 @@ config.bind(
     "zzm", "config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload"
 )
 config.set("hints.chars", "arstneio")
+
+# Url-Mutator
+# config.bind("t", "hint links spawn --userscript url_mutator /home/mip/.config/qutebrowser/url_mut_config.toml \"open\" {hint-url}")
+# config.bind("T", "hint links spawn --userscript url_mutator /home/mip/.config/qutebrowser/url_mut_config.toml \"open -t\" {hint-url}")
+config.bind("l", "spawn --userscript url_mutator /home/mip/.config/qutebrowser/url_mut_config.toml \"open\" {clipboard}")
+config.bind("L", "spawn --userscript url_mutator /home/mip/.config/qutebrowser/url_mut_config.toml \"open -t\" {clipboard}")
 
 #  Fonts
 # config.set("fonts.default_family", "ComicCodeLigatures Nerd Font")
@@ -104,6 +122,7 @@ config.set("content.javascript.enabled", True, "*://*.lan/*")
 config.set("content.javascript.enabled", True, "*://mangadex.org/*")
 config.set("content.javascript.enabled", True, "*://www.keybr.com/*")
 config.set("content.javascript.enabled", True, "*://sourcegraph.com/*")
+config.set("content.javascript.enabled", True, "*://biblioreads.ml/*")
 config.set("content.javascript.enabled", True, "*://10.0.0.1/*")
 
 # Search Engines
@@ -111,18 +130,16 @@ search_engines = {
     "DEFAULT": "https://search.brave.com/search?q={}",
     "aw": "https://wiki.archlinux.org/index.php?title=Special:Search&search={}",
     "br": "https://search.brave.com/search?q={}",
-    "cf": "http://10.0.0.119:8888/?q=site%3Awww.curseforge.com+{}",
     "chan": "https://www.4chan.org/{}",
     "dw": "https://wiki.debian.org/FrontPage?action=fullsearch&context=180&value={}&titlesearch=Titles",
     "eztv": "https://eztv.re/search/{}",
     "gh": "https://github.com/search?q={}",
     "gl": "https://gitlab.com/explore?utf8=%E2%9C%93&name={}&sort=latest_activity_desc",
     "geno": "http://gpo.zugaina.org/Search?search={}",
-    "in": "https://invidious.tiekoetter.com/search?q={}",
+    "in": "https://invidious.snopyta.org/search?q={}",
     "j": "https://jisho.org/search?utf8=%E2%9C%93&keyword={}",
     "lu": "https://lutris.net/games?q={}",
     "ma": "https://mangadex.org/titles?q={}",
-    "mal": "https://myanimelist.net/anime.php?type=all&keyword={}",
     "mw": "https://minecraft.fandom.com/wiki/{}",
     "pkg": "https://pkgs.org/search/?q={}",
     "po": "https://www.protondb.com/search?q={}",
@@ -132,6 +149,8 @@ search_engines = {
     "ebay": "https://www.ebay.com/sch/i.html?_from=R40&_trksid=m570.l1313&_nkw={}&_sacat=0",
     "tu": "https://www.tumblr.com/search/{}",
     "sg": "https://sourcegraph.com/search?q=context%3Aglobal+{}&patternType=standard&sm=1&groupBy=repo",
+    "rim": "https://steamcommunity.com/workshop/browse/?appid=294100&searchtext={}&childpublishedfileid=0&browsesort=textsearch&section=",
+    "zom": "https://steamcommunity.com/workshop/browse/?appid=108600&searchtext={}&childpublishedfileid=0&browsesort=textsearch&section=",
     "w": "https://www.wikipedia.org/w/index.php?title=Special:Search&search={}",
 }
 config.set("url.searchengines", search_engines)

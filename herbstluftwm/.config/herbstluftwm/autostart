@@ -37,15 +37,17 @@ hc keybind $MOD-a spawn dmenu_timer
 hc keybind $MOD-j spawn OFredshit
 
 # focusing clients
-hc keybind $MOD-h             focus left
-hc keybind $MOD-n             focus down
 hc keybind $MOD-e             focus up
+hc keybind $MOD-n             focus down
+# hc keybind $MOD-e             spawn $HOME/.config/herbstluftwm/hfocustabs up
+# hc keybind $MOD-n             spawn $HOME/.config/herbstluftwm/hfocustabs down
+hc keybind $MOD-h             focus left
 hc keybind $MOD-i             focus right
 
 # moving clients
-hc keybind $MOD-Shift-h       shift left
-hc keybind $MOD-Shift-n       shift down
 hc keybind $MOD-Shift-e       shift up
+hc keybind $MOD-Shift-n       shift down
+hc keybind $MOD-Shift-h       shift left
 hc keybind $MOD-Shift-i       shift right
 
 # splitting frames

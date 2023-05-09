@@ -43,7 +43,9 @@
   (evil-collection-init))
 
 (use-package evil-colemak-basics
-  :after evil)
+  :after evil
+  :config
+  (global-evil-colemak-basics-mode))
 
 ;; Clean Folders
 (use-package no-littering)
@@ -58,38 +60,39 @@
 ;  (setq persp-initial-frame-name "ground")
 ;  (persp-mode))
 
-;; hemeing
+;; Themeing
 ;(use-package dracula-theme
 ;  :config
 ;  (load-theme 'dracula t))
-;(use-package doom-themes
-  ;:ensure t
-  ;:config
-  ;;; Global settings (defaults)
-  ;(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        ;doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  ;(load-theme 'doom-dracula t)
-(use-package catppuccin-theme
- :config
- (setq catppuccin-height-title1 1.5)
+(use-package doom-themes
+  :ensure t
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-dracula t)
+; (use-package catppuccin-theme
+;  :config
+;  (setq catppuccin-height-title1 1.5)
 
-  ;; Enable flashing mode-line on errors
-  ;(doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  ;(doom-themes-neotree-config)
-  ;; or for treemacs users
-  ;(setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
-  ;(doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  ;(doom-themes-org-config))
+  ; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+  ; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-solarized-dark") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-config)
+  ; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 
-(scroll-bar-mode 0) ; Disable Scrollbars
+(Scroll-bar-mode 0) ; Disable Scrollbars
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 ;; Font
 ;(set-frame-font "UbuntuMono Nerd Font Mono" nil t)
 ;(set-face-attribute 'default nil :height 200)
-(add-to-list 'default-frame-alist '(font . "UbuntuMono Nerd Font Mono-20"))
+;; (add-to-list 'default-frame-alist '(font . "UbuntuMono Nerd Font Mono-20"))
+(add-to-list 'default-frame-alist '(font . "VictorMono Nerd Font-9"))
 ; Icons
 (use-package all-the-icons
   :if (display-graphic-p))
@@ -343,23 +346,3 @@
 
 ;; Don't ask for confirmation to delete marked buffers
 (setq ibuffer-expert t)
-
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "22f080367d0b7da6012d01a8cd672289b1debfb55a76ecdb08491181dcb29626" default))
- '(doom-modeline-mode t)
- '(helm-minibuffer-history-key "M-p")
- '(ispell-dictionary nil)
- '(package-selected-packages
-   '(popper no-littering marginalia vertico verrtico perspective eyebrowse focus writeroom-mode elfeed-org elfeed-goodies elfeed org-bullets eshell-syntax-highlighting paredit fish-completion eshell-vterm rainbow-delimiters swiper ivy doom-modeline all-the-icons-dired all-the-icons smart-mode-line go-mode which-key lsp-go helm emacs-helm lsp-ui dashboard nyan-mode dracula-theme evil-collection evil undo-fu use-package cmake-mode)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+CHOICE=$(echo "/tmp\n/var/tmp/portage" | fzf --height=10 --reverse)
+doas rm -fr $CHOICE/*

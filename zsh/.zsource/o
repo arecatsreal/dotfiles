@@ -9,7 +9,12 @@ OPEN_DOCUMENT="zathura"
 OPEN_COMICBOOK="$OPEN_DOCUMENT"
 OPEN_TOURRENT="qbittorrent"
 
-o () { # Open
+# Settings
+DO_ROOT_EDITOR=true # Open file in root editor.
+DO_WALLP=true # When in wallpaper dir and opening image give option to view or set to wallpaper. If false will just open image.
+
+# o () { # Open
+o_zsh_function () { # Open
 	if [[ $1 == "" ]]; then  # Just open $EDITOR if no args are given.
 		$EDITOR
 	else
@@ -20,7 +25,7 @@ o () { # Open
 				Linux) IN_OWNER=$(stat -c '%U' $1) ;; # GNU Coreutils
 				*) IN_OWNER=$(stat -f '%Su' $1) ;; # non-GNU Coreutils
 				esac
-			if [[ $IN_OWNER == "root" ]]; then # If file owner is root opens it in $ROOTEDITOR A.K.A. sudoedit.
+			if [[ $IN_OWNER == "root" ]] && [[ $DO_ROOT_EDITOR == true ]]; then # If file owner is root opens it in $ROOTEDITOR A.K.A. sudoedit.
 				if [[ $ROOTEDITOR == '' ]]; then # Tests it $ROOTEDITOR is blank if is then just uses sudoedit.
 					sudoedit $1
 				else
@@ -36,19 +41,24 @@ o () { # Open
 				$OPEN_AUDIO $1
 			# Open Image
 			elif [[ $MIME_TYPE_FP == 'image' ]]; then
-				WALLP=false
-          pwd | grep "wallpaper" > /dev/null && {
-					WALLP=true
-					VOS=$(echo -n "View\nSet Wallpaper" | fzf --height=10 --reverse )
-					if [[ $VOS == 'Set Wallpaper' ]]; then
-						setwallp $1
-					else
-						WALLP=false
-					fi
-				}
-				if [ $WALLP = false ]; then
-					$OPEN_IMAGE $1&
-				fi
+        # Give Options to either open Image or Set as wall paper if in dir with wallpaper pwd path.
+        if [[ $DO_WALLP == true ]]; then
+          WALLP=false
+            pwd | grep "wallpaper" > /dev/null && {
+              WALLP=true
+              VOS=$(echo -n "View\nSet Wallpaper" | fzf --height=10 --reverse )
+              if [[ $VOS == 'Set Wallpaper' ]]; then
+                setwallp $1
+              else
+                WALLP=false
+              fi
+            }
+          if [ $WALLP = false ]; then
+            $OPEN_IMAGE $1&
+          fi
+        else
+          $OPEN_IMAGE $1&
+        fi
 			# Open Text
 			elif [[ $MIME_TYPE_FP == 'text' ]]; then
 				case $(echo $MIME_TYPE | awk -F '/' '{print $2}') in
