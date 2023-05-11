@@ -9,6 +9,8 @@ exa --version 2> /dev/null > /dev/null && {
   alias lla="exa -lha"
   alias ls="exa"
   alias la="exa -a"
+  alias tree="exa -lh --tree --level=3"
+  alias treea="exa -lh --tree --level=3"
   EXAIN=true
 }
 if [ $EXAIN = false ]; then
@@ -40,6 +42,7 @@ fi
 RGIN=false
 rg --version 2> /dev/null > /dev/null && {
   alias g="rg"
+  alias grep="rg"
   RGIN=true
 }
 if [ $RGIN = false ]; then

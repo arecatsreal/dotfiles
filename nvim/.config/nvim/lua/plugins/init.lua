@@ -91,5 +91,6 @@ return {
   {
     'barreiroleo/ltex-extra.nvim',
     lazy = true
-  }
+  },
+
 }

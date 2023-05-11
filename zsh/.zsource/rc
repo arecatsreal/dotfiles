@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# zsh-autocomplete
+# source $HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
 # neofetch
 echo && pfetch
 # Enable colors and change prompt:
@@ -58,19 +61,25 @@ zstyle :zle:edit-command-line editor $EDITOR -f
 bindkey -M vicmd v edit-command-line
 
 # Plugins
-autoload -U compinit
+# autoload -U compinit
 zstyle ':completion:*' menu select
-zmodload zsh/complist
-compinit
+# zmodload zsh/complist
+# compinit
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
 
-source /home/mip/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias luamake=/home/mip/gitStuffs/lua-language-server/3rd/luamake/luamake
+alias luamake=$HOME/gitStuffs/lua-language-server/3rd/luamake/luamake
 
-autoload -Uz compinit
+# autoload -Uz compinit
 fpath+=~/.zfunc
+
+# Zoxide
+which zoxide > /dev/null 2> /dev/null && {
+  _ZO_DATA_DIR=$HOME/sync
+  eval "$(zoxide init --cmd cd zsh)"
+}

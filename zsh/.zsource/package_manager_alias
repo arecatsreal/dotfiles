@@ -84,3 +84,6 @@ if [ $YAYIN = false ]; then
 else
 	alias pmup="sudo pmm-install -S -u && yay -Syu"
 fi
+
+# Nxi
+alias ns="nix search nixpkgs"

@@ -59,13 +59,13 @@ alias black="colour black"
 alias copy="xclip -selection clipbord"
 alias pm="pulsemixer"
 alias w="cd ~/Notes && nvim ~/Notes/index.md +'source ~/.config/nvim/lua/vimwiki_open.lua'"
-tagre () {; find . -type f -exec sed -i "1i $*" '{}' \;}
-#read () {; "FILE=$(mktemp); xsel | espeak -w $FILE; mpv $FILE; rm $FILE" ;}
 alias countingloop="i=0; while true; do ((i++)); echo $i; done"
 alias qrcode="qrencode -t ansiutf8"
 alias lsblk_uudi="lsblk -o NAME,MOUNTPOINTS,UUID"
 alias reboot="doas reboot"
 alias steamcmd="/opt/steamcmd/steamcmd.sh"
+alias mkdir="mkdir -p"
+alias dlvid="yt-dlp --embed-chapters"
 
 # smart_cd () {
 #   test -f $1 && o $1
