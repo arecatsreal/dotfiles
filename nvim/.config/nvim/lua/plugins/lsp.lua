@@ -136,7 +136,6 @@ return {
         automatic_installation = true,
         automatic_setup = true,
       })
-      require('mason-null-ls').setup_handlers()
 
     end
   }

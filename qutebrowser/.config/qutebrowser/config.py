@@ -1,7 +1,7 @@
 # Loading external objects
 # c.content.host_blocking.lists.append( str(config.configdir) + "/manualBlockList")
 # c.content.host_blocking.lists.append( str(config.configdir) + "/blockedHosts")
-config.load_autoconfig()
+# config.load_autoconfig()
 
 # Harding Qutebrowser
 config.set("content.javascript.enabled", False)
@@ -123,6 +123,7 @@ config.set("content.javascript.enabled", True, "*://mangadex.org/*")
 config.set("content.javascript.enabled", True, "*://www.keybr.com/*")
 config.set("content.javascript.enabled", True, "*://sourcegraph.com/*")
 config.set("content.javascript.enabled", True, "*://biblioreads.ml/*")
+config.set("content.javascript.enabled", True, "*://duckduckgo.com/*")
 config.set("content.javascript.enabled", True, "*://10.0.0.1/*")
 
 # Search Engines
@@ -136,7 +137,7 @@ search_engines = {
     "gh": "https://github.com/search?q={}",
     "gl": "https://gitlab.com/explore?utf8=%E2%9C%93&name={}&sort=latest_activity_desc",
     "geno": "http://gpo.zugaina.org/Search?search={}",
-    "in": "https://invidious.snopyta.org/search?q={}",
+    "in": "https://yt.artemislena.eu/search?q={}",
     "j": "https://jisho.org/search?utf8=%E2%9C%93&keyword={}",
     "lu": "https://lutris.net/games?q={}",
     "ma": "https://mangadex.org/titles?q={}",
@@ -151,6 +152,7 @@ search_engines = {
     "sg": "https://sourcegraph.com/search?q=context%3Aglobal+{}&patternType=standard&sm=1&groupBy=repo",
     "rim": "https://steamcommunity.com/workshop/browse/?appid=294100&searchtext={}&childpublishedfileid=0&browsesort=textsearch&section=",
     "zom": "https://steamcommunity.com/workshop/browse/?appid=108600&searchtext={}&childpublishedfileid=0&browsesort=textsearch&section=",
+    "dic": "https://en.wiktionary.org/w/index.php?fulltext=1&profile=default&search={}&title=Special%3ASearch&ns0=1",
     "w": "https://www.wikipedia.org/w/index.php?title=Special:Search&search={}",
 }
 config.set("url.searchengines", search_engines)
@@ -168,10 +170,14 @@ elif dot.strip() == "thinkpad":
 
 # Themeing
 # import dracula.draw
-config.source("terafox.py")
+# config.source("catppuccin.py")
 
 # Load existing settings made via :set
 config.load_autoconfig()
+
+# Catppuccin
+import catppuccin
+catppuccin.setup(c, 'mocha', True)
 
 # Sites
 # config.set('content.user.stylesheets', '$HOME/.config/qutebrowser/sytlesheets/catppuccin.css')

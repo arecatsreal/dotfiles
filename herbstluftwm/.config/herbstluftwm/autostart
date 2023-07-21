@@ -11,7 +11,7 @@ hc keyunbind --all
 
 # keybindings
 MOD=Mod4	#Use the super key as the main modifier
-TERM=kitty	# Set my preferred terminal
+TERM=wezterm	# Set my preferred terminal
 
 hc keybind $MOD-Shift-q reload
 hc keybind $MOD-g close_or_remove
@@ -107,8 +107,12 @@ hc mousebind $MOD-Button3 resize
 # FBNC="#393552"
 
 # Terafox
-FBAC="#7aa4a1"
-FBNC="#2f3239"
+# FBAC="#7aa4a1"
+# FBNC="#2f3239"
+
+# Catppuccin
+FBAC="#b4befe"
+FBNC="#313244"
 
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1

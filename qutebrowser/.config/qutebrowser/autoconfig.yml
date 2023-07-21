@@ -6,6 +6,8 @@
 
 config_version: 2
 settings:
+  content.notifications.enabled:
+    https://thepiratebay.org: false
   content.proxy:
     global: system
   fonts.default_size:

@@ -17,11 +17,44 @@ alias speed="speedtest-cli"
 
 # Mounting
 if [ $USER != "root" ]; then
-	alias mount="doas mount"
-	alias umount="doas umount"
+  alias mount="doas mount"
+  alias umount="doas umount"
 fi
 
-# Zip dir
+# Mic Utils
+alias countingloop="i=0; while true; do ((i++)); echo \$i; done"
+alias tmloop="while true; do; date +"%T" && sleep 1; done"
+alias ra="xsel | espeak -w /tmp/read.wav && mpv /tmp/read.wav && rm read.wav"
+alias getdes="youtube-dl --get-description '\$(xclip -o -selection clips)' | cat"
+new_cover () {
+  echo "\$1 is the cover file."
+  if [ -d ./new_cover ]; then; else
+    mkdir ./new_cover
+  fi
+  for i in ./*; do
+  ffmpeg -i $i -i $1 -map 0:0 -map 1:0 -c copy -id3v2_version 3 -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" new_cover/$i
+  done;
+}
+vidTrim () {
+  # Args: file mm:ss
+  mkdir vidTrim
+  duration=`ffprobe -v error -show_entries format=duration -of csv=p=0 $1`
+  duration=`echo "224.428000 - 7" | bc`
+  ffmpeg -ss 00:$2 -to $duration -i $1 -c copy vidTrim/$1
+}
+vidTrimDir () {
+  # Args: mm:ss
+  for i in ./*; do
+    vidTrim $i $1
+  done
+}
+
+text_img () {
+  convert -background black -fill white -font VictorMono -size 3840x2160 -gravity center "caption:$1" $(echo $1 | sed -s 's/ /_/g').png
+}
+ran () {; echo $(($1 + $RANDOM % $2 )); }
+
+# Compression
 zdir () {
   if [ $1 != "" ]; then
     for dir in ./* ;do
@@ -33,44 +66,41 @@ zdir () {
     echo "Please state file extinction."
   fi
 }
+tardir() {; for i in *; do tar -czf $i.tar.gz $i; rm -fr $i; done; }
+tarball () {; tar -czvf $1.tar.gz $1; }
+
+# Open thing
+alias cdl="rm -fr ~/Downloads/*"
+alias w="cd ~/Notes && nvim ~/Notes/index.md +'source ~/.config/nvim/lua/vimwiki_open.lua'"
+
+# File/Dir management
+alias ramdir="df -h | grep tmpfs | awk '{ print \$6\": \"\$5\" \"\$3 }'"
+alias cramdri="doas rm -fr \$(df -h | grep tmpfs | awk '{ print \$6}' | fzf --height=10 --reverse)/*"
 
 #Program Short cuts
-alias cdl="rm -fr ~/Downloads/*"
-alias tmloop="while true; do; date +"%T" && sleep 1; done"
-alias reload="source ~/.zshrc && rm ./1"
 alias nb="newsboat -u ~/sync/newsboat/urls -c ~/sync/newsboat/newsboat_cache.db"
 alias ta="tmux a"
-tarball () {; tar -czvf $1.tar.gz $1; }
-tardir() {; for i in *; do tar -czf $i.tar.gz $i; rm -fr $i; done; }
 alias cls="clear" # The one thing windows did right
 alias disk="df -h -t ext4"
 alias gr="go run -v *.go"
 alias cr="cargo run"
-alias getdes="youtube-dl --get-description '$(xclip -o -selection clips)' | cat"
 alias hc="herbstclient"
 alias cp="cp -r --preserve=timestamps"
-alias ra="xsel | espeak"
-alias ar="aria2c"
+alias ar="echo 'Number of Connections' && aria2c -x \$(printf \"8\n7\n6\n5\n4\n3\n2\n1\" | fzf --height=10 --reverse)"
 alias bs="barriers -c ~/.config/barrier/barrier.conf"
 alias timer="go-timer -alarmFile ~/sync/bin/alarm.mp3 -timeFile"
 alias wn="devour mpv --loop-file ~/NAS/Media/White_Noise.webm"
-alias y="ytfzf -t"
 alias black="colour black"
+alias white="colour"
 alias copy="xclip -selection clipbord"
 alias pm="pulsemixer"
-alias w="cd ~/Notes && nvim ~/Notes/index.md +'source ~/.config/nvim/lua/vimwiki_open.lua'"
-alias countingloop="i=0; while true; do ((i++)); echo $i; done"
 alias qrcode="qrencode -t ansiutf8"
 alias lsblk_uudi="lsblk -o NAME,MOUNTPOINTS,UUID"
 alias reboot="doas reboot"
 alias steamcmd="/opt/steamcmd/steamcmd.sh"
 alias mkdir="mkdir -p"
 alias dlvid="yt-dlp --embed-chapters"
-
-# smart_cd () {
-#   test -f $1 && o $1
-#   test -d $1 && cd $1
-# }
-# alias cd="smart_cd"
-
-ran () {; echo $(($1 + $RANDOM % $2 )); }
+alias regrub="mount /dev/nvme0n1p2 /boot && doas grub-mkconfig -o /boot/grub/grub.cfg; umount /boot"
+alias sctl="doas systemctl"
+alias sctlu="systemctl --user"
+alias abit="ffprobe -v error -select_streams a:0 -show_entries stream=bit_rate -of default=noprint_wrappers=1:nokey=1"

@@ -81,11 +81,11 @@
     frame_width = 2
 
     # Defines color of the frame around the notification window.
-    #frame_color = "#C9CBFF" # Cappuccin
+    frame_color = "#C9CBFF" # Cappuccin
     #frame_color = "#bd93f9" # Dracula
     # frame_color = "#8FBCBB" # Nord
     # frame_color = "#47407d" # Duskfox
-    frame_color = "#7aa4a1" # Terafox
+    # frame_color = "#7aa4a1" # Terafox
 
     # Define a color for the separator.
     # possible values are:
@@ -323,14 +323,14 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     # background = "#232136" # Duskfox
     # foreground = "#e0def4" # Duskfox
-    background = "#152528" # Terafox
-    foreground = "#e6eaea" # Terafox
+    # background = "#152528" # Terafox
+    # foreground = "#e6eaea" # Terafox
     # background = "#434C5E" # Nord
     # foreground = "#D8DEE9" # Nord
     #background = "#282a36" # Dracula
     #foreground = "#ffffff"  # Dracula
-    #background = "#1E1E2E" # Cappuccin
-    #foreground = "#D9E0EE"  # Cappuccin
+    background = "#1E1E2E" # Cappuccin
+    foreground = "#D9E0EE"  # Cappuccin
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
@@ -338,14 +338,14 @@
 [urgency_normal]
     # background = "#232136" # Duskfox
     # foreground = "#e0def4" # Duskfox
-    background = "#152528" # Terafox
-    foreground = "#e6eaea" # Terafox
+    # background = "#152528" # Terafox
+    # foreground = "#e6eaea" # Terafox
     # background = "#434C5E" # Nord
     # foreground = "#D8DEE9" # Nord
     #background = "#282a36" # Dracula
     #foreground = "#ffffff" # Dracula
-    #background = "#1E1E2E" # Cappuccin
-    #foreground = "#D9E0EE"  # Cappuccin
+    background = "#1E1E2E" # Cappuccin
+    foreground = "#D9E0EE"  # Cappuccin
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #icon = /path/to/icon

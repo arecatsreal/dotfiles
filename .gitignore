@@ -11,6 +11,8 @@ qutebrowser/.config/qutebrowser/quickmarks
 qutebrowser/.config/qutebrowser/dracula
 qutebrowser/.config/qsettings
 qutebrowser/.config/qutebrowser/qsettings/*
+qutebrowser/.config/qutebrowser/__pycache__/*
+qutebrowser/.config/qutebrowser/catppuccin
 nnn/.config/nnn/plugins
 mpd/.config/mpd/database
 vim/.vim/.netrwhist

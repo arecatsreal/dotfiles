@@ -1,4 +1,4 @@
-local fn = vim.fn
+-- local fn = vim.fn
 local o = vim.o
 local cmd = vim.api.nvim_create_user_command
 
@@ -10,7 +10,7 @@ vim.cmd("source $HOME/.config/nvim/vim/autocommands.vim") -- Load Autocommands
 require('impatient')
 
 --- Settings ---
-vim.cmd("colorscheme terafox")
+vim.cmd.colorscheme "catppuccin"
 o.number = true -- Line numbers
 o.relativenumber = true -- Relative line numbers
 vim.cmd("let g:vim_markdown_folding_disabled = 1")

@@ -10,18 +10,18 @@ alias xro="sudo xbps-remove -o"
 alias xqu="xbps-query -s"
 
 # Arch Linux
-YAYIN=false
-yay --version 2> /dev/null > /dev/null && {
-	alias pin="yay -S"
-	alias pup="yay -Syu"
-	alias prm="yay -Rs"
-	alias pro="yay -Qtdq | yay -Rns -"
-	alias pqu="yay -Ss"
-	YAYIN=true
+PARUIN=false
+paru --version 2> /dev/null > /dev/null && {
+	alias pin="paru -S"
+	alias pup="doas pacman -Sy archlinux-keyring && paru -Syu"
+	alias prm="paru -Rs"
+	alias pro="paru -Qtdq | paru -Rns -"
+	alias pqu="paru -Ss"
+	PARUIN=true
 }
-if [ $YAYIN = false ]; then
+if [ $PARUIN = false ]; then
 	alias pin="sudo pacman -S"
-	alias pup="sudo pacman -Syu"
+	alias pup="doas pacman -Sy archlinux-keyring && sudo pacman -Syu"
 	alias prm="sudo pacman -Rs"
 	alias pro="sudo pacman -Qtdq | sudo pacman -Rns -"
 	alias pqu="pacman -Ss"
@@ -74,15 +74,15 @@ alias etcup="doas etc-update"
 which eix 2> /dev/null > /dev/null && {;
 	alias equ="eix"
 	alias eqr="eix -R"
-  alias eupd="eix-sync"
+  alias eupd="doas eix-sync"
 }
 
 # Bedrock linux
 alias pmqu="pmm-query -R -s"
-if [ $YAYIN = false ]; then
+if [ $PARUIN = false ]; then
 	alias pmup="sudo pmm-install -S -u"
 else
-	alias pmup="sudo pmm-install -S -u && yay -Syu"
+	alias pmup="sudo pmm-install -S -u && paru -Syu"
 fi
 
 # Nxi

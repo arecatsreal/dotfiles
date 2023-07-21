@@ -58,3 +58,34 @@ nnoremap / :FZFfind<cr>
 fileviewer *.html,*.go,*.css,*.md,*.sh,*.rs,*.cpp,*.lisp,*.el highlight -l -O xterm256 --config-file=$HOME/.config/vifm/scripts/dracula.theme -s dracula %c
 fileviewer <application/json> cat %c | jq | highlight --syntax json -l -O xterm256 --config-file=$HOME/.config/vifm/scripts/dracula.theme -s dracula
 ""source $HOME/.config/vifm/scripts/vifmimgrc.vifm
+
+" Sixel
+fileviewer *.pdf
+    \ vifm-sixel pdf %pw %ph %c %pd
+    \ %pc
+    \ vifm-sixel clear
+
+fileviewer *.epub
+    \ vifm-sixel epub %pw %ph %c %pd
+    \ %pc
+    \ vifm-sixel clear
+
+fileviewer <video/*>
+    \ vifm-sixel video %pw %ph %c %pd
+    \ %pc
+    \ vifm-sixel clear
+
+fileviewer <image/*>
+    \ vifm-sixel draw %pw %ph %c %pd
+    \ %pc
+    \ vifm-sixel clear
+
+fileviewer <audio/*>
+    \ vifm-sixel audio %pw %ph %c %pd
+    \ %pc
+    \ vifm-sixel clear
+
+fileviewer <font/*>
+    \ vifm-sixel font %pw %ph %c %pd
+    \ %pc
+    \ vifm-sixel clear

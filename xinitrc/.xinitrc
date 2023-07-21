@@ -21,7 +21,9 @@ fcitx -d &
 # Redshift
 # rs.sh &
 
-export QT_QPA_PLATFORMTHEME="qt5ct"
+~/sync/bin/nas
+
+export QT_QPA_PLATFORMTHEME="qt6ct"
 export $(dbus-launch)
 
 # Pipewire

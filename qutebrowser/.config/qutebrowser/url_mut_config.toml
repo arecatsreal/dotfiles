@@ -16,7 +16,7 @@
 # mutate youtube URLs to invidious URLs
 [mutator.youtube]
 in_url = '(https?\:\/\/)?.*?youtu.*\..*\/(.*)' # regex pattern of URL to change. this example changes youtube.com, youtu.be, m.youtube.com, with http or https, or no protocol prefix as well.
-out_url = 'https://invidious.snopyta.org/|2|' # when the in_url pattern is found, change it to this.
+out_url = 'https://yt.artemislena.eu//|2|' # when the in_url pattern is found, change it to this.
 ignore_pattern = '' # patterns that match the in_url pattern to ignore. leave empty '' if you don't want to ignore any patterns.
 percent_decode = '' # indexes to parse percent endcoding before building out_url, leave ampty if you don't want to percent decode anything.
 

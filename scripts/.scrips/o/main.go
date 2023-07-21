@@ -13,21 +13,48 @@ import (
 )
 
 var openVideo, openAudio, openImage, openSpredsheet, openDocument, openComicbook, openTorrent, wallpaperSetCmd, filepath string
+var help, printType, doRootEditor, doWallpaperSet, version bool
 
 func main () {
-  var help, printType, doRootEditor, doWallpaperSet bool
+
+  openVideoEnv := os.Getenv("_O_OPEN_VIDEO")
+  openAudioEnv := os.Getenv("_O_OPEN_AUDIO")
+  openImageEnv := os.Getenv("_O_OPEN_IMAGE")
+  openSpredsheetEnv := os.Getenv("_O_OPEN_SPREDSHEET")
+  openDocumentEnv := os.Getenv("_O_OPEN_DOCUMENT")
+  openComicbookEnv := os.Getenv("_O_OPEN_COMICBOOK")
+  openTorrentEnv := os.Getenv("_O_OPEN_TORRENT")
+
+
+  openVideoList := "vlc,mpv"
+  openAudioList := "vlc,mpv,aplay"
+  openImageList := "sxiv,feh"
+  openSpredsheetList := "sc-im,nvim,vim"
+  openDocumentList := "zathura,nivm,vim"
+  openComicbookList := "zathura" // TODO add oters
+  openTorrentList := "qbittorrent" // TODO DIDO ^
+
+  openVideo = openerChoice(openVideoList, openVideoEnv)
+  openAudio = openerChoice(openAudioList, openAudioEnv)
+  openImage = openerChoice(openImageList, openImageEnv)
+  openSpredsheet = openerChoice(openSpredsheetList, openSpredsheetEnv)
+  openDocument = openerChoice(openDocumentList, openDocumentEnv)
+  openComicbook = openerChoice(openComicbookList, openComicbookEnv)
+  openTorrent = openerChoice(openTorrentList, openTorrentEnv)
+
   flag.BoolVar(&help, "help", false, "Prints This.")
   flag.BoolVar(&printType, "print_type", false, "Prints mime type and exits.")
   flag.BoolVar(&doRootEditor, "do_root_editor", true, "Opens files not owend by user with sudoedit or doasedit")
   flag.BoolVar(&doWallpaperSet, "do_wallpaperset", true, "Gives option to set ass wallpaper of view if pwd or filepath has \"wallpaper\" in it.")
+  flag.BoolVar(&version, "version", false, "Prints Version.")
 
-  flag.StringVar(&openVideo, "open_video", "mpv", "Application to open video files with.")
-  flag.StringVar(&openAudio, "open_audio", "mpv", "Application to open audio files with.")
-  flag.StringVar(&openImage, "open_image", "feh", "Application to open image files with.")
-  flag.StringVar(&openSpredsheet, "open_ss", "sc-im", "Application to open spreadsheet files with.")
-  flag.StringVar(&openDocument, "open_doc", "zathura", "Application to open document files with.")
-  flag.StringVar(&openComicbook, "open_comic", openDocument, "Application to open comicbook files with. Default is same as open_doc.")
-  flag.StringVar(&openTorrent, "open_torrent", "qbittorrent", "Application to open torrent files with.")
+  flag.StringVar(&openVideo, "open_video", openVideo, "Application to open video files with.")
+  flag.StringVar(&openAudio, "open_audio", openAudio, "Application to open audio files with.")
+  flag.StringVar(&openImage, "open_image", openImage, "Application to open image files with.")
+  flag.StringVar(&openSpredsheet, "open_ss", openImage, "Application to open spreadsheet files with.")
+  flag.StringVar(&openDocument, "open_doc", openDocument, "Application to open document files with.")
+  flag.StringVar(&openComicbook, "open_comic", openComicbook, "Application to open comicbook files with. Default is same as open_doc.")
+  flag.StringVar(&openTorrent, "open_torrent", openComicbook, "Application to open torrent files with.")
   flag.StringVar(&wallpaperSetCmd, "wallpaper_set_cmd", "setwallp", "the command used to set the wallpaper")
   flag.Parse()
 
@@ -37,14 +64,9 @@ func main () {
 		os.Exit(0)
 	}
 
-  // Test if fileopenrs ar in path.
-  var openers []string
-  openers = append(openers, openVideo, openAudio, openImage, openSpredsheet, openDocument, openComicbook, openTorrent)
-  for i := 0; i <= len(openers) - 1; i++ {
-    if !inpath(openers[i]) {
-      fmt.Println(openers[i], "Not found in path!")
-      os.Exit(1)
-    }
+  if version {
+    fmt.Println("v0.0.3")
+    os.Exit(0)
   }
 
   // If file is not porvided will open EDITOR env var.
@@ -234,8 +256,36 @@ func main () {
   }
 }
 
-
 func inpath(opener string) bool {
 	_, err := exec.LookPath(opener)
 	return err == nil
+}
+
+func openerChoice (openList, env string) string {
+  var openListSlice []string
+  if env != "" {
+    openListSlice = strings.Split(env, ",")
+  } else {
+    openListSlice = strings.Split(openList, ",")
+  }
+  for i := 0; i <= len(openListSlice) - 1; i++ {
+    if inpath(openListSlice[i]) {
+      return openListSlice[i]
+    } else {
+      fmt.Println(openListSlice[i], "is not in $PATH.")
+      os.Exit(1)
+    }
+  }
+  // None are in path
+  fmt.Println("None of these", openListSlice, "are found in path")
+  os.Exit(1)
+  return "" // Useless but makes complier happy :P.
+}
+
+func openerSet (openList, env string) string {
+  if env == "" {
+    return openList
+  } else {
+    return env
+  }
 }

@@ -79,7 +79,7 @@ alias luamake=$HOME/gitStuffs/lua-language-server/3rd/luamake/luamake
 fpath+=~/.zfunc
 
 # Zoxide
-which zoxide > /dev/null 2> /dev/null && {
-  _ZO_DATA_DIR=$HOME/sync
-  eval "$(zoxide init --cmd cd zsh)"
-}
+# which zoxide > /dev/null 2> /dev/null && {
+#   _ZO_DATA_DIR=$HOME/sync
+#   eval "$(zoxide init --cmd cd zsh)"
+# }

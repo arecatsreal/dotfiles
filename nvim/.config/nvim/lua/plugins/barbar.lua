@@ -7,8 +7,10 @@ return {
 
 		config = function ()
 			require('bufferline').setup({
-				icon_close_tab = '',
-				icon_close_tab_modified = '+',
+        icons = {
+          modified = {button = '+'},
+          button = {button = ''}
+        },
 				minimum_padding = 0,
 				maximum_padding = 2,
 				auto_hide = true,

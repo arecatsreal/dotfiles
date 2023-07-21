@@ -3,6 +3,7 @@
 export EDITOR=nvim
 export ROOTEDITOR=doasedit
 export PAGER=less
+export TERM=wezterm
 export BROWSER=qutebrowser
 export TBROESER=elinks
 export FILEM=vifm
