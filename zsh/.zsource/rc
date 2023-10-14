@@ -29,19 +29,13 @@ filem () {; export FILEM=$* && echo "The file manager is set to $FILEM" && setfi
 duck () {; lynx "duckduckgo.com/lite?kd=-1&kp=-1&q=$*"; }
 alias '?'="duck"
 
-# File/Dir opeing
-fileOpenAlias () {
-    alias nba="$EDITOR ~/.config/newsboat/urls"
-    alias tconf="$EDITOR ~/.tmux.conf"
-	alias emrc="$EDITOR ~/.emacs.d/init.el"
-	sp () {; $EDITOR $(mktemp --suffix=.md) ;}
-}
-fileOpenAlias
+
 confing_dir_edit () {
     if [[ $2 != "" ]]; then; cd $1; fi
     CDE_FILE=$(find $1/* -type f | fzf --height=10 --reverse)
     if [[ $CDE_FILE = "" ]]; then
-        if [[ $2 != "" ]]; then; cd $1 && nvim +"SessionManager load_current_dir_session"; else; f $1; fi
+        # if [[ $2 != "" ]]; then; cd $1 && nvim +"SessionManager load_current_dir_session"; else; f $1; fi
+        if [[ $2 != "" ]]; then; cd $1 && $EDITOR; else; f $1; fi
     else
         o $CDE_FILE
     fi

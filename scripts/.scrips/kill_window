@@ -1,0 +1,3 @@
+#!/bin/sh
+
+kill $(xprop | grep PID | sed 's/.* = //')

@@ -9,9 +9,9 @@ bind-key N next-feed articlelist
 bind-key E prev-feed articlelist
 bind-key ; macro-prefix
 
-browser "mpv %u"
+browser "mpv ---ytdl-format=best -fs --speed=2.00  %u"
 #macro w set browser "mpv --fs --ytdl-format=bestvideo+bestaudio/best %u" ; open-in-browser ; set browser "mpv %u"
-macro w set browser "nbvid %u" ; open-in-browser ; set browser "mpv %u"
+macro w set browser "nbvid %u" ; open-in-browser ; set browser "mpv ---ytdl-format=best -fs --speed=2.00  %u"
 macro c set browser ; open-in-browser ; set browser "echo %u | xclip -selection clip"
 
 # Tera fox

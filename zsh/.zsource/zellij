@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# zellij a -c $HOST
+alias z="zellij"
+alias zn="zellij options --session-name"
+# alias za="zellij a"
+za (){
+  X=true
+  zellij a 2> /dev/null > /dev/null && {
+    X=false
+  }
+  if [ $X ]; then
+    zellij a $(zellij list-sessions | fzf --height=10 --reverse)
+  fi
+}

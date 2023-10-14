@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+TMPDIR="/tmp/cbz_jxl"
+
+if ! [ -d $TMPDIR ]; then
+  mkdir $TMPDIR
+fi
+umount $TMPDIR
+
+# Check to make shour all in pust are boath files and cbz/zip archives.
+for i in "$@"; do
+  if ! [ -f $i ]; then
+    printf "$i is not a file."
+    exit 1
+  fi
+
+  if [[ $(file --mime-type $i | sed 's/.*: //') != "application/zip" ]]; then
+    printf "$i is the is not a cbz/zip file."
+    exit 1
+  fi
+done
+
+# Mount and convert contents to jxl
+for i in "$@"; do
+  fuse-zip $i $TMPDIR
+
+  for f in $TMPDIR/*; do
+    cjxl --quiet -j 1 "$f" "$f.jxl"
+  done
+
+  umount $TMPDIR
+done
+
+rm $TMPDIR

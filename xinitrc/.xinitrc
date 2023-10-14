@@ -31,7 +31,7 @@ gentoo-pipewire-launcher &
 
 dunst &
 #syncthing --no-browser &
-#emacs --bg-daemon &
+emacs --bg-daemon &
 #dwm_bar &
 
 #Turn off sleep
@@ -55,9 +55,10 @@ displaysetup.sh &
 #exec dwm
 #exec ~/gitStuffs/dwm/dwm
 #exec qtile start
-#exec emacs #I wish this was a joke lul.
-#exec bspwm
+#exec emacs
+#exec dbus-luanch --exit-with-session emacs -mm --debug-init
+# exec bspwm
 #exec spectrwm
-exec herbstluftwm >> $HOME/herb.log
+exec herbstluftwm
 #exec notion
-# exec i3
+#exec i3

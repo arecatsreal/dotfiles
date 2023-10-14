@@ -7,7 +7,7 @@
 config.set("content.javascript.enabled", False)
 config.set(
     "content.headers.user_agent",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
 )
 config.set("content.canvas_reading", False)
 config.set("content.webgl", False)
@@ -46,16 +46,16 @@ config.bind(
 
 # Yomichand
 c.aliases = {"yomichan": "spawn --userscript yomichad"}
-config.bind('gs', 'spawn --userscript yomichad')
-config.bind('gS', 'spawn --userscript yomichad --prefix-search')
-config.bind('gn', 'spawn --userscript yomichad --names')
+config.bind("gs", "spawn --userscript yomichad")
+config.bind("gS", "spawn --userscript yomichad --prefix-search")
+config.bind("gn", "spawn --userscript yomichad --names")
 
 # Contaners
-config.bind('C','spawn --userscript container-open')
-config.bind('<Alt-c>','set-cmd-text -s :spawn --userscript container-open')
-config.bind('<Alt-t>','hint links userscript container-open')
-config.bind('<Alt-t>','hint links userscript container-open')
-c.aliases['container-open'] = 'spawn --userscript container-open'
+config.bind("C", "spawn --userscript container-open")
+config.bind("<Alt-c>", "set-cmd-text -s :spawn --userscript container-open")
+config.bind("<Alt-t>", "hint links userscript container-open")
+config.bind("<Alt-t>", "hint links userscript container-open")
+c.aliases["container-open"] = "spawn --userscript container-open"
 
 # Colemak-DH
 config.unbind("m")
@@ -89,8 +89,14 @@ config.set("hints.chars", "arstneio")
 # Url-Mutator
 # config.bind("t", "hint links spawn --userscript url_mutator /home/mip/.config/qutebrowser/url_mut_config.toml \"open\" {hint-url}")
 # config.bind("T", "hint links spawn --userscript url_mutator /home/mip/.config/qutebrowser/url_mut_config.toml \"open -t\" {hint-url}")
-config.bind("l", "spawn --userscript url_mutator /home/mip/.config/qutebrowser/url_mut_config.toml \"open\" {clipboard}")
-config.bind("L", "spawn --userscript url_mutator /home/mip/.config/qutebrowser/url_mut_config.toml \"open -t\" {clipboard}")
+config.bind(
+    "l",
+    'spawn --userscript url_mutator /home/mip/.config/qutebrowser/url_mut_config.toml "open" {clipboard}',
+)
+config.bind(
+    "L",
+    'spawn --userscript url_mutator /home/mip/.config/qutebrowser/url_mut_config.toml "open -t" {clipboard}',
+)
 
 #  Fonts
 # config.set("fonts.default_family", "ComicCodeLigatures Nerd Font")
@@ -113,8 +119,10 @@ config.set("fonts.web.family.standard", "VictorMono Nerd Font")
 # Javascipt Whitelist
 config.set("content.javascript.enabled", True, "*://account.protonmail.com/*")
 config.set("content.javascript.enabled", True, "*://mail.protonmail.com/*")
+config.set("content.javascript.enabled", True, "*://*.proton.me/*")
 config.set("content.javascript.enabled", True, "*://monkeytype.com/*")
 config.set("content.javascript.enabled", True, "*://gitlab.com/*")
+config.set("content.javascript.enabled", True, "*://github.com/*")
 config.set("content.javascript.enabled", True, "*://startpage.com/*")
 config.set("content.javascript.enabled", True, "*://anilist.co/*")
 config.set("content.javascript.enabled", True, "*://parcelsapp.com/*")
@@ -158,15 +166,17 @@ search_engines = {
 config.set("url.searchengines", search_engines)
 
 # Zoom & Font size
-dot_file = open("/home/mip/.config/dot")
-dot = dot_file.read()
-dot_file.close()
-if dot.strip() == "main":
-    config.set("zoom.default", 150)
-    config.set("fonts.default_size", "15pt")
-elif dot.strip() == "thinkpad":
-    config.set("zoom.default", 100)
-    config.set("fonts.default_size", "8pt")
+config.set("zoom.default", 150)
+config.set("fonts.default_size", "15pt")
+# dot_file = open("/home/mip/.config/dot")
+# dot = dot_file.read()
+# dot_file.close()
+# if dot.strip() == "main":
+#     config.set("zoom.default", 150)
+#     config.set("fonts.default_size", "15pt")
+# elif dot.strip() == "thinkpad":
+#     config.set("zoom.default", 100)
+#     config.set("fonts.default_size", "8pt")
 
 # Themeing
 # import dracula.draw
@@ -177,7 +187,8 @@ config.load_autoconfig()
 
 # Catppuccin
 import catppuccin
-catppuccin.setup(c, 'mocha', True)
+
+catppuccin.setup(c, "mocha", True)
 
 # Sites
 # config.set('content.user.stylesheets', '$HOME/.config/qutebrowser/sytlesheets/catppuccin.css')

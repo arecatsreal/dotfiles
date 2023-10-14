@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 export EDITOR=nvim
+export GUI_EDITOR=true # Booll if eddior does not run in terminal true, else false.
 export ROOTEDITOR=doasedit
 export PAGER=less
-export TERM=wezterm
+#export TERM=wezterm
 export BROWSER=qutebrowser
 export TBROESER=elinks
 export FILEM=vifm
@@ -11,3 +12,20 @@ export WEECHAT_HOME=~/.weechat
 
 # Golang
 export GOPATH=~/go/src
+
+if [ $GUI_EDITOR ]; then
+  if [ $EDITOR = "nvide" ]; then
+    source $ZSOURCE/file_open_alias
+    nvide () {
+      # Also needs to be a script some where in $PATH.
+      devour neovide --nofork $*
+    }
+    if [ $TERM != linux ]; then # TODO fix for bsd.
+      export EDITOR="nvide"
+      fileOpenAlias
+    else
+      export EDITOR="nvim"
+      fileOpenAlias
+    fi
+  fi
+fi

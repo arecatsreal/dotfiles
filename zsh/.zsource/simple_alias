@@ -27,6 +27,10 @@ alias tmloop="while true; do; date +"%T" && sleep 1; done"
 alias ra="xsel | espeak -w /tmp/read.wav && mpv /tmp/read.wav && rm read.wav"
 alias getdes="youtube-dl --get-description '\$(xclip -o -selection clips)' | cat"
 new_cover () {
+  # $1 = file $2 = cover
+  ffmpeg -i $1 -i $2 -map 0:0 -map 1:0 -c copy -id3v2_version 3 -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" new_cover_$1
+}
+new_cover_dir () {
   echo "\$1 is the cover file."
   if [ -d ./new_cover ]; then; else
     mkdir ./new_cover
@@ -48,6 +52,16 @@ vidTrimDir () {
     vidTrim $i $1
   done
 }
+# run () {
+#   RUST=false
+#   cargo c && {
+#     cargo run
+#     RUST=true
+#   }
+#   if [ $RUST == false]; then
+#     go run -v *.go
+#   fi
+# }
 
 text_img () {
   convert -background black -fill white -font VictorMono -size 3840x2160 -gravity center "caption:$1" $(echo $1 | sed -s 's/ /_/g').png

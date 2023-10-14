@@ -11,13 +11,13 @@ hc keyunbind --all
 
 # keybindings
 MOD=Mod4	#Use the super key as the main modifier
-TERM=wezterm	# Set my preferred terminal
+TERM=kitty	# Set my preferred terminal
 
 hc keybind $MOD-Shift-q reload
 hc keybind $MOD-g close_or_remove
 
 # Application Launch Keybindings
-hc keybind $MOD-Return spawn $TERM
+hc keybind $MOD-Shift-Return spawn $TERM
 hc keybind $MOD-p spawn dmenu_run
 hc keybind $MOD-Control-p spawn p
 hc keybind $MOD-Shift-p spawn bookmarktype
@@ -35,6 +35,11 @@ hc keybind $MOD-m spawn mpd-menu
 hc keybind $MOD-s spawn screen_shooter
 hc keybind $MOD-a spawn dmenu_timer
 hc keybind $MOD-j spawn OFredshit
+hc keybind $MOD-x attr clients.focus.floating toggle
+
+# Scrachpatd
+hc keybind $MOD-Return spawn $HOME/.config/herbstluftwm/scratchpad.sh
+# hc keybind $MOD-Return spawn scratchpad.sh
 
 # focusing clients
 hc keybind $MOD-e             focus up

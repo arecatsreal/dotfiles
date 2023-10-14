@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+# File/Dir opeing
+fileOpenAlias () {
+  alias nba="$EDITOR ~/.config/newsboat/urls"
+  alias tconf="$EDITOR ~/.tmux.conf"
+	alias emrc="$EDITOR ~/.emacs.d/init.el"
+	sp () {
+    $EDITOR $(mktemp --suffix=.md)
+  }
+}

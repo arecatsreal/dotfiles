@@ -13,10 +13,14 @@ OPEN_TOURRENT="qbittorrent"
 DO_ROOT_EDITOR=true # Open file in root editor.
 DO_WALLP=true # When in wallpaper dir and opening image give option to view or set to wallpaper. If false will just open image.
 
-# o () { # Open
-o_zsh_function () { # Open
+o () { # Open
+# o_zsh_function () { # Open
 	if [[ $1 == "" ]]; then  # Just open $EDITOR if no args are given.
-		$EDITOR
+    if [ -f .mpv.history ]; then
+      mpv $(\cat .mpv.history)
+    else
+      $EDITOR
+    fi
 	else
 		if [ -f $1 ]; then # Test to see if $1 if a file or not.
 			MIME_TYPE=$(file --mime-type $1 | sed 's/.*: //') # Gets mime type and shaves off file name.

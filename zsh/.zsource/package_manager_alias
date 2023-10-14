@@ -3,27 +3,28 @@
 #Package Manager alias
 
 # Void Linux
-alias xin="sudo xbps-install"
-alias xup="sudo xbps-install -S -u"
-alias xrm="sudo xbps-remove"
-alias xro="sudo xbps-remove -o"
+alias xin="doas xbps-install"
+alias xup="doas xbps-install -S -u"
+alias xrm="doas xbps-remove"
+alias xro="doas xbps-remove -o"
 alias xqu="xbps-query -s"
 
 # Arch Linux
 PARUIN=false
+alias pkeys="doas pacman -Sy archlinux-keyring"; alias pkey="pkeys"
 paru --version 2> /dev/null > /dev/null && {
 	alias pin="paru -S"
-	alias pup="doas pacman -Sy archlinux-keyring && paru -Syu"
+	alias pup="paru -Syu"
 	alias prm="paru -Rs"
 	alias pro="paru -Qtdq | paru -Rns -"
 	alias pqu="paru -Ss"
 	PARUIN=true
 }
 if [ $PARUIN = false ]; then
-	alias pin="sudo pacman -S"
-	alias pup="doas pacman -Sy archlinux-keyring && sudo pacman -Syu"
-	alias prm="sudo pacman -Rs"
-	alias pro="sudo pacman -Qtdq | sudo pacman -Rns -"
+	alias pin="doas pacman -S"
+	alias pup="doas pacman -Syu"
+	alias prm="doas pacman -Rs"
+	alias pro="doas pacman -Qtdq | doas pacman -Rns -"
 	alias pqu="pacman -Ss"
 fi
 
@@ -33,30 +34,30 @@ which aptitude 2> /dev/null > /dev/null && APT=aptitude
 which nala 2> /dev/null > /dev/null && APT=nala
 
 if [ $APT = "nala" ]; then
-	alias ain="sudo nala install"
-	alias aup="sudo nala upgrade"
-	alias aupd="sudo nala update"
-	alias arm="sudo nala remove"
-	alias aro="sudo nala autoremove"
+	alias ain="doas nala install"
+	alias aup="doas nala upgrade"
+	alias aupd="doas nala update"
+	alias arm="doas nala remove"
+	alias aro="doas nala autoremove"
 	alias aqu="nala search"
-	alias afe="sudo nala fetch --debian testing --auto"
+	alias afe="doas nala fetch --debian testing --auto"
 	alias apt="nala"
 elif [ $APT = "aptitude" ]; then
-	alias ain="sudo aptitude install"
-	alias aup="sudo aptitude update && sudo aptitude safe-upgrade"
-	alias aupd="sudo aptitude update"
-	alias aupg="sudo aptitude full-upgrade"
-	alias arm="sudo aptitude remove"
-	alias aro="sudo apt autoremove"
+	alias ain="doas aptitude install"
+	alias aup="doas aptitude update && doas aptitude safe-upgrade"
+	alias aupd="doas aptitude update"
+	alias aupg="doas aptitude full-upgrade"
+	alias arm="doas aptitude remove"
+	alias aro="doas apt autoremove"
 	alias aqu="aptitude search"
 	alias apt="aptitude"
 else
-	alias ain="sudo apt install"
-	alias aup="sudo apt update && sudo apt upgrade"
-	alias aupd="sudo apt update"
-	alias aupg="sudo apt upgrade"
-	alias arm="sudo apt remove"
-	alias aro="sudo apt autoremove"
+	alias ain="doas apt install"
+	alias aup="doas apt update && doas apt upgrade"
+	alias aupd="doas apt update"
+	alias aupg="doas apt upgrade"
+	alias arm="doas apt remove"
+	alias aro="doas apt autoremove"
 	alias aqu="apt search"
 fi
 alias ap="apt-file find"
@@ -80,9 +81,9 @@ which eix 2> /dev/null > /dev/null && {;
 # Bedrock linux
 alias pmqu="pmm-query -R -s"
 if [ $PARUIN = false ]; then
-	alias pmup="sudo pmm-install -S -u"
+	alias pmup="doas pmm-install -S -u"
 else
-	alias pmup="sudo pmm-install -S -u && paru -Syu"
+	alias pmup="doas pmm-install -S -u && paru -Syu"
 fi
 
 # Nxi
