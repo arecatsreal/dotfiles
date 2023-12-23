@@ -7,7 +7,7 @@
 config.set("content.javascript.enabled", False)
 config.set(
     "content.headers.user_agent",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.138Safari/537.36 AVG/112.0.21002.139",
 )
 config.set("content.canvas_reading", False)
 config.set("content.webgl", False)
@@ -161,6 +161,7 @@ search_engines = {
     "rim": "https://steamcommunity.com/workshop/browse/?appid=294100&searchtext={}&childpublishedfileid=0&browsesort=textsearch&section=",
     "zom": "https://steamcommunity.com/workshop/browse/?appid=108600&searchtext={}&childpublishedfileid=0&browsesort=textsearch&section=",
     "dic": "https://en.wiktionary.org/w/index.php?fulltext=1&profile=default&search={}&title=Special%3ASearch&ns0=1",
+    "bam": "https://www.booksamillion.com/search?query={}",
     "w": "https://www.wikipedia.org/w/index.php?title=Special:Search&search={}",
 }
 config.set("url.searchengines", search_engines)

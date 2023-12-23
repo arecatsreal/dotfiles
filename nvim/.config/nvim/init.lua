@@ -31,6 +31,7 @@ vim.cmd("let g:vimwiki_list = [{'path': '~/Notes/', 'syntax': 'markdown', 'ext':
 vim.cmd("autocmd FileType vimwiki setlocal filetype=markdown")
 
 cmd("WordCount", "!wc -w %", {}) -- Prints word count of buffer.
+cmd("BuffQR", "!echo $(< %) | qrencode -t ansiutf8", {}) -- Makes a qrcode of the buffer.
 
 -- Write As Root
 -- cmd('RW', 'w !sudo tee %', {}) -- SUDO

@@ -23,7 +23,7 @@ fcitx -d &
 
 ~/sync/bin/nas
 
-export QT_QPA_PLATFORMTHEME="qt6ct"
+export QT_QPA_PLATFORMTHEME="qt5ct"
 export $(dbus-launch)
 
 # Pipewire
